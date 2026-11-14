@@ -6,6 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Bách Khoa Mầm Non 4D">
 <meta name="theme-color" content="#1b1035">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>🌻 Bách Khoa Sư Phạm Mầm Non 4D — Cô Đặng Thị Niềm • Lớp 3–4 Tuổi • Trường MN Lê Thế Hiếu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,6 +428,19 @@ body.style-notebook .comment-bank label{background:#fef9c3}
 
 <!-- ================= TAB 5: LỚP HỌC ================= -->
 <section class="workspace" id="ws-class">
+  <div class="panel backup-panel">
+    <span class="tag">💾 SAO LƯU DỮ LIỆU LỚP</span>
+    <h2 style="margin:4px 0">Giữ An Toàn Điểm Danh, Quan Sát, Chăm Sóc &amp; Sức Khoẻ</h2>
+    <p class="sub">App tự lưu dữ liệu trên máy này mỗi vài giây, nhưng Safari có thể xoá khi đầy bộ nhớ. Cô xuất file .json mỗi tuần 1 lần để giữ an toàn.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="interactive-btn-lg green" onclick="exportClassBackup()">💾 Xuất file sao lưu (.json)</button>
+      <button class="interactive-btn-lg" onclick="$('backupFileInput').click()">📥 Nhập file sao lưu</button>
+      <button class="interactive-btn-lg" onclick="restoreSavedClassData()">📂 Khôi phục bản đã lưu trên máy</button>
+      <button class="interactive-btn-lg pink" onclick="clearSavedClassData()">🗑 Xoá bản lưu trên máy</button>
+      <input type="file" id="backupFileInput" accept=".json,application/json" style="display:none" onchange="importClassBackupFile(this.files[0]); this.value='';">
+    </div>
+    <div class="small" id="backupStatus" style="margin-top:8px">Chưa có bản lưu tự động trên máy này.</div>
+  </div>
   <div class="grid2">
     <div class="panel">
       <span class="tag">🧸 ĐIỂM DANH &amp; BÁO CƠM BÁN TRÚ</span>
@@ -1044,6 +1059,74 @@ let OBS_LOG = [];
 let CARE_LOG = [];
 let ASSETS = [];
 /*__CLASS_RECORDS_END__*/
+/* ================= SAO LƯU DỮ LIỆU LỚP — tự lưu + xuất/nhập file ================= */
+const CLASS_DATA_ID='bachkhoa-mamnon-4d-v1';
+const CLASS_LS_KEY='bachkhoa-class-v1';
+function classDataBundle(){ return {dataId:CLASS_DATA_ID, savedAt:Date.now(), data:{STUDENTS:STUDENTS,FLOWERS:FLOWERS,WHO_RECORDS:WHO_RECORDS,OBS_LOG:OBS_LOG,CARE_LOG:CARE_LOG,ASSETS:ASSETS}}; }
+function persistClassData(silent){
+  try{ localStorage.setItem(CLASS_LS_KEY, JSON.stringify(classDataBundle())); updateBackupStatus(); }
+  catch(e){ if(!silent) toast('Không lưu được dữ liệu trên máy này (bộ nhớ trình duyệt đầy hoặc bị chặn). Cô dùng nút Xuất file .json nhé!'); }
+}
+function applyClassBundle(b){
+  if(!b||!b.data) return false;
+  const d=b.data;
+  if(Array.isArray(d.STUDENTS)) STUDENTS=d.STUDENTS;
+  if(d.FLOWERS) FLOWERS=d.FLOWERS;
+  if(Array.isArray(d.WHO_RECORDS)) WHO_RECORDS=d.WHO_RECORDS;
+  if(Array.isArray(d.OBS_LOG)) OBS_LOG=d.OBS_LOG;
+  if(Array.isArray(d.CARE_LOG)) CARE_LOG=d.CARE_LOG;
+  if(Array.isArray(d.ASSETS)) ASSETS=d.ASSETS;
+  return true;
+}
+function restoreClassDataFromStorage(quiet){
+  let raw=null; try{ raw=localStorage.getItem(CLASS_LS_KEY); }catch(e){}
+  if(!raw) return false;
+  let b=null; try{ b=JSON.parse(raw); }catch(e){ return false; }
+  if(b.dataId!==CLASS_DATA_ID) return false;
+  if(!applyClassBundle(b)) return false;
+  if(!quiet){ const d=new Date(b.savedAt||Date.now()); toast('✅ Đã khôi phục dữ liệu lớp đã lưu trên máy này ('+d.getDate()+'/'+(d.getMonth()+1)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+').'); }
+  return true;
+}
+function exportClassBackup(){
+  const blob=new Blob([JSON.stringify(classDataBundle(),null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  const d=new Date(); a.download='sao-luu-lop-3-4-tuoi-'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+'.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+  toast('💾 Đã tải file sao lưu dữ liệu lớp — cô giữ file này cẩn thận nhé!');
+}
+function importClassBackupFile(file){
+  if(!file) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    let b=null; try{ b=JSON.parse(r.result); }catch(e){ toast('File sao lưu không đọc được — cô chọn đúng file .json đã xuất từ app nhé!'); return; }
+    if(!b||!b.data||!Array.isArray(b.data.STUDENTS)){ toast('File này không phải file sao lưu của app.'); return; }
+    if(!confirm('Nhập file sao lưu này sẽ THAY TOÀN BỘ dữ liệu lớp hiện tại (điểm danh, quan sát, chăm sóc, tài sản, hoa, sức khoẻ). Cô chắc chắn chứ?')) return;
+    applyClassBundle(b);
+    persistClassData(true);
+    renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderWhoList();
+    toast('✅ Đã nhập file sao lưu — dữ liệu lớp đã được khôi phục!');
+  };
+  r.readAsText(file);
+}
+function restoreSavedClassData(){
+  if(restoreClassDataFromStorage(false)){ renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderWhoList(); }
+  else toast('Không có dữ liệu lớp nào đã lưu trên máy này.');
+}
+function clearSavedClassData(){
+  if(!confirm('Xoá toàn bộ dữ liệu lớp đã lưu trên máy này? Dữ liệu trong file gốc (bài mẫu) vẫn còn — trang sẽ tải lại.')) return;
+  try{ localStorage.removeItem(CLASS_LS_KEY); }catch(e){}
+  location.reload();
+}
+function updateBackupStatus(){
+  const el=$('backupStatus'); if(!el) return;
+  let raw=null; try{ raw=localStorage.getItem(CLASS_LS_KEY); }catch(e){}
+  if(!raw){ el.textContent='Chưa có bản lưu tự động trên máy này.'; return; }
+  let b=null; try{ b=JSON.parse(raw); }catch(e){}
+  if(!b||!b.savedAt){ el.textContent='Chưa có bản lưu tự động trên máy này.'; return; }
+  const d=new Date(b.savedAt);
+  el.textContent='✅ Đã tự lưu trên máy này lúc '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' ngày '+d.getDate()+'/'+(d.getMonth()+1)+'. Cô nên xuất file .json mỗi tuần 1 lần để giữ an toàn.';
+}
 const GROUPS = ["🐰 Tổ Thỏ Trắng", "🐻 Tổ Gấu Bông", "🐿️ Tổ Sóc Nâu"];
 const SCHEDULE = [
 ["7h00 – 7h45", "Đón trẻ, chơi tự do, trò chuyện sáng"],
@@ -1385,6 +1468,11 @@ function toggleVoiceGuide(force){
   g.style.display=(force===true||g.style.display==='none')?'block':'none';
 }
 function testVoice(){
+  if('speechSynthesis' in window && !pickVoice()){
+    toast('Máy này chưa có giọng tiếng Việt — cô bấm “📲 Tải giọng hay hơn” để tải giọng Linh (Nâng cao) rồi thử lại nhé!');
+    toggleVoiceGuide(true);
+    return;
+  }
   speakText('Xin chào các bé! Hôm nay, cô sẽ kể cho các bé nghe một câu chuyện thật hay nhé! Các bé đã sẵn sàng chưa nào?');
   toast('🎧 Đang đọc thử giọng kể chuyện…');
 }
@@ -1552,7 +1640,13 @@ async function startSlideRecording(){
   stopSpeaking(); stopRecPlayback();
   let stream;
   try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }
-  catch(e){ toast('Không mở được micro — cô kiểm tra quyền micro cho trình duyệt trong Cài đặt nhé!'); return; }
+  catch(e){
+    const n=(e&&e.name)||'';
+    if(n==='NotAllowedError'||n==='SecurityError') toast('Cô chưa cho phép micro — khi trình duyệt hỏi, cô bấm “Cho phép” nhé! (Trên iPhone: Cài đặt → Safari → Micro → Cho phép)');
+    else if(n==='NotFoundError'||n==='OverconstrainedError') toast('Máy này không tìm thấy micro để ghi âm.');
+    else toast('Không mở được micro — cô kiểm tra quyền micro cho trình duyệt trong Cài đặt nhé!');
+    return;
+  }
   recStream=stream; recChunks=[]; recStartTs=Date.now();
   const mime=pickRecMime();
   try{ recRecorder=new MediaRecorder(recStream, mime?{mimeType:mime}:undefined); }
@@ -2169,11 +2263,15 @@ function exportStandaloneHtml4D(){
 
 /* ================= KHỞI TẠO ================= */
 function initApp(){
+  restoreClassDataFromStorage(true);
   const today=new Date(); $('lpDate').value=today.toISOString().slice(0,10);
   renderDeck(); renderThemeGrid(); renderPoemLibrary(); renderLessonDetail(LESSONS[0]);
   renderAttendance(); renderFlowerBoard(); renderSchedule(); renderZaloList(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile();
   fillCommentStudents(); renderCommentBank(); renderWhoList(); renderPlanPreview(); renderSlideEditor();
   loadViVoices();
+  updateBackupStatus();
+  setInterval(()=>persistClassData(true), 8000);
+  window.addEventListener('beforeunload', ()=>persistClassData(true));
   const dz=$('pdfDropZone');
   dz.addEventListener('click',()=>$('pdfFileInput').click());
   dz.addEventListener('dragover',e=>{ e.preventDefault(); dz.classList.add('over'); });
@@ -2190,6 +2288,9 @@ function initApp(){
     else if(e.key==='ArrowLeft') prevSlide();
   });
   window.addEventListener('resize',()=>{ if($('fxCanvas')) initCanvasFx(); });
+}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
 }
 document.addEventListener('DOMContentLoaded', initApp);
 </script>

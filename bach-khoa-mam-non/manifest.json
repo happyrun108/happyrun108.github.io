@@ -1,0 +1,29 @@
+{
+  "name": "Bách Khoa Sư Phạm Mầm Non 4D — Cô Đặng Thị Niềm",
+  "short_name": "Bách Khoa MN 4D",
+  "description": "Bách khoa toàn thư sư phạm mầm non 4D cho lớp 3-4 tuổi, Trường MN Lê Thế Hiếu.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1b1035",
+  "theme_color": "#1b1035",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
