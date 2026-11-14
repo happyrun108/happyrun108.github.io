@@ -195,6 +195,11 @@ body.style-notebook .comment-bank label{background:#fef9c3}
 .voice-guide li{margin:4px 0}
 .link-btn{background:none;border:none;color:#2563eb;text-decoration:underline;cursor:pointer;font-size:14px;padding:0}
 @media(max-width:760px){.voice-strip{font-size:13px;padding:8px 10px}}
+.rec-panel{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px;padding:10px 12px;background:#fff8e1;border:1px solid #f5c451;border-radius:12px;color:#1e293b;font-size:14px;line-height:1.5}
+.rec-panel .pill-btn{font-size:13px;padding:6px 10px}
+.rec-badge{background:#fde68a;color:#92400e;font-weight:700;border-radius:99px;padding:2px 8px;font-size:12px}
+.rec-dot{width:12px;height:12px;border-radius:50%;background:#dc2626;display:inline-block;animation:recblink 1s infinite}
+@keyframes recblink{50%{opacity:.25}}
 </style>
 </head>
 <body class="style-fairy">
@@ -283,6 +288,7 @@ body.style-notebook .comment-bank label{background:#fef9c3}
       </div>
       <ul class="bullets" id="slideBullets"></ul>
       <div class="teleprompter-bar" id="teleprompterBar">🎙️ Bấm “BẤM NÚT KỂ CHUYỆN” để cô kể cho cả lớp nghe. Lời kể sẽ hiện ở đây từng câu.</div>
+      <div class="rec-panel" id="recPanel"></div>
       <div class="nav-row">
         <button class="btn-hud-action" onclick="prevSlide()">◀ Trang trước</button>
         <div class="dots" id="dotsContainer"></div>
@@ -1158,6 +1164,7 @@ function renderDeck(){
   $('teleprompterBar').textContent = '🎙️ ' + (s.script||'');
   renderFlipCards(s); renderDots();
   initCanvasFx();
+  refreshRecPanel();
 }
 function renderFlipCards(s){
   $('flipCardsGrid').innerHTML = (s.flipCards||[]).map((c,i)=>
@@ -1450,8 +1457,13 @@ function stopSpeaking(){
   isSpeaking=false; autoLecture=false;
   const b=$('btnMasterSpeak'); if(b) b.textContent='🎙️ BẤM NÚT KỂ CHUYỆN';
   updateMusicGainLevel();
+  if(recPlaying||recMode==='playing'){ stopRecPlayback(); refreshRecPanel(); }
 }
-function speakCurrentScript(){ const s=SLIDES_DATA[currentSlideIdx]; if(s&&s.script) speakText(s.script, ()=>{ if(autoLecture) nextSlide(); }); }
+async function speakCurrentScript(){
+  const s=SLIDES_DATA[currentSlideIdx]; if(!s||!s.script) return;
+  const played=await playSlideRecording(()=>{ if(autoLecture) nextSlide(); });
+  if(!played) speakText(s.script, ()=>{ if(autoLecture) nextSlide(); });
+}
 function toggleAutoLecture(){
   if(autoLecture){ stopSpeaking(); return; }
   autoLecture=true; speakErrCount=0; $('btnMasterSpeak').textContent='⏹ DỪNG KỂ CHUYỆN';
@@ -1475,6 +1487,130 @@ function setVoiceGender(g, announce){
 function onTopSpeedInput(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; }
 function onTopSpeedCommit(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; resumeMidSentenceOnVoiceOrSpeedChange(); }
 function stepSpeechSpeed(d){ const nv=Math.min(1.5,Math.max(0.6,+(speechRate+d).toFixed(2))); speechRate=nv; $('topSpeedSlider').value=nv; $('topSpeedVal').textContent=nv.toFixed(2)+'x'; resumeMidSentenceOnVoiceOrSpeedChange(); }
+
+/* ================= GHI ÂM GIỌNG CÔ — MediaRecorder + IndexedDB ================= */
+let recDB=null, recMode='idle', recPlaying=false, recPlayingAudio=null;
+let recStream=null, recRecorder=null, recChunks=[], recStartTs=0, recTimerInt=null, recKeepOnStop=false;
+function fmtDur(ms){ ms=Math.max(0,Math.round(ms/1000)); return Math.floor(ms/60)+':'+String(ms%60).padStart(2,'0'); }
+function slideKey(){
+  const s=SLIDES_DATA[currentSlideIdx]; if(!s) return null;
+  return (currentLesson&&currentLesson.id?currentLesson.id:'lesson')+':'+(s.id!=null?s.id:'idx'+currentSlideIdx);
+}
+function recDBOpen(){
+  return new Promise((res,rej)=>{
+    if(recDB) return res(recDB);
+    if(!('indexedDB' in window)) return rej(new Error('no-indexeddb'));
+    const rq=indexedDB.open('bachkhoa-voice-v1',1);
+    rq.onupgradeneeded=()=>{ rq.result.createObjectStore('recordings',{keyPath:'slideKey'}); };
+    rq.onsuccess=()=>{ recDB=rq.result; res(recDB); };
+    rq.onerror=()=>rej(rq.error||new Error('idb-open-failed'));
+  });
+}
+async function recGet(key){
+  const db=await recDBOpen();
+  return new Promise((res,rej)=>{ const tx=db.transaction('recordings','readonly'); const rq=tx.objectStore('recordings').get(key); rq.onsuccess=()=>res(rq.result||null); rq.onerror=()=>rej(rq.error); });
+}
+async function recPut(rec){
+  const db=await recDBOpen();
+  return new Promise((res,rej)=>{ const tx=db.transaction('recordings','readwrite'); const rq=tx.objectStore('recordings').put(rec); rq.onsuccess=()=>res(); rq.onerror=()=>rej(rq.error); });
+}
+async function recDel(key){
+  const db=await recDBOpen();
+  return new Promise((res,rej)=>{ const tx=db.transaction('recordings','readwrite'); const rq=tx.objectStore('recordings').delete(key); rq.onsuccess=()=>res(); rq.onerror=()=>rej(rq.error); });
+}
+async function refreshRecPanel(){
+  const el=$('recPanel'); if(!el) return;
+  const s=SLIDES_DATA[currentSlideIdx];
+  if(!s){ el.innerHTML=''; return; }
+  if(recMode==='recording'){
+    el.innerHTML='<span class="rec-dot"></span> <b>🔴 Đang ghi âm… <span id="recTimer">0:00</span></b> <span class="small">Cô đọc lời kể ở khung trên, xong bấm Dừng &amp; lưu.</span> <button class="pill-btn" onclick="stopSlideRecording(true)">■ Dừng &amp; lưu</button> <button class="pill-btn" onclick="stopSlideRecording(false)">✕ Huỷ</button>';
+    return;
+  }
+  if(recMode==='playing'){
+    el.innerHTML='<b>🔊 Đang phát giọng cô…</b> <button class="pill-btn" onclick="stopSpeaking()">■ Dừng phát</button>';
+    return;
+  }
+  let rec=null;
+  try{ rec=await recGet(slideKey()); }catch(e){ rec=null; }
+  const note='<div class="small" style="margin-top:6px">Bản ghi lưu trên máy này, không đi theo file khi gửi cho người khác. Muốn kể bằng giọng cô trên máy khác, cô ghi âm lại trên máy đó.</div>';
+  if(rec&&rec.blob){
+    const d=new Date(rec.createdAt||Date.now());
+    el.innerHTML='<b>🎙 Giọng kể của cô</b> <span class="rec-badge">❤️ Đang dùng giọng cô</span> <span class="small">Đã ghi '+fmtDur(rec.durationMs||0)+' • '+d.getDate()+'/'+(d.getMonth()+1)+'</span> <button class="pill-btn" onclick="playSlideRecording()">🔊 Nghe giọng cô</button> <button class="pill-btn" onclick="startSlideRecording()">🎙 Ghi lại</button> <button class="pill-btn" onclick="deleteSlideRecording()">🗑 Xoá bản ghi</button>'+note;
+  } else {
+    el.innerHTML='<b>🎙 Giọng kể của cô</b> <span class="small">Chưa có bản ghi cho trang này — đang dùng giọng máy.</span> <button class="pill-btn" onclick="startSlideRecording()">🎙 Ghi âm giọng cô cho trang này</button>'+note;
+  }
+}
+function pickRecMime(){
+  if(!window.MediaRecorder) return '';
+  const types=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'];
+  for(const t of types){ try{ if(MediaRecorder.isTypeSupported(t)) return t; }catch(e){} }
+  return '';
+}
+function cleanupRecStream(){ if(recStream){ recStream.getTracks().forEach(t=>{ try{ t.stop(); }catch(e){} }); recStream=null; } }
+async function startSlideRecording(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){ toast('Máy này không hỗ trợ ghi âm trong trình duyệt. Cô dùng Safari hoặc Chrome trên iPhone, máy tính nhé!'); return; }
+  stopSpeaking(); stopRecPlayback();
+  let stream;
+  try{ stream=await navigator.mediaDevices.getUserMedia({audio:true}); }
+  catch(e){ toast('Không mở được micro — cô kiểm tra quyền micro cho trình duyệt trong Cài đặt nhé!'); return; }
+  recStream=stream; recChunks=[]; recStartTs=Date.now();
+  const mime=pickRecMime();
+  try{ recRecorder=new MediaRecorder(recStream, mime?{mimeType:mime}:undefined); }
+  catch(e){ cleanupRecStream(); toast('Không khởi động được ghi âm trên máy này.'); return; }
+  recRecorder.ondataavailable=(e)=>{ if(e.data&&e.data.size) recChunks.push(e.data); };
+  recRecorder.onstop=async ()=>{
+    clearInterval(recTimerInt); recTimerInt=null;
+    cleanupRecStream();
+    const keep=recKeepOnStop; recKeepOnStop=false; recMode='idle';
+    if(keep&&recChunks.length){
+      const blob=new Blob(recChunks,{type:recRecorder.mimeType||'audio/mp4'});
+      const dur=Date.now()-recStartTs;
+      try{
+        await recPut({slideKey:slideKey(), blob:blob, mimeType:blob.type, durationMs:dur, createdAt:Date.now()});
+        toast('✅ Đã lưu giọng cô cho trang này ('+fmtDur(dur)+') — từ giờ app sẽ kể bằng giọng cô!');
+      }catch(e){ toast('Không lưu được bản ghi — bộ nhớ trình duyệt đầy hoặc bị chặn.'); }
+    } else if(!keep){ toast('Đã huỷ bản ghi — chưa lưu gì cả.'); }
+    recChunks=[]; refreshRecPanel();
+  };
+  try{ recRecorder.start(250); }catch(e){ cleanupRecStream(); toast('Không khởi động được ghi âm trên máy này.'); return; }
+  recMode='recording'; refreshRecPanel();
+  recTimerInt=setInterval(()=>{ const el=$('recTimer'); if(el) el.textContent=fmtDur(Date.now()-recStartTs); },250);
+}
+function stopSlideRecording(save){
+  recKeepOnStop=!!save;
+  if(recRecorder&&recRecorder.state!=='inactive'){ try{ recRecorder.stop(); }catch(e){} }
+  else { clearInterval(recTimerInt); recTimerInt=null; cleanupRecStream(); recMode='idle'; refreshRecPanel(); }
+}
+function stopRecPlayback(){
+  if(recPlayingAudio){ try{ recPlayingAudio.pause(); }catch(e){} recPlayingAudio=null; }
+  recPlaying=false; if(recMode==='playing') recMode='idle';
+}
+async function playSlideRecording(onend){
+  const key=slideKey(); if(!key) return false;
+  let rec=null;
+  try{ rec=await recGet(key); }catch(e){ return false; }
+  if(!rec||!rec.blob) return false;
+  stopSpeaking(); stopRecPlayback();
+  const url=URL.createObjectURL(rec.blob);
+  const audio=new Audio(url);
+  recPlayingAudio=audio; recPlaying=true; recMode='playing'; refreshRecPanel();
+  let finished=false;
+  const finish=(ok)=>{
+    if(finished) return; finished=true;
+    stopRecPlayback(); refreshRecPanel();
+    if(onend) onend();
+  };
+  audio.onended=()=>finish(true);
+  audio.onerror=()=>{ toast('Không phát được bản ghi này — cô ghi âm lại nhé!'); finish(false); };
+  try{ await audio.play(); return true; }
+  catch(e){ finish(false); return false; }
+}
+async function deleteSlideRecording(){
+  const key=slideKey(); if(!key) return;
+  try{ await recDel(key); toast('Đã xoá bản ghi giọng cô cho trang này — sẽ kể lại bằng giọng máy.'); }
+  catch(e){ toast('Không xoá được bản ghi.'); }
+  refreshRecPanel();
+}
 
 /* ================= ÂM THANH WEB AUDIO API ================= */
 function ensureAudioCtx(){
