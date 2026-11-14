@@ -188,6 +188,13 @@ body.style-notebook .comment-bank label{background:#fef9c3}
   .lp-preview-paper{box-shadow:none;max-width:100%}
 }
 @media(max-width:700px){.brand{font-size:14px}.slide-title{font-size:18px}.flip-card-3d{min-height:170px}}
+.voice-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px;background:#241744;border-bottom:1px solid rgba(245,196,81,.25);color:#fdf6e3;font-size:14px}
+.voice-strip .pill-btn{font-size:13px;padding:6px 10px}
+.voice-guide{margin:0 14px 10px;padding:12px 14px;background:#fff8e1;color:#1e293b;border:1px solid #f5c451;border-radius:12px;font-size:14px;line-height:1.55}
+.voice-guide ol{margin:8px 0 8px 20px;padding:0}
+.voice-guide li{margin:4px 0}
+.link-btn{background:none;border:none;color:#2563eb;text-decoration:underline;cursor:pointer;font-size:14px;padding:0}
+@media(max-width:760px){.voice-strip{font-size:13px;padding:8px 10px}}
 </style>
 </head>
 <body class="style-fairy">
@@ -215,14 +222,29 @@ body.style-notebook .comment-bank label{background:#fef9c3}
   </div>
   <div class="speed-slider-pill" title="Tốc độ đọc">
     <button class="speed-step-btn" onclick="stepSpeechSpeed(-0.1)">−</button>
-    <input type="range" id="topSpeedSlider" min="0.6" max="1.5" step="0.05" value="1.0" oninput="onTopSpeedInput(this.value)" onchange="onTopSpeedCommit(this.value)">
+    <input type="range" id="topSpeedSlider" min="0.6" max="1.5" step="0.05" value="0.92" oninput="onTopSpeedInput(this.value)" onchange="onTopSpeedCommit(this.value)">
     <button class="speed-step-btn" onclick="stepSpeechSpeed(0.1)">+</button>
-    <span class="speed-val-badge" id="topSpeedVal">1.00x</span>
+    <span class="speed-val-badge" id="topSpeedVal">0.92x</span>
   </div>
   <button class="btn-hud-action" id="btnMusicToggle" onclick="toggleMusic()">🎵 Nhạc Nền</button>
   <button class="btn-hud-action gold" onclick="toggleAutoLecture()" id="btnMasterSpeak">🎙️ BẤM NÚT KỂ CHUYỆN</button>
   <button class="btn-hud-action green" onclick="exportStandaloneHtml4D()">💾 Lưu Trọn Bộ Về Máy (.html)</button>
 </header>
+<div class="voice-strip" id="voiceStrip">
+  <span id="voiceStatus">🎙 Đang tìm giọng tiếng Việt…</span>
+  <button class="pill-btn" onclick="testVoice()">🎧 Nghe thử giọng kể</button>
+  <button class="pill-btn" onclick="toggleVoiceGuide()">📲 Tải giọng hay hơn</button>
+</div>
+<div class="voice-guide" id="voiceGuide" style="display:none">
+  <b>📲 Cách tải giọng kể Nâng cao trên iPhone (làm 1 lần, dùng mãi):</b>
+  <ol>
+    <li>Mở <b>Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói</b>.</li>
+    <li>Chọn <b>Tiếng Việt</b> → chọn <b>Linh (Nâng cao)</b> rồi bấm tải (cần Wi-Fi, khoảng 122 MB).</li>
+    <li>Tải xong, quay lại app này và bấm <b>🎧 Nghe thử giọng kể</b> để nghe giọng mới — ấm và rõ hơn hẳn giọng mặc định.</li>
+  </ol>
+  <div>Giọng Nâng cao là giọng hệ thống của iPhone nên tải một lần là mọi app đều hay hơn. Trên máy tính, app dùng giọng Google tiếng Việt của Chrome.</div>
+  <button class="pill-btn" onclick="toggleVoiceGuide()">✕ Đóng hướng dẫn</button>
+</div>
 
 <main>
 <!-- ================= TAB 1: TRÌNH CHIẾU 4D ================= -->
@@ -1050,7 +1072,7 @@ let currentLesson = LESSONS[0];
 let SLIDES_DATA = currentLesson.slides;
 let currentSlideIdx = 0;
 let hiddenSlides = new Set();
-let speechRate = 1.0, voiceGender = 'female', isSpeaking = false, autoLecture = false;
+let speechRate = 0.92, voiceGender = 'female', isSpeaking = false, autoLecture = false;
 let lastCharIndex = 0, currentScriptText = "", currentUtter = null;
 let musicOn = false, sfxOn = true, audioCtx = null, musicGain = null, musicNodes = [];
 let extractedPages = [];
@@ -1207,49 +1229,228 @@ function toggleZoomQuadrant(q){
 }
 
 /* ================= GIỌNG ĐỌC AI DUAL-ENGINE (MID-SENTENCE RESUME) ================= */
+/* Số -> chữ tiếng Việt (chuẩn Bắc: mốt, tư, lăm, linh, không trăm) */
+const VI_DIGIT=['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
+function viNumUnder100(n){
+  if(n<10) return VI_DIGIT[n];
+  if(n<20){ if(n===10) return 'mười'; if(n===15) return 'mười lăm'; return 'mười '+VI_DIGIT[n-10]; }
+  const t=Math.floor(n/10), u=n%10;
+  let s=VI_DIGIT[t]+' mươi';
+  if(u===0) return s;
+  if(u===1) return s+' mốt';
+  if(u===4) return s+' tư';
+  if(u===5) return s+' lăm';
+  return s+' '+VI_DIGIT[u];
+}
+function viNumUnder1000(n){
+  if(n<100) return viNumUnder100(n);
+  const h=Math.floor(n/100), r=n%100;
+  let s=VI_DIGIT[h]+' trăm';
+  if(r===0) return s;
+  if(r<10) return s+' linh '+VI_DIGIT[r];
+  return s+' '+viNumUnder100(r);
+}
+function viNum(n){
+  n=Math.round(Number(n)); if(!isFinite(n)) return '';
+  if(n<0) return 'âm '+viNum(-n);
+  if(n<1000) return viNumUnder1000(n);
+  if(n<1000000){
+    const th=Math.floor(n/1000), r=n%1000;
+    let s=viNumUnder1000(th)+' nghìn';
+    if(r===0) return s;
+    if(r<10) return s+' linh '+VI_DIGIT[r];
+    if(r<100) return s+' không trăm '+viNumUnder100(r);
+    return s+' '+viNumUnder1000(r);
+  }
+  if(n<1000000000){
+    const m=Math.floor(n/1000000), r=n%1000000;
+    let s=viNumUnder1000(m)+' triệu';
+    if(r===0) return s;
+    return s+' '+viNum(r);
+  }
+  return String(n);
+}
+function viNumText(m){ const n=Number(String(m).replace(/\./g,'')); return isFinite(n)?viNum(n):m; }
+
 function toSpokenVietnameseText(t){
   let s=String(t||'');
+  /* 1. Bỏ emoji/ký hiệu trang trí mà máy đọc hay đọc sai */
+  s=s.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/gu,'');
+  s=s.replace(/[«»*_#]/g,'').replace(/[""]/g,'"');
+  /* 1b. Văn bản có số hiệu + năm: TT52/2020 -> Thông tư năm mươi hai năm hai nghìn không trăm hai mươi */
+  s=s.replace(/\b(TT|NĐ|QĐ)\s*(\d+)\/(\d{4})/gi,(m,k,n,y)=>({TT:'Thông tư ',ND:'Nghị định ',QD:'Quyết định '})[k.toUpperCase()]+viNum(+n)+' năm '+viNum(+y));
+  /* 2. Ngày tháng đầy đủ: 15/11/2026 */
+  s=s.replace(/(\d{1,2})\/(\d{1,2})\/(\d{4})/g,(m,d,mo,y,off,str)=>{
+    d=+d; mo=+mo; if(d<1||d>31||mo<1||mo>12) return m;
+    const pre=(off>0?str.slice(0,off):'').trimEnd().toLowerCase();
+    return (pre.endsWith('ngày')?'':'ngày ')+viNum(d)+' tháng '+viNum(mo)+' năm '+viNum(+y);
+  });
+  /* 3. Ngày/tháng: 15/11 */
+  s=s.replace(/(\d{1,2})\/(\d{1,2})(?!\d)/g,(m,d,mo,off,str)=>{
+    d=+d; mo=+mo; if(d<1||d>31||mo<1||mo>12) return m;
+    const pre=(off>0?str.slice(0,off):'').trimEnd().toLowerCase();
+    return (pre.endsWith('ngày')?'':'ngày ')+viNum(d)+' tháng '+viNum(mo);
+  });
+  /* 4. Tháng/năm hoặc số/năm: 3/2024 -> tháng ba năm 2024 ; 52/2020 -> năm mươi hai năm 2020 */
+  s=s.replace(/(\d{1,2})\/(\d{4})/g,(m,a,y,off,str)=>{
+    const pre=(off>0?str.slice(0,off):'').trimEnd().toLowerCase();
+    if(+a<=12) return (pre.endsWith('tháng')?'':'tháng ')+viNum(+a)+' năm '+viNum(+y);
+    return viNum(+a)+' năm '+viNum(+y);
+  });
+  /* 5. Giờ: 7h30 / 7:30 -> bảy giờ ba mươi phút */
+  s=s.replace(/(\d{1,2})h(\d{1,2})/g,(m,h,mi)=>viNum(+h)+' giờ '+viNum(+mi)+' phút');
+  s=s.replace(/(\d{1,2}):(\d{2})/g,(m,h,mi)=>viNum(+h)+' giờ '+viNum(+mi)+' phút');
+  /* 6. Khoảng: 3-4 tuổi -> ba đến bốn tuổi ; 5-7 -> năm đến bảy */
+  s=s.replace(/(\d+)\s*[-–]\s*(\d+)\s*tuổi/g,(m,a,b)=>viNum(+a)+' đến '+viNum(+b)+' tuổi');
+  s=s.replace(/(\d+)\s*[-–]\s*(\d+)/g,(m,a,b)=>viNum(+a)+' đến '+viNum(+b));
+  /* 7. Viết tắt hay gặp trong giáo án */
+  s=s.replace(/\bTT\s*(\d+)/gi,(m,n)=>'Thông tư '+viNum(+n));
+  s=s.replace(/\bNĐ\s*(\d+)/gi,(m,n)=>'Nghị định '+viNum(+n));
+  s=s.replace(/\bQĐ\s*(\d+)/gi,(m,n)=>'Quyết định '+viNum(+n));
+  s=s.replace(/GD&ĐT|GDĐT/gi,'Giáo dục và Đào tạo');
+  s=s.replace(/\bUBND\b/gi,'Ủy ban nhân dân').replace(/\bHĐND\b/gi,'Hội đồng nhân dân');
+  s=s.replace(/\bATGT\b/gi,'an toàn giao thông').replace(/\bPCCC\b/gi,'phòng cháy chữa cháy').replace(/\bCSVC\b/gi,'cơ sở vật chất');
   s=s.replace(/\bMN\b/g,'Mầm non').replace(/KPKH/g,'Khám phá khoa học').replace(/LQVH/g,'Làm quen văn học').replace(/LQVT/g,'Làm quen với toán');
-  s=s.replace(/(\d+)\s*-\s*(\d+)\s*tuổi/g,'$1 đến $2 tuổi');
-  s=s.replace(/(\d+)h(\d*)/g,'$1 giờ $2 phút');
+  s=s.replace(/\bCOVID\b/gi,'cô vít').replace(/\bAI\b/g,'trí tuệ nhân tạo');
+  s=s.replace(/\bPDF\b/gi,'P D F').replace(/\b4D\b/g,'bốn D');
+  /* 8. Số + đơn vị: 216.000đ -> hai trăm mười sáu nghìn đồng ; 100% -> một trăm phần trăm */
+  s=s.replace(/(\d{1,3}(?:\.\d{3})+)\s*đ/g,(m,n)=>viNumText(n)+' đồng');
+  s=s.replace(/(\d+)\s*%/g,(m,n)=>viNum(+n)+' phần trăm');
+  s=s.replace(/(\d+)\s*cm\b/g,(m,n)=>viNum(+n)+' xăng ti mét');
+  s=s.replace(/(\d+)\s*km\b/g,(m,n)=>viNum(+n)+' ki lô mét');
+  s=s.replace(/(\d+)\s*kg\b/g,(m,n)=>viNum(+n)+' ki lô gam');
+  s=s.replace(/(\d+)\s*ml\b/g,(m,n)=>viNum(+n)+' mi li lít');
+  s=s.replace(/(\d+)\s*m²/g,(m,n)=>viNum(+n)+' mét vuông');
+  s=s.replace(/(\d+)\s*m\b/g,(m,n)=>viNum(+n)+' mét');
+  /* 9. Số còn lại -> chữ */
+  s=s.replace(/\d{1,3}(?:\.\d{3})+|\d+/g,(m)=>viNumText(m));
+  /* 10. Ký hiệu còn lại */
+  s=s.replace(/&/g,' và ').replace(/\+/g,' cộng ').replace(/=/g,' bằng ').replace(/\//g,' trên ');
+  s=s.replace(/…/g,'. ').replace(/\.{3,}/g,'. ');
+  s=s.replace(/\s+([,.!?;:])/g,'$1').replace(/\s{2,}/g,' ').trim();
   return s;
 }
 let VI_VOICES=[];
-function loadViVoices(){ if(!('speechSynthesis' in window)) return; VI_VOICES=(window.speechSynthesis.getVoices()||[]).filter(v=>/^vi/i.test(v.lang||'')); }
+function loadViVoices(){
+  if(!('speechSynthesis' in window)) return;
+  VI_VOICES=(window.speechSynthesis.getVoices()||[]).filter(v=>/^vi/i.test(v.lang||''));
+  updateVoiceStatus();
+}
 if('speechSynthesis' in window){ loadViVoices(); window.speechSynthesis.onvoiceschanged=loadViVoices; }
+/* Ưu tiên giọng Nâng cao (Enhanced/Premium/Neural) rồi mới đến Linh, Google */
+function voiceScore(v){
+  const n=(v.name||'').toLowerCase(); let s=0;
+  if(/enhanced|premium|natural|neural/.test(n)) s+=30;
+  if(/linh/.test(n)) s+=20;
+  if(/google/.test(n)) s+=10;
+  if(/siri/.test(n)) s+=5;
+  return s;
+}
 function pickVoice(){
   if(!('speechSynthesis' in window)) return null;
-  if(!VI_VOICES.length) loadViVoices();
   const vs=window.speechSynthesis.getVoices()||[];
-  const pool=VI_VOICES.length?VI_VOICES:vs;
+  const pool=VI_VOICES.length?VI_VOICES:vs.filter(v=>/^vi/i.test(v.lang||''));
   if(!pool.length) return null;
   const femaleHint=/linh|thu|ngan|female|nữ|google.*vi/i, maleHint=/nam|male|quốc|google.*vi/i;
-  const pick=pool.find(v=>voiceGender==='female'?femaleHint.test(v.name):maleHint.test(v.name));
-  return pick||pool[0];
+  const gendered=pool.filter(v=>voiceGender==='female'?femaleHint.test(v.name):maleHint.test(v.name));
+  const cand=(gendered.length?gendered:pool).slice();
+  cand.sort((a,b)=>voiceScore(b)-voiceScore(a));
+  return cand[0];
+}
+function voiceQualityTag(v){
+  const n=(v&&v.name||'').toLowerCase();
+  if(/enhanced|premium|natural|neural/.test(n)) return 'Nâng cao ✨';
+  if(/linh/.test(n)) return 'Chuẩn (Linh)';
+  if(/google/.test(n)) return 'Google';
+  return 'Cơ bản';
+}
+function updateVoiceStatus(){
+  const el=$('voiceStatus'); if(!el) return;
+  if(!('speechSynthesis' in window)){ el.textContent='🔇 Trình duyệt này không có giọng đọc.'; return; }
+  const v=pickVoice();
+  if(!v){ el.textContent='🔇 Chưa tìm thấy giọng tiếng Việt trên máy này.'; return; }
+  const enhanced=/enhanced|premium|natural|neural/i.test(v.name||'');
+  el.innerHTML='🎙 Giọng đang dùng: <b>'+v.name+'</b> — '+voiceQualityTag(v)
+    +(enhanced?'':' · <button class="link-btn" onclick="toggleVoiceGuide(true)">Tải giọng Nâng cao để kể hay hơn ↓</button>');
+}
+function toggleVoiceGuide(force){
+  const g=$('voiceGuide'); if(!g) return;
+  g.style.display=(force===true||g.style.display==='none')?'block':'none';
+}
+function testVoice(){
+  speakText('Xin chào các bé! Hôm nay, cô sẽ kể cho các bé nghe một câu chuyện thật hay nhé! Các bé đã sẵn sàng chưa nào?');
+  toast('🎧 Đang đọc thử giọng kể chuyện…');
 }
 function estimateCurrentCharOffset(){ return lastCharIndex||0; }
 function snapToNextWordBoundary(text, offset){
   const i=text.indexOf(' ', Math.max(0,offset));
   return i===-1?text.length:i+1;
 }
-let speakErrCount=0;
+/* Đọc theo từng câu, nghỉ 300ms giữa các câu: nghe như kể chuyện, không bị iPhone cắt ngang đoạn dài */
+let speakErrCount=0, speakGen=0, speakQueue=[], speakQueueIdx=0, speakQueueOnEnd=null, speakTimer=null;
+function splitSpokenSentences(t){
+  const m=String(t).match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g)||[t];
+  const out=[];
+  for(const s of m){ const x=s.trim(); if(!x) continue;
+    if(x.length>150){ x.split(/,\s*/).forEach(q=>{ q=q.trim(); if(q) out.push(q); }); }
+    else out.push(x);
+  }
+  return out.length?out:[String(t)];
+}
 function speakText(text, onend){
   if(!('speechSynthesis' in window)){ toast('Trình duyệt này không hỗ trợ giọng đọc. Cô dùng Chrome hoặc Safari nhé!'); return; }
-  window.speechSynthesis.cancel();
   const clean=toSpokenVietnameseText(text);
-  const u=new SpeechSynthesisUtterance(clean);
-  const v=pickVoice(); if(v) u.voice=v;
-  u.lang='vi-VN'; u.rate=speechRate; u.pitch=voiceGender==='female'?1.05:0.9;
-  u.onboundary=(e)=>{ if(typeof e.charIndex==='number') lastCharIndex=e.charIndex; };
-  u.onend=()=>{ speakErrCount=0; isSpeaking=false; updateMusicGainLevel(); if(onend) onend(); };
-  u.onerror=()=>{ isSpeaking=false; updateMusicGainLevel(); speakErrCount++;
-    if(autoLecture){ if(speakErrCount>=2){ stopSpeaking(); toast('🔇 Giọng đọc gặp lỗi trên máy này — cô bấm lại nút kể chuyện nhé!'); } else { nextSlide(); } }
-  };
-  currentUtter=u; currentScriptText=clean; lastCharIndex=0; isSpeaking=true;
+  if(!clean.trim()){ if(onend) onend(); return; }
+  speakGen++;
+  clearTimeout(speakTimer);
+  window.speechSynthesis.cancel();
+  speakQueue=splitSpokenSentences(clean);
+  speakQueueIdx=0; speakQueueOnEnd=onend||null;
+  currentScriptText=clean; lastCharIndex=0; isSpeaking=true;
   updateMusicGainLevel();
+  speakTimer=setTimeout(()=>speakNextChunk(), 60);
+}
+function speakNextChunk(){
+  if(speakQueueIdx>=speakQueue.length){
+    speakErrCount=0; isSpeaking=false; updateMusicGainLevel();
+    const cb=speakQueueOnEnd; speakQueueOnEnd=null;
+    if(cb) cb();
+    return;
+  }
+  const myGen=speakGen;
+  const chunk=speakQueue[speakQueueIdx];
+  const u=new SpeechSynthesisUtterance(chunk);
+  const v=pickVoice(); if(v) u.voice=v;
+  u.lang='vi-VN'; u.rate=speechRate; u.pitch=voiceGender==='female'?1.1:0.9;
+  u.onboundary=(e)=>{ if(typeof e.charIndex==='number') lastCharIndex=e.charIndex; };
+  u.onend=()=>{
+    if(myGen!==speakGen) return;
+    speakErrCount=0;
+    speakQueueIdx++;
+    if(speakQueueIdx<speakQueue.length){
+      speakTimer=setTimeout(()=>{ if(myGen===speakGen) speakNextChunk(); }, 300);
+    } else speakNextChunk();
+  };
+  u.onerror=()=>{
+    if(myGen!==speakGen) return;
+    isSpeaking=false; updateMusicGainLevel(); speakErrCount++;
+    if(autoLecture){
+      if(speakErrCount>=2){ stopSpeaking(); toast('🔇 Giọng đọc gặp lỗi trên máy này — cô bấm lại nút kể chuyện nhé!'); }
+      else { nextSlide(); }
+    }
+  };
+  currentUtter=u;
   window.speechSynthesis.speak(u);
 }
-function stopSpeaking(){ if('speechSynthesis' in window) window.speechSynthesis.cancel(); isSpeaking=false; autoLecture=false; $('btnMasterSpeak').textContent='🎙️ BẤM NÚT KỂ CHUYỆN'; updateMusicGainLevel(); }
+function stopSpeaking(){
+  speakGen++;
+  clearTimeout(speakTimer);
+  speakQueue=[]; speakQueueIdx=0; speakQueueOnEnd=null;
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  isSpeaking=false; autoLecture=false;
+  const b=$('btnMasterSpeak'); if(b) b.textContent='🎙️ BẤM NÚT KỂ CHUYỆN';
+  updateMusicGainLevel();
+}
 function speakCurrentScript(){ const s=SLIDES_DATA[currentSlideIdx]; if(s&&s.script) speakText(s.script, ()=>{ if(autoLecture) nextSlide(); }); }
 function toggleAutoLecture(){
   if(autoLecture){ stopSpeaking(); return; }
@@ -1257,17 +1458,17 @@ function toggleAutoLecture(){
   speakCurrentScript();
 }
 function resumeMidSentenceOnVoiceOrSpeedChange(){
-  if(!isSpeaking||!currentScriptText) return;
-  const off=snapToNextWordBoundary(currentScriptText, estimateCurrentCharOffset());
-  const rest=currentScriptText.slice(off);
-  if(!rest.trim()) return;
-  const wasAuto=autoLecture;
-  speakText(rest, ()=>{ if(wasAuto) nextSlide(); });
+  if(!isSpeaking||!speakQueue.length) return;
+  speakGen++;
+  clearTimeout(speakTimer);
+  window.speechSynthesis.cancel();
+  speakTimer=setTimeout(()=>speakNextChunk(), 80);
 }
 function setVoiceGender(g, announce){
   voiceGender=g;
   $('btnVoiceFemale').classList.toggle('active', g==='female');
   $('btnVoiceMale').classList.toggle('active', g==='male');
+  updateVoiceStatus();
   resumeMidSentenceOnVoiceOrSpeedChange();
   if(announce) toast(g==='female'?'Đã đổi sang 👩 Giọng Cô':'Đã đổi sang 👨 Giọng Chú');
 }
