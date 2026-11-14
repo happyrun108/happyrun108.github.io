@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bách Khoa Mầm Non 4D">
+<meta name="theme-color" content="#1b1035">
+<title>🌻 Bách Khoa Sư Phạm Mầm Non 4D — Cô Đặng Thị Niềm • Lớp 3–4 Tuổi • Trường MN Lê Thế Hiếu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Dancing+Script:wght@700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,700;0,800;1,600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+/* ============ BIẾN MÀU 5 PHONG CÁCH ============ */
+:root{--gold:#f5c451;--gold-l:#ffe9ad;--ink:#1e293b;--paper:#fffdf7}
+body.style-fairy{--bg1:#1b1035;--bg2:#2d1b4e;--card:#241744;--accent:#f5c451;--accent2:#7dd3fc;--txt:#fdf6e3;--mut:#c4b5fd}
+body.style-forest{--bg1:#0f2a1a;--bg2:#14532d;--card:#123f27;--accent:#facc15;--accent2:#fb923c;--txt:#f0fdf4;--mut:#bbf7d0}
+body.style-candy{--bg1:#4a1030;--bg2:#831843;--card:#5b2144;--accent:#fde047;--accent2:#6ee7b7;--txt:#fff1f2;--mut:#fbcfe8}
+body.style-ocean{--bg1:#082f49;--bg2:#0c4a6e;--card:#0b3a5c;--accent:#fde047;--accent2:#fb7185;--txt:#f0f9ff;--mut:#bae6fd}
+body.style-notebook{--bg1:#fff8e7;--bg2:#ffedd5;--card:#fffdf7;--accent:#d97706;--accent2:#0ea5e9;--txt:#292524;--mut:#78716c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:linear-gradient(160deg,var(--bg1),var(--bg2));color:var(--txt);min-height:100vh;-webkit-text-size-adjust:100%}
+button{font-family:inherit;cursor:pointer;border:none;border-radius:12px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-height:44px}
+input,select,textarea{font-family:inherit;border-radius:10px;border:2px solid #cbd5e1;padding:9px 12px;font-size:16px;background:#fff;color:#1e293b}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--accent)}
+.flip-card-3d,.dot,.theme-card{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.help-banner{background:#fef9c3;color:#713f12;border:3px solid #f59e0b;border-radius:14px;padding:12px 14px;margin:12px auto;max-width:1280px;font-size:14px;line-height:1.6}
+.help-banner b{font-size:15px}
+.help-banner .close-help{float:right;background:#fff;border:2px solid #f59e0b;border-radius:8px;padding:2px 10px;font-weight:800;min-height:32px}
+@media (max-width:760px){
+  body{padding-bottom:132px}
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:300;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(27,16,53,.94),rgba(27,16,53,.99));box-shadow:0 -6px 24px rgba(0,0,0,.35)}
+  .tabs button{font-size:12px;padding:10px 4px;min-height:52px}
+  .topbar h1{font-size:17px}
+  .deck-flex{grid-template-columns:1fr}
+  .giant-art-frame{min-height:220px}
+  .flip-card{height:170px}
+}
+h1,h2,h3{line-height:1.25}
+/* ============ THANH ĐIỀU KHIỂN ĐỈNH ============ */
+.hud-topbar{position:sticky;top:0;z-index:60;background:rgba(10,15,35,.92);backdrop-filter:blur(8px);padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:3px solid var(--accent)}
+body.style-notebook .hud-topbar{background:#fff7e0;border-bottom-color:#d97706}
+.brand{font-weight:900;font-size:17px;color:var(--gold-l);line-height:1.2;margin-right:6px}
+.brand small{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.ws-tab-btn{padding:9px 13px;font-weight:800;font-size:14px;background:#1e293b;color:#e2e8f0;border:2px solid transparent}
+.ws-tab-btn.active{background:var(--accent);color:#422006;border-color:#fff}
+.pill-btn{padding:8px 12px;font-weight:700;font-size:13px;background:#334155;color:#f1f5f9}
+.pill-btn.active{background:var(--accent);color:#422006}
+.btn-hud-action{padding:9px 13px;font-weight:800;font-size:13px;background:#0ea5e9;color:#fff}
+.btn-hud-action.gold{background:linear-gradient(135deg,#f59e0b,#facc15);color:#422006}
+.btn-hud-action.green{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.btn-hud-action.crimson{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff}
+.speed-slider-pill{display:flex;align-items:center;gap:6px;background:#1e293b;border-radius:12px;padding:5px 8px;color:#fff}
+.speed-slider-pill input[type=range]{width:90px;accent-color:#f5c451}
+.speed-val-badge{background:var(--accent);color:#422006;font-weight:900;border-radius:8px;padding:2px 8px;font-size:13px}
+/* ============ KHUNG CHUNG ============ */
+.workspace{display:none;padding:16px;max-width:1280px;margin:0 auto}
+.workspace.active{display:block}
+.panel{background:var(--card);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:16px;margin-bottom:16px}
+body.style-notebook .panel{border:2px dashed #d6a419;background:#fffdf7;box-shadow:0 2px 0 #fde68a}
+.panel h2{color:var(--gold-l);margin-bottom:6px;font-size:20px}
+body.style-notebook .panel h2{color:#92400e}
+.panel p.sub{color:var(--mut);font-size:14px;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.tag{display:inline-block;background:var(--accent);color:#422006;font-weight:800;font-size:12px;border-radius:999px;padding:3px 10px;margin-bottom:6px}
+.chip{display:inline-block;background:#334155;color:#fff;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;margin:2px}
+.interactive-btn-lg{padding:12px 18px;font-weight:900;font-size:15px;background:linear-gradient(135deg,#f59e0b,#facc15);color:#422006}
+.interactive-btn-lg.green{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.interactive-btn-lg.blue{background:linear-gradient(135deg,#38bdf8,#0284c7);color:#fff}
+.interactive-btn-lg.pink{background:linear-gradient(135deg,#ec4899,#be185d);color:#fff}
+/* ============ SÂN KHẤU 16:9 + CANVAS 4D + KÍNH LÚP ============ */
+.deck-layout{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
+@media(max-width:1000px){.deck-layout{grid-template-columns:1fr}}
+.giant-art-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0b1120;border:3px solid var(--accent);animation:livingFloat16x9 6s ease-in-out infinite}
+@keyframes livingFloat16x9{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.giant-art-frame img,.giant-art-frame svg{width:100%;height:100%;object-fit:contain !important;display:block}
+.fx-living-overlay-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.magnifier-lens-4d{position:absolute;width:170px;height:170px;border-radius:50%;border:4px solid var(--gold);background-repeat:no-repeat;pointer-events:none;z-index:5;display:none;box-shadow:0 0 0 6px rgba(245,196,81,.35),0 10px 30px rgba(0,0,0,.5)}
+.hotspot-pin-4d{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(245,196,81,.92);color:#422006;font-size:22px;font-weight:900;border:3px solid #fff;z-index:4;display:flex;align-items:center;justify-content:center}
+.hotspot-pin-4d:hover{transform:scale(1.15)}
+.slide-title{font-size:22px;font-weight:900;color:var(--gold-l);margin:10px 0 4px}
+body.style-notebook .slide-title{color:#92400e}
+.transform-row-large{display:flex;align-items:stretch;gap:8px;margin:12px 0;flex-wrap:wrap}
+.transform-cell{flex:1;min-width:140px;background:rgba(255,255,255,.09);border:2px solid var(--accent);border-radius:14px;padding:10px;font-size:14px;font-weight:600}
+body.style-notebook .transform-cell{background:#fef3c7;border-color:#d97706}
+.transform-arrow{align-self:center;font-size:26px;color:var(--accent)}
+.bullets{list-style:none;margin:8px 0}
+.bullets li{background:rgba(255,255,255,.07);border-radius:10px;padding:8px 12px;margin-bottom:6px;font-size:15px}
+body.style-notebook .bullets li{background:#fef9c3}
+/* ============ THẺ LẬT 3D ============ */
+.flip-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flip-card-3d{perspective:1200px;min-height:150px;cursor:pointer}
+.flip-card-inner{position:relative;width:100%;height:100%;min-height:150px;transition:transform .6s;transform-style:preserve-3d}
+.flip-card-3d.flipped .flip-card-inner{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.flip-front{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#422006;border:3px solid #fff}
+.flip-back{background:linear-gradient(135deg,#10b981,#0ea5e9);color:#fff;border:3px solid #fff;transform:rotateY(180deg)}
+.flip-face b{font-size:16px}
+.flip-face span{font-size:14px;line-height:1.45}
+/* ============ WIDGET KHEN THƯỞNG + TRÒ CHƠI ============ */
+.widget-box-4d{background:rgba(255,255,255,.08);border:2px dashed var(--accent);border-radius:16px;padding:14px;margin-top:14px}
+body.style-notebook .widget-box-4d{background:#fef3c7}
+.flower-big{font-size:44px;font-weight:900;color:var(--gold-l)}
+.mini-game-btn{padding:12px;font-weight:800;font-size:15px;background:#fff;color:#1e293b;border:3px solid var(--accent)}
+.mini-game-btn.correct{background:#22c55e !important;color:#fff}
+.mini-game-btn.wrong{background:#ef4444 !important;color:#fff}
+.game-area{background:rgba(0,0,0,.25);border-radius:14px;padding:14px;margin-top:10px;text-align:center}
+body.style-notebook .game-area{background:#ffedd5}
+.teleprompter-bar{background:#0f172a;color:#fef9c3;border-radius:12px;padding:12px 16px;font-size:19px;line-height:1.6;margin-top:12px;border:2px solid var(--accent)}
+body.style-notebook .teleprompter-bar{background:#422006;color:#fef9c3}
+.nav-row{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dot{width:14px;height:14px;border-radius:50%;background:#475569;border:2px solid #fff}
+.dot.active{background:var(--accent)}
+/* ============ THƯ VIỆN ============ */
+.theme-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:1000px){.theme-grid{grid-template-columns:repeat(2,1fr)}}
+.theme-card{background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;border-radius:16px;padding:14px;cursor:pointer;border:3px solid transparent;text-align:left}
+.theme-card:hover{border-color:#fff;transform:translateY(-2px)}
+.theme-card b{font-size:16px;display:block;margin-bottom:4px}
+.theme-card span{font-size:13px;opacity:.95}
+.theme-card:nth-child(2n){background:linear-gradient(135deg,#10b981,#0ea5e9)}
+.theme-card:nth-child(3n){background:linear-gradient(135deg,#ec4899,#8b5cf6)}
+.theme-card:nth-child(4n){background:linear-gradient(135deg,#0ea5e9,#6366f1)}
+.poem-item{background:rgba(255,255,255,.07);border-radius:14px;padding:12px;margin-bottom:10px}
+body.style-notebook .poem-item{background:#fef9c3}
+.poem-item pre{white-space:pre-wrap;font-family:'Patrick Hand',cursive;font-size:18px;line-height:1.7;color:var(--txt);margin:8px 0}
+.search-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.search-row input{flex:1;min-width:200px}
+/* ============ XƯỞNG ============ */
+.pdf-drop-zone{border:3px dashed var(--accent);border-radius:18px;padding:28px;text-align:center;font-size:17px;font-weight:700;background:rgba(255,255,255,.05)}
+.pdf-drop-zone.over{background:rgba(245,196,81,.25)}
+.extracted-pages-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+@media(max-width:800px){.extracted-pages-grid{grid-template-columns:1fr}}
+.page-editor-card{background:rgba(255,255,255,.07);border-radius:14px;padding:12px}
+body.style-notebook .page-editor-card{background:#fef9c3}
+.page-editor-card img{width:100%;border-radius:10px;border:2px solid #fff}
+.page-editor-card textarea,.page-editor-card input{width:100%;margin:5px 0;font-size:14px}
+/* ============ GIÁO ÁN A4 ============ */
+.lp-preview-paper{background:#fff;color:#111;width:100%;max-width:820px;margin:0 auto;padding:36px 44px;font-family:'Times New Roman',serif;font-size:15px;line-height:1.55;border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.lp-preview-paper h2,.lp-preview-paper h3{text-align:center;font-size:17px;margin:6px 0}
+.lp-preview-paper .quoc-hieu{text-align:center;font-weight:700;font-size:14px}
+.lp-preview-paper table{width:100%;border-collapse:collapse;margin:10px 0}
+.lp-preview-paper th,.lp-preview-paper td{border:1px solid #111;padding:7px 9px;vertical-align:top;text-align:left}
+.lp-preview-paper th{background:#f1f5f9;text-align:center}
+.lp-form label{display:block;font-weight:700;font-size:13px;margin:10px 0 4px}
+.lp-form input,.lp-form textarea,.lp-form select{width:100%}
+/* ============ LỚP HỌC ============ */
+.student-table{width:100%;border-collapse:collapse;font-size:14px}
+.student-table th,.student-table td{border:1px solid rgba(255,255,255,.25);padding:7px 8px;text-align:left}
+body.style-notebook .student-table th,body.style-notebook .student-table td{border-color:#d6a419}
+.student-table th{background:rgba(255,255,255,.12)}
+.att-btn{padding:6px 10px;font-weight:800;font-size:13px;margin:1px}
+.att-btn.on-co{background:#22c55e;color:#fff}
+.att-btn.on-phep{background:#f59e0b;color:#fff}
+.att-btn.on-khong{background:#ef4444;color:#fff}
+.wheel-box{text-align:center;padding:10px}
+.wheel-name{font-size:34px;font-weight:900;color:var(--gold-l);min-height:52px;font-family:'Patrick Hand',cursive}
+.schedule-row{display:flex;justify-content:space-between;padding:9px 12px;border-bottom:1px dashed rgba(255,255,255,.25);font-size:15px}
+body.style-notebook .schedule-row{border-color:#d6a419}
+.timer-big{font-size:52px;font-weight:900;text-align:center;color:var(--gold-l);font-variant-numeric:tabular-nums}
+/* ============ SỨC KHỎE ============ */
+.who-result{border-radius:14px;padding:14px;font-weight:800;font-size:17px;margin-top:10px;text-align:center}
+.who-ok{background:#dcfce7;color:#166534}
+.who-warn{background:#fef9c3;color:#854d0e}
+.who-bad{background:#fee2e2;color:#991b1b}
+.comment-bank label{display:flex;gap:8px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:10px;padding:9px;margin-bottom:6px;font-size:14px;cursor:pointer}
+body.style-notebook .comment-bank label{background:#fef9c3}
+/* ============ MODAL + TOAST ============ */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal-backdrop.open{display:flex}
+.modal{background:#fff;color:#1e293b;border-radius:18px;padding:20px;max-width:560px;width:100%;max-height:88vh;overflow:auto}
+.modal h3{margin-bottom:10px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;z-index:200;display:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.progress-bar{height:10px;background:#334155;border-radius:99px;overflow:hidden;margin:8px 0}
+.progress-bar>div{height:100%;background:var(--accent);width:0%}
+.small{font-size:13px;color:var(--mut)}
+.hidden{display:none !important}
+@media print{
+  body *{visibility:hidden}
+  #printArea,#printArea *{visibility:visible}
+  #printArea{position:absolute;inset:0;background:#fff}
+  .lp-preview-paper{box-shadow:none;max-width:100%}
+}
+@media(max-width:700px){.brand{font-size:14px}.slide-title{font-size:18px}.flip-card-3d{min-height:170px}}
+</style>
+</head>
+<body class="style-fairy">
+<div class="help-banner" id="helpBanner"><button class="close-help" onclick="document.getElementById('helpBanner').style.display='none'">✕ Đóng</button>
+<b>📱 Cách mở đúng để nút bấm hoạt động:</b> File đính kèm mở trong khung xem trước của tin nhắn sẽ <b>không bấm được nút</b> (iPhone không chạy nút bấm ở đó). Cô Niềm dùng app qua <b>đường link</b> do anh Nhật gửi — mở link bằng Safari hoặc Chrome là mọi nút đều chạy. Mở link rồi bấm <b>Chia sẻ → Thêm vào Màn hình chính</b> để dùng như một app riêng trên điện thoại.
+</div>
+<header class="hud-topbar">
+  <div class="brand">🌻 CÔ ĐẶNG THỊ NIỀM • LỚP 3–4 TUỔI<br><small>TRƯỜNG MN LÊ THẾ HIẾU — XÃ CAM LỘ, TỈNH QUẢNG TRỊ</small></div>
+  <button class="ws-tab-btn active" id="tabBtnDeck" onclick="switchWorkspace('deck')">🎬 Trình Chiếu 4D</button>
+  <button class="ws-tab-btn" id="tabBtnLibrary" onclick="switchWorkspace('library')">📚 Thư Viện 9 Chủ Đề</button>
+  <button class="ws-tab-btn" id="tabBtnStudio" onclick="switchWorkspace('studio')">🛠️ Xưởng Soạn Bài</button>
+  <button class="ws-tab-btn" id="tabBtnPlan" onclick="switchWorkspace('plan')">📝 Giáo Án &amp; Word</button>
+  <button class="ws-tab-btn" id="tabBtnClass" onclick="switchWorkspace('class')">🧸 Lớp Học</button>
+  <button class="ws-tab-btn" id="tabBtnHealth" onclick="switchWorkspace('health')">🩺 Sức Khỏe &amp; Đánh Giá</button>
+  <select id="artStyleSelect" onchange="setVisualArtStyle(this.value)" aria-label="Chọn phong cách nghệ thuật">
+    <option value="fairy">🧚 Cổ Tích Lung Linh</option>
+    <option value="forest">🌿 Khu Vườn Xanh Mát</option>
+    <option value="candy">🍓 Kẹo Ngọt Hồng Phấn</option>
+    <option value="ocean">🐬 Đại Dương Xanh Thẳm</option>
+    <option value="notebook">🖍️ Trang Vở Bé Tập Tô</option>
+  </select>
+  <div class="pill-switcher">
+    <button class="pill-btn active" id="btnVoiceFemale" onclick="setVoiceGender('female',true)">👩 Giọng Cô</button>
+    <button class="pill-btn" id="btnVoiceMale" onclick="setVoiceGender('male',true)">👨 Giọng Chú</button>
+  </div>
+  <div class="speed-slider-pill" title="Tốc độ đọc">
+    <button class="speed-step-btn" onclick="stepSpeechSpeed(-0.1)">−</button>
+    <input type="range" id="topSpeedSlider" min="0.6" max="1.5" step="0.05" value="1.0" oninput="onTopSpeedInput(this.value)" onchange="onTopSpeedCommit(this.value)">
+    <button class="speed-step-btn" onclick="stepSpeechSpeed(0.1)">+</button>
+    <span class="speed-val-badge" id="topSpeedVal">1.00x</span>
+  </div>
+  <button class="btn-hud-action" id="btnMusicToggle" onclick="toggleMusic()">🎵 Nhạc Nền</button>
+  <button class="btn-hud-action gold" onclick="toggleAutoLecture()" id="btnMasterSpeak">🎙️ BẤM NÚT KỂ CHUYỆN</button>
+  <button class="btn-hud-action green" onclick="exportStandaloneHtml4D()">💾 Lưu Trọn Bộ Về Máy (.html)</button>
+</header>
+
+<main>
+<!-- ================= TAB 1: TRÌNH CHIẾU 4D ================= -->
+<section class="workspace active" id="ws-deck">
+  <div class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <div><span class="tag" id="deckLessonTag">🎬 BÀI GIẢNG ĐANG DẠY</span><h2 id="deckLessonTitle" style="margin:0">Chọn bài trong Thư viện để bắt đầu dạy</h2></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="pill-btn active" onclick="setDeckMode('horizontal')">↔ Ngang</button>
+        <button class="pill-btn" onclick="setDeckMode('vertical')">↕ Dọc</button>
+        <button class="pill-btn" onclick="setDeckMode('scroll')">☰ Toàn Trang</button>
+        <button class="btn-hud-action" onclick="toggleWide16x9Stage()">📺 Cực Đại 16:9</button>
+        <button class="btn-hud-action" onclick="flipAllCardsOnCurrentSlide()">🔄 Lật Thẻ (R)</button>
+        <button class="btn-hud-action" onclick="openHideModal()">👁 Ẩn Trang (H)</button>
+      </div>
+    </div>
+  </div>
+  <div class="deck-layout">
+    <div class="panel">
+      <div class="giant-art-frame" id="artFrame" onmousemove="onPdfStageMouseMove(event)" onmouseleave="hideMagnifier()" onclick="onPdfStageClickRipple(event)">
+        <div id="artVisual" style="width:100%;height:100%"></div>
+        <canvas class="fx-living-overlay-canvas" id="fxCanvas"></canvas>
+        <div class="magnifier-lens-4d" id="magnifierLens"></div>
+        <button class="hotspot-pin-4d" style="top:8px;left:8px" onclick="event.stopPropagation();toggleZoomQuadrant(0)">🔍</button>
+        <button class="hotspot-pin-4d" style="top:8px;right:8px" onclick="event.stopPropagation();toggleZoomQuadrant(1)">🔍</button>
+        <button class="hotspot-pin-4d" style="bottom:8px;left:8px" onclick="event.stopPropagation();toggleZoomQuadrant(2)">🔍</button>
+        <button class="hotspot-pin-4d" style="bottom:8px;right:8px" onclick="event.stopPropagation();toggleZoomQuadrant(3)">🔍</button>
+      </div>
+      <div class="slide-title" id="slideTitle">—</div>
+      <div class="transform-row-large">
+        <div class="transform-cell" id="stateOldBox">—</div>
+        <div class="transform-arrow">➔</div>
+        <div class="transform-cell" style="text-align:center;font-weight:900;color:var(--accent)" id="bridgeVerbBox">KHÁM PHÁ</div>
+        <div class="transform-arrow">➔</div>
+        <div class="transform-cell" id="stateNewBox">—</div>
+      </div>
+      <ul class="bullets" id="slideBullets"></ul>
+      <div class="teleprompter-bar" id="teleprompterBar">🎙️ Bấm “BẤM NÚT KỂ CHUYỆN” để cô kể cho cả lớp nghe. Lời kể sẽ hiện ở đây từng câu.</div>
+      <div class="nav-row">
+        <button class="btn-hud-action" onclick="prevSlide()">◀ Trang trước</button>
+        <div class="dots" id="dotsContainer"></div>
+        <button class="btn-hud-action" onclick="nextSlide()">Trang sau ▶</button>
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <h2>💬 Bộ 4 Thẻ Hỏi Đáp Lật 3D</h2>
+        <p class="sub">Bấm vào thẻ để lật xem đáp án. Phím R lật cả 4 thẻ cùng lúc.</p>
+        <div class="flip-cards-grid" id="flipCardsGrid"></div>
+      </div>
+      <div class="panel widget-box-4d">
+        <h2>🌸 Hoa Bé Ngoan Của Lớp</h2>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div class="flower-big" id="flowerCount">🌸 0</div>
+          <button class="interactive-btn-lg" onclick="addFlower(1)">+1 Hoa 🌸</button>
+          <button class="interactive-btn-lg green" onclick="praiseWholeClass()">👏 Khen Cả Lớp</button>
+          <button class="interactive-btn-lg pink" onclick="callRandomStudent()">🎲 Gọi Ngẫu Nhiên 1 Bé</button>
+        </div>
+        <div class="small" id="randomStudentBox" style="margin-top:8px">Bé được gọi sẽ hiện tên ở đây — cô cộng Hoa Bé Ngoan cho bé nhé.</div>
+        <div id="miniGameArea" class="game-area">
+          <b>🎮 Trò chơi nhanh theo bài học</b>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+            <button class="mini-game-btn" onclick="startMiniGame('color')">🎨 Đố Màu Sắc</button>
+            <button class="mini-game-btn" onclick="startMiniGame('count')">🔢 Đếm 1–3</button>
+            <button class="mini-game-btn" onclick="startMiniGame('food')">🥦 Thực Phẩm Tốt</button>
+          </div>
+          <div id="miniGameBox" style="margin-top:10px">Chọn một trò chơi để chơi cùng cả lớp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TAB 2: THƯ VIỆN ================= -->
+<section class="workspace" id="ws-library">
+  <div class="panel">
+    <span class="tag">📚 KHO BÀI GIẢNG 4D &amp; GIÁO ÁN MẪU — CHUẨN BỘ GD&amp;ĐT</span>
+    <h2>Đại Thư Viện 9 Chủ Đề Năm Học + Làm Quen Với Toán</h2>
+    <p class="sub">Mỗi chủ đề đã có sẵn bài giảng tương tác hoàn chỉnh (slide, 4 thẻ hỏi đáp, lời kể, tranh SVG 4D) và giáo án đi kèm. Bấm “🚀 Nạp Bài Này Vào Lớp Học” là dạy được ngay.</p>
+    <div class="theme-grid" id="themeGrid"></div>
+  </div>
+  <div class="panel" id="lessonDetailPanel">
+    <h2 id="lessonDetailTitle">Chọn một chủ đề ở trên để xem bài giảng mẫu</h2>
+    <div id="lessonDetailBody"><p class="sub">Bài giảng mẫu gồm các trang slide — cô xem trước ở đây rồi nạp vào Tab Trình Chiếu để dạy.</p></div>
+  </div>
+  <div class="panel">
+    <span class="tag">📖 TỪ ĐIỂN BÁCH KHOA THƠ – TRUYỆN – ĐỒNG DAO – CÂU ĐỐ – TRÒ CHƠI</span>
+    <h2>Kho Tư Liệu Nguyên Văn Cho Trẻ 3–4 Tuổi</h2>
+    <div class="search-row">
+      <input id="poemSearch" placeholder="🔍 Tìm thơ, truyện, đồng dao, câu đố... (gõ tên hoặc từ khóa)" oninput="renderPoemLibrary()">
+      <select id="poemTypeFilter" onchange="renderPoemLibrary()">
+        <option value="">Tất cả loại</option><option value="tho">📜 Thơ</option><option value="dongdao">🎵 Đồng dao</option><option value="caudo">❓ Câu đố</option><option value="trochoi">🤸 Trò chơi ngón tay &amp; vận động</option>
+      </select>
+    </div>
+    <div id="poemList"></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3: XƯỞNG SOẠN BÀI ================= -->
+<section class="workspace" id="ws-studio">
+  <div class="panel">
+    <span class="tag">🛠️ XƯỞNG CHUYỂN HÓA TỰ ĐỘNG • NO-CODE STUDIO</span>
+    <h2>Chuyển Hóa PDF NotebookLM / Canva / PowerPoint → Slide 16:9</h2>
+    <p class="sub">Kéo file PDF truyện tranh hay slide vào khung dưới đây. Hệ thống tự trích từng trang làm tranh 16:9 và cắt 4 góc ảnh vào 4 thẻ lật.</p>
+    <div class="pdf-drop-zone" id="pdfDropZone">📄 Kéo thả file PDF vào đây — hoặc bấm để chọn file<input type="file" id="pdfFileInput" accept="application/pdf" style="display:none" onchange="processNotebookPdfFile(this.files[0])"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+      <label>Độ phân giải <select id="pdfScaleSelect"><option value="1.5">1.5x</option><option value="2" selected>2.0x Retina</option><option value="2.8">2.8x 4K</option></select></label>
+      <label>Chế độ khung hình <select id="pdfCropModeSelect"><option value="full" selected>Nguyên bản 16:9</option><option value="right">Nửa phải</option><option value="left">Nửa trái</option><option value="center">Trung tâm</option></select></label>
+      <button class="interactive-btn-lg" onclick="applyExtractedToLiveDeck()">🚀 Áp Dụng Vào Trình Chiếu 4D Ngay</button>
+      <button class="interactive-btn-lg green" onclick="exportStandaloneHtml4D()">⚡ Xuất File Bài Giảng HTML 4D (.html)</button>
+      <button class="btn-hud-action" onclick="exportSlidesJson()">📦 Xuất JSON</button>
+    </div>
+    <div id="pdfProgressStatus" class="small" style="margin-top:8px"></div>
+    <div class="extracted-pages-grid" id="extractedPagesContainer"></div>
+  </div>
+  <div class="panel">
+    <span class="tag">🪄 MAGIC SLIDE GENERATOR</span>
+    <h2>Tạo Slide Thông Minh Từ Ý Tưởng Ngắn</h2>
+    <p class="sub">Cô chỉ cần chọn lĩnh vực, nhập tên bài dạy và dán nội dung thô — hệ thống tự chia trang slide, sinh 4 câu hỏi đàm thoại và chọn tranh SVG phù hợp.</p>
+    <div class="grid2">
+      <div><label><b>Lĩnh vực</b></label><select id="magicDomain" style="width:100%"><option>Khám phá khoa học</option><option>Làm quen văn học</option><option>Làm quen với toán</option><option>Phát triển thể chất</option><option>Phát triển tình cảm – kỹ năng xã hội</option><option>Phát triển thẩm mỹ</option></select></div>
+      <div><label><b>Tên bài dạy</b></label><input id="magicTitle" style="width:100%" placeholder="Ví dụ: Truyện Đôi Bạn Nhỏ"></div>
+    </div>
+    <label><b>Nội dung văn bản thô</b></label>
+    <textarea id="magicText" rows="5" style="width:100%" placeholder="Dán nội dung truyện / bài thơ / kiến thức vào đây..."></textarea>
+    <button class="interactive-btn-lg" style="margin-top:10px" onclick="magicSlideGenerator()">🪄 Tự Động Chia Thành Các Trang Slide &amp; Câu Hỏi Đàm Thoại</button>
+    <div id="magicResult" style="margin-top:12px"></div>
+  </div>
+  <div class="panel">
+    <span class="tag">✏️ TRÌNH BIÊN TẬP TRỰC QUAN TỪNG TRANG</span>
+    <h2>Sửa Slide Đang Dạy — Không Cần Biết Code</h2>
+    <p class="sub">Sửa tiêu đề, cả 4 cặp thẻ lật, dòng chuyển hóa và lời kể. Đổi tranh trong 12 mẫu SVG 4D hoặc tải ảnh từ máy tính. Đổi thứ tự, nhân bản hoặc xóa trang.</p>
+    <div id="slideEditorList"></div>
+  </div>
+</section>
+
+<!-- ================= TAB 4: GIÁO ÁN ================= -->
+<section class="workspace" id="ws-plan">
+  <div class="panel">
+    <span class="tag">📝 XƯỞNG SOẠN GIÁO ÁN CHUẨN BỘ GD&amp;ĐT</span>
+    <h2>Soạn Giáo Án — Trường MN Lê Thế Hiếu, xã Cam Lộ, tỉnh Quảng Trị</h2>
+    <p class="sub">Chọn mẫu kế hoạch, điền nội dung (hoặc bấm đồng bộ từ slide đang dạy), xem trước trang A4 rồi xuất Word hoặc in.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="pill-btn active" onclick="setPlanTemplate('hoc',this)">📖 Hoạt động Học (20–25 phút)</button>
+      <button class="pill-btn" onclick="setPlanTemplate('goc',this)">🧩 Hoạt động Góc</button>
+      <button class="pill-btn" onclick="setPlanTemplate('ngoaitroi',this)">🌳 Hoạt động Ngoài trời</button>
+      <button class="pill-btn" onclick="setPlanTemplate('nhatky',this)">📔 Nhật ký Đánh giá Hàng ngày</button>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+      <button class="interactive-btn-lg blue" onclick="syncSlideToPlan()">🔄 Đồng Bộ Từ Slide Sang Giáo Án</button>
+      <button class="interactive-btn-lg" onclick="syncPlanToSlide()">🪄 Đồng Bộ Từ Giáo Án Sang Slide</button>
+      <button class="interactive-btn-lg green" onclick="exportPlanDoc()">📄 Xuất File Word (.doc)</button>
+      <button class="interactive-btn-lg pink" onclick="printPlan()">🖨️ In Giáo Án A4</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="panel lp-form">
+      <h2>✏️ Nhập Nội Dung Giáo Án</h2>
+      <label>Ngày dạy <input type="date" id="lpDate"></label>
+      <label>Tên hoạt động / Đề tài <input id="lpTitle" placeholder="Ví dụ: Truyện Thỏ Con Không Vâng Lời"></label>
+      <label>Lĩnh vực <select id="lpDomain"><option>Phát triển ngôn ngữ</option><option>Phát triển nhận thức</option><option>Phát triển thể chất</option><option>Phát triển tình cảm – kỹ năng xã hội</option><option>Phát triển thẩm mỹ</option></select></label>
+      <label>I. Mục đích – Yêu cầu (Kiến thức / Kỹ năng / Thái độ)<textarea id="lpMucDich" rows="4"></textarea></label>
+      <label>II. Chuẩn bị (Đồ dùng của cô / của trẻ)<textarea id="lpChuanBi" rows="3"></textarea></label>
+      <label>III. Tiến hành hoạt động<textarea id="lpTienHanh" rows="8"></textarea></label>
+      <label>Ghi chú / Đánh giá sau giờ dạy<textarea id="lpGhiChu" rows="2"></textarea></label>
+    </div>
+    <div class="panel">
+      <h2>👀 Xem Trước Trang Giấy A4</h2>
+      <div id="printArea"><div class="lp-preview-paper" id="lpPreviewPaper"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TAB 5: LỚP HỌC ================= -->
+<section class="workspace" id="ws-class">
+  <div class="grid2">
+    <div class="panel">
+      <span class="tag">🧸 ĐIỂM DANH &amp; BÁO CƠM BÁN TRÚ</span>
+      <h2>Bảng Điểm Danh Sĩ Số — Lớp 3–4 Tuổi</h2>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <input id="newStudentName" placeholder="Tên bé mới..." style="flex:1;min-width:140px">
+        <select id="newStudentGroup"><option value="0">🐰 Tổ Thỏ Trắng</option><option value="1">🐻 Tổ Gấu Bông</option><option value="2">🐿️ Tổ Sóc Nâu</option></select>
+        <button class="btn-hud-action green" onclick="addStudent()">➕ Thêm Bé</button>
+      </div>
+      <div id="attendanceTables"></div>
+      <div style="margin-top:12px;font-size:16px;font-weight:800" id="mealSummary"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <label>Tiền ăn / suất / ngày (đ) <input type="number" id="mealPrice" value="18000" style="width:110px" onchange="renderAttendance()"></label>
+        <button class="interactive-btn-lg" onclick="copyMealReport()">📋 Sao Chép Báo Cáo Gửi Ban Giám Hiệu</button>
+      </div>
+    </div>
+    <div>
+      <div class="panel wheel-box">
+        <span class="tag">🎡 VÒNG QUAY GỌI TÊN BÉ</span>
+        <h2>Gọi Ngẫu Nhiên 1 Bé Đang Có Mặt</h2>
+        <div class="wheel-name" id="wheelName">—</div>
+        <button class="interactive-btn-lg pink" onclick="spinWheel()">🎲 Quay &amp; Đọc Tên Bé</button>
+        <button class="interactive-btn-lg" onclick="addFlowerToWheelStudent()">🌸 +1 Hoa Cho Bé Vừa Gọi</button>
+        <h2 style="margin-top:14px">🏆 Bảng Thi Đua Hoa Bé Ngoan</h2>
+        <div id="flowerBoard"></div>
+      </div>
+      <div class="panel">
+        <span class="tag">⏰ ĐỒNG HỒ ĐIỀU PHỐI 1 NGÀY Ở TRƯỜNG</span>
+        <h2>Thời Gian Biểu 7h00 – 16h30</h2>
+        <div id="scheduleList"></div>
+        <div style="margin-top:12px;text-align:center">
+          <div class="timer-big" id="countdownDisplay">05:00</div>
+          <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+            <button class="pill-btn" onclick="startCountdown(2)">2 phút</button>
+            <button class="pill-btn" onclick="startCountdown(3)">3 phút</button>
+            <button class="pill-btn" onclick="startCountdown(5)">5 phút</button>
+            <button class="pill-btn" onclick="startCountdown(10)">10 phút</button>
+            <button class="pill-btn" onclick="startCountdown(15)">15 phút</button>
+            <button class="pill-btn" onclick="stopCountdown()">⏹ Dừng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="tag">💬 TRÌNH TẠO THÔNG BÁO ZALO PHỤ HUYNH — 8 TÌNH HUỐNG</span>
+    <h2>Tin Nhắn Ấm Áp, Chuẩn Mực — Chỉ Cần Bấm Sao Chép</h2>
+    <p class="sub">Hệ thống tự ghép tên bài học trong ngày, sĩ số và thực đơn bán trú vào mẫu tin.</p>
+    <div class="grid2" id="zaloList"></div>
+  </div>
+  <div class="panel">
+    <span class="tag">📝 NHẬT KÝ QUAN SÁT HẰNG NGÀY — ĐÁNH GIÁ THEO THÔNG TƯ 51/2020</span>
+    <h2>Ghi Nhanh Quan Sát Từng Bé — Tự Ghép Thành Đánh Giá Cuối Chủ Đề</h2>
+    <p class="sub">Cô ghi lại điều quan sát được trong ngày, gắn vào 1 trong 5 lĩnh vực phát triển. Cuối chủ đề, mở tab Sức Khỏe &amp; Đánh Giá để ghép các ghi chú này thành nhận xét cho từng bé.</p>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <select id="obsStudent"></select>
+      <select id="obsDomain"><option>Thể chất</option><option>Nhận thức</option><option>Ngôn ngữ</option><option>Tình cảm – Kỹ năng xã hội</option><option>Thẩm mỹ</option></select>
+      <input id="obsNote" placeholder="Cô quan sát thấy gì ở bé hôm nay? (vd: tự xúc cơm hết bát, kể lại được truyện...)" style="flex:2;min-width:200px">
+      <button class="btn-hud-action green" onclick="saveObs()">💾 Lưu Ghi Chú</button>
+    </div>
+    <div id="obsList"></div>
+  </div>
+  <div class="panel">
+    <span class="tag">🍚😴 NHẬT KÝ CHĂM SÓC TRONG NGÀY — ĂN, NGỦ, DẶN THUỐC, ĐÓN TRẢ</span>
+    <h2>Ghi Nhanh Chăm Sóc Từng Bé Trong Ngày</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <select id="careStudent"></select>
+      <select id="careMeal"><option>🍚 Ăn hết suất</option><option>🍚 Ăn ít</option><option>🍚 Không ăn</option><option>🍚 Ăn thêm</option></select>
+      <select id="careSleep"><option>😴 Ngủ ngon</option><option>😴 Ngủ ít</option><option>😴 Không ngủ</option><option>😴 Ngủ trưa muộn</option></select>
+      <input id="careMed" placeholder="Dặn thuốc của phụ huynh (nếu có)..." style="flex:1;min-width:160px">
+      <input id="carePickup" placeholder="Người đón bé hôm nay..." style="flex:1;min-width:140px">
+      <button class="btn-hud-action green" onclick="saveCare()">💾 Lưu Chăm Sóc</button>
+    </div>
+    <div id="careList"></div>
+  </div>
+  <div class="panel">
+    <span class="tag">🧸 SỔ THEO DÕI TÀI SẢN, THIẾT BỊ, ĐỒ CHƠI CỦA LỚP — THÔNG TƯ 52/2020</span>
+    <h2>Sổ Tài Sản Lớp 3–4 Tuổi</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <input id="assetName" placeholder="Tên đồ dùng / đồ chơi..." style="flex:2;min-width:160px">
+      <input type="number" id="assetQty" placeholder="Số lượng" value="1" style="width:100px">
+      <select id="assetCond"><option>✅ Tốt</option><option>🔧 Cần sửa</option><option>❌ Hỏng</option></select>
+      <button class="btn-hud-action green" onclick="addAsset()">➕ Thêm Vào Sổ</button>
+    </div>
+    <div id="assetList"></div>
+  </div>
+</section>
+
+<!-- ================= TAB 6: SỨC KHỎE & ĐÁNH GIÁ ================= -->
+<section class="workspace" id="ws-health">
+  <div class="grid2">
+    <div class="panel">
+      <span class="tag">🩺 CHUẨN WHO — TRẺ 36–48 THÁNG TUỔI</span>
+      <h2>Máy Tính Cân Nặng – Chiều Cao Trẻ 3–4 Tuổi</h2>
+      <p class="sub">Nhập số liệu, hệ thống tra bảng ngưỡng chuẩn WHO để phân loại. Đây là công cụ tham khảo hỗ trợ cô — kết luận y tế chính thức do cán bộ y tế xác nhận.</p>
+      <label>Tên bé <input id="whoName" style="width:100%" placeholder="Tên bé..."></label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <label>Giới tính <select id="whoSex"><option value="boy">Nam 👦</option><option value="girl">Nữ 👧</option></select></label>
+        <label>Tháng tuổi (36–48) <input type="number" id="whoAge" min="36" max="48" value="42" style="width:90px"></label>
+        <label>Cân nặng (kg) <input type="number" id="whoWeight" step="0.1" placeholder="14.0" style="width:100px"></label>
+        <label>Chiều cao (cm) <input type="number" id="whoHeight" step="0.1" placeholder="96.0" style="width:100px"></label>
+      </div>
+      <button class="interactive-btn-lg green" style="margin-top:12px" onclick="calcWHO()">🩺 Tính &amp; Phân Loại Dinh Dưỡng</button>
+      <div id="whoResult"></div>
+      <h2 style="margin-top:16px">📋 Danh Sách Theo Dõi Sức Khỏe Của Lớp</h2>
+      <div id="whoList"></div>
+      <button class="btn-hud-action" onclick="exportWhoSummary()">📄 Xuất Bảng Tổng Hợp Sức Khỏe</button>
+    </div>
+    <div class="panel">
+      <span class="tag">⭐ NGÂN HÀNG 60+ CÂU NHẬN XÉT SỔ BÉ NGOAN</span>
+      <h2>Đánh Giá Trẻ Cuối Chủ Đề — 5 Lĩnh Vực × 3 Mức Độ</h2>
+      <div class="search-row">
+        <select id="commentStudent" style="flex:1"></select>
+        <select id="commentDomainFilter" onchange="renderCommentBank()"><option value="">Tất cả lĩnh vực</option><option>Thể chất</option><option>Nhận thức</option><option>Ngôn ngữ</option><option>Tình cảm – Kỹ năng xã hội</option><option>Thẩm mỹ</option></select>
+        <select id="commentLevelFilter" onchange="renderCommentBank()"><option value="">Tất cả mức độ</option><option>Hoàn thành tốt</option><option>Đạt yêu cầu</option><option>Cần rèn thêm</option></select>
+      </div>
+      <div class="comment-bank" id="commentBank"></div>
+      <button class="interactive-btn-lg green" onclick="composeComment()">✍️ Ghép Thành Đoạn Nhận Xét Hoàn Chỉnh</button>
+      <textarea id="commentOutput" rows="5" style="width:100%;margin-top:10px" placeholder="Đoạn nhận xét hoàn chỉnh sẽ hiện ở đây — cô bấm sao chép để dán vào sổ đánh giá hoặc gửi phụ huynh."></textarea>
+      <button class="btn-hud-action" onclick="copyTextFromElement('commentOutput','Đã sao chép đoạn nhận xét!')">📋 Sao Chép Đoạn Nhận Xét</button>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="tag">👧 HỒ SƠ PHÁT TRIỂN TỪNG BÉ — GHÉP TỪ QUAN SÁT, CHĂM SÓC, HOA &amp; SỨC KHỎE</span>
+    <h2>Hồ Sơ Một Bé — Nhìn Một Trang Là Thấy Cả Quá Trình</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <select id="profileStudent" onchange="renderProfile()" style="flex:1;min-width:160px"></select>
+      <button class="btn-hud-action" onclick="renderProfile()">🔄 Xem Hồ Sơ</button>
+      <button class="btn-hud-action" onclick="copyProfile()">📋 Sao Chép Hồ Sơ Bé</button>
+    </div>
+    <div id="profileBox"><p class="sub">Chọn một bé để xem hồ sơ: hoa bé ngoan, điểm danh, ghi chú quan sát theo 5 lĩnh vực, chăm sóc trong ngày và số đo sức khỏe đã lưu.</p></div>
+  </div>
+</section>
+</main>
+
+<div class="modal-backdrop" id="hideModal" onclick="if(event.target===this)closeHideModal()">
+  <div class="modal"><h3>👁 Quản Lý Ẩn / Hiện Từng Trang (Phím H)</h3><div id="hideListContainer"></div><button class="interactive-btn-lg" onclick="closeHideModal()">Đóng</button></div>
+</div>
+<div class="modal-backdrop" id="studentModal" onclick="if(event.target===this)closeStudentModal()">
+  <div class="modal" style="text-align:center"><h3 id="studentModalTitle">🎲 Bé Được Gọi</h3><div style="font-size:44px;font-weight:900;font-family:'Patrick Hand',cursive;color:#d97706" id="studentModalName">—</div><p class="sub">Cô hỏi bé câu hỏi đàm thoại rồi cộng Hoa Bé Ngoan nhé!</p><button class="interactive-btn-lg pink" onclick="addFlowerToWheelStudent();closeStudentModal()">🌸 +1 Hoa Cho Bé</button> <button class="interactive-btn-lg" onclick="closeStudentModal()">Đóng</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/*__DEFAULT_SLIDES_START__*/
+const DEFAULT_MASTER_SLIDES = [];
+/*__DEFAULT_SLIDES_END__*/
+/*__SLIDES_DATA_START__*/
+const LESSONS = [
+{ id:"cd1", theme:"Chủ đề 1", icon:"🏫", title:"Trường Mầm Non Lê Thế Hiếu Của Bé", desc:"Lớp học 3–4 tuổi vui vẻ, cô giáo Đặng Thị Niềm và các bạn, đồ chơi an toàn trong lớp.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết tên trường, tên lớp, tên cô giáo và các bạn; nhận biết một số đồ chơi trong lớp.\n2. Kỹ năng: Trẻ chào hỏi lễ phép, cất đồ chơi đúng nơi quy định.\n3. Thái độ: Trẻ yêu trường, yêu lớp, thích đi học mỗi ngày.",
+  chuanBi:"1. Đồ dùng của cô: Tranh ảnh trường MN Lê Thế Hiếu, thẻ tên các bạn, đồ chơi góc xây dựng.\n2. Đồ dùng của trẻ: Thẻ tên, đồ chơi theo góc.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Trường chúng cháu là trường mầm non', trò chuyện: 'Trường của bé tên là gì?'\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu lớp học, các góc chơi; trẻ kể tên đồ chơi và cách chơi an toàn; chơi trò 'Tìm đúng góc chơi'.\nHoạt động 3: Kết thúc — Cô nhận xét, khen trẻ; trẻ cất đồ chơi đúng nơi quy định." },
+  slides:[
+  { id:1, tag:"🏫 TRƯỜNG CỦA BÉ", title:"Trường Mầm Non Lê Thế Hiếu Của Bé", visualTheme:"book",
+    flipCards:[
+    {frontTitle:"❓ Trường của bé tên là gì?",frontText:"Bé có nhớ tên trường mình đang học không?",backTitle:"🌻 TRƯỜNG MN LÊ THẾ HIẾU",backText:"Trường của bé là Trường Mầm non Lê Thế Hiếu, ở xã Cam Lộ, tỉnh Quảng Trị."},
+    {frontTitle:"❓ Cô giáo của lớp mình là ai?",frontText:"Cô giáo chủ nhiệm lớp 3–4 tuổi tên là gì?",backTitle:"👩 CÔ ĐẶNG THỊ NIỀM",backText:"Cô Đặng Thị Niềm là cô giáo chủ nhiệm, luôn yêu thương và chăm sóc các bé."},
+    {frontTitle:"❓ Trong lớp có những góc chơi nào?",frontText:"Bé kể tên các góc chơi trong lớp nhé!",backTitle:"🧩 GÓC PHÂN VAI – XÂY DỰNG – SÁCH",backText:"Lớp có góc phân vai, góc xây dựng, góc nghệ thuật, góc sách truyện và góc thiên nhiên."},
+    {frontTitle:"❓ Chơi xong đồ chơi, bé làm gì?",frontText:"Đồ chơi sau khi chơi xong thì để ở đâu?",backTitle:"✅ CẤT ĐÚNG NƠI QUY ĐỊNH",backText:"Chơi xong, bé cất đồ chơi gọn gàng đúng nơi quy định — bé ngoan lắm!"}],
+    bullets:["🔹 Bé biết tên trường, tên lớp và tên cô giáo Đặng Thị Niềm.","🔹 Bé chơi đồ chơi an toàn và cất đồ chơi đúng nơi quy định."],
+    stateOld:"😶 Bé còn bỡ ngỡ khi đến lớp", bridgeVerb:"KHÁM PHÁ", stateNew:"😊 Bé yêu trường, yêu lớp, thích đi học",
+    script:"Chào các bé yêu! Hôm nay cô Niềm sẽ dẫn các bé đi thăm trường mầm non Lê Thế Hiếu của chúng mình. Trường của bé có sân chơi thật rộng, lớp học thật đẹp và cô giáo thật hiền. Bé nào cũng là bạn tốt của nhau nhé!" },
+  { id:2, tag:"👫 BẠN BÈ TRONG LỚP", title:"Cô Giáo Và Các Bạn Của Bé", visualTheme:"flower",
+    flipCards:[
+    {frontTitle:"❓ Bé chào cô như thế nào?",frontText:"Sáng đến lớp, bé gặp cô thì nói gì?",backTitle:"🙏 CON CHÀO CÔ Ạ!",backText:"Bé chắp tay, cúi đầu chào: 'Con chào cô ạ!' — lễ phép lắm!"},
+    {frontTitle:"❓ Bé chào bạn như thế nào?",frontText:"Gặp bạn trong lớp, bé nói gì?",backTitle:"👋 CHÀO BẠN NHÉ!",backText:"Bé vẫy tay chào bạn: 'Chào bạn nhé!' rồi cùng nhau chơi."},
+    {frontTitle:"❓ Bạn buồn, bé làm gì?",frontText:"Thấy bạn khóc, bé nên làm gì?",backTitle:"💗 ÔM BẠN, DỖ BẠN NÍN",backText:"Bé ôm bạn, nói: 'Bạn đừng khóc nữa, chơi với mình nhé!'"},
+    {frontTitle:"❓ Bé muốn mượn đồ chơi của bạn?",frontText:"Bé phải nói thế nào khi muốn mượn đồ chơi?",backTitle:"🗣️ BẠN CHO MÌNH MƯỢN NHÉ!",backText:"Bé hỏi nhẹ nhàng: 'Bạn cho mình mượn nhé, mình cảm ơn bạn!'"}],
+    bullets:["🔹 Bé chào cô, chào bạn lễ phép mỗi ngày đến lớp.","🔹 Bé biết quan tâm, chia sẻ và giúp đỡ bạn."],
+    stateOld:"🙈 Bé còn ngại ngùng với bạn mới", bridgeVerb:"YÊU THƯƠNG", stateNew:"🤗 Bé hòa đồng, yêu quý bạn bè",
+    script:"Lớp mình có rất nhiều bạn đáng yêu. Sáng đến lớp, bé chào cô, chào bạn thật to nhé. Bạn nào buồn, bé ôm bạn một cái, bạn sẽ vui ngay thôi. Chúng mình là một gia đình nhỏ đấy!" },
+  { id:3, tag:"🧸 ĐỒ CHƠI AN TOÀN", title:"Đồ Chơi An Toàn Trong Lớp", visualTheme:"shapes",
+    flipCards:[
+    {frontTitle:"❓ Đồ chơi nào an toàn?",frontText:"Bé chọn đồ chơi như thế nào?",backTitle:"✅ ĐỒ CHƠI MỀM, KHÔNG NHỌN",backText:"Đồ chơi an toàn là đồ chơi mềm, không góc nhọn, không vỡ vụn."},
+    {frontTitle:"❓ Bé có được đưa đồ chơi vào miệng không?",frontText:"Vì sao không được ngậm đồ chơi?",backTitle:"🚫 KHÔNG NGẬM ĐỒ CHƠI",backText:"Đồ chơi bẩn có nhiều vi trùng, ngậm vào miệng sẽ bị đau bụng đấy!"},
+    {frontTitle:"❓ Chơi đồ chơi chung, bé phải làm sao?",frontText:"Nhiều bạn cùng muốn một món đồ chơi thì sao?",backTitle:"⏰ XẾP HÀNG, CHỜ ĐẾN LƯỢT",backText:"Bé xếp hàng chờ đến lượt mình, không giành giật với bạn."},
+    {frontTitle:"❓ Đồ chơi bị hỏng, bé làm gì?",frontText:"Bé thấy đồ chơi bị gãy thì báo ai?",backTitle:"👩 BÁO NGAY CHO CÔ",backText:"Bé đưa đồ chơi hỏng cho cô, cô sẽ cất đi để không ai bị đau."}],
+    bullets:["🔹 Bé biết chọn đồ chơi an toàn và chơi đúng cách.","🔹 Bé không giành đồ chơi, biết chờ đến lượt mình."],
+    stateOld:"😢 Bé còn giành đồ chơi với bạn", bridgeVerb:"THỰC HÀNH", stateNew:"🌟 Bé chơi ngoan, biết nhường bạn",
+    script:"Đồ chơi trong lớp mình nhiều lắm: búp bê, ô tô, khối gỗ... Bé nhớ nhé: chơi nhẹ nhàng, không đưa đồ chơi vào miệng, chờ đến lượt mình. Chơi xong, bé cất gọn gàng — bé nào cũng ngoan!" }
+  ]},
+{ id:"cd2", theme:"Chủ đề 2", icon:"🙋", title:"Bản Thân Bé", desc:"Cơ thể đáng yêu của bé (5 giác quan), kỹ năng 6 bước rửa tay bằng xà phòng & giữ vệ sinh cá nhân.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết tên các bộ phận cơ thể và 5 giác quan; biết 6 bước rửa tay bằng xà phòng.\n2. Kỹ năng: Trẻ thực hiện đúng 6 bước rửa tay, biết giữ vệ sinh cá nhân.\n3. Thái độ: Trẻ thích giữ gìn cơ thể sạch sẽ, khỏe mạnh.",
+  chuanBi:"1. Đồ dùng của cô: Tranh cơ thể bé, xà phòng, khăn lau tay, chậu nước sạch.\n2. Đồ dùng của trẻ: Khăn mặt riêng, xà phòng.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Cả nhà thương nhau', trò chuyện về cơ thể bé.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu 5 giác quan qua trò chơi 'Đố bé biết đây là gì'; hướng dẫn và thực hành 6 bước rửa tay bằng xà phòng.\nHoạt động 3: Kết thúc — Cô nhận xét, khen trẻ rửa tay đúng; trẻ hát 'Rửa tay sạch'." },
+  slides:[
+  { id:1, tag:"🙋 CƠ THỂ CỦA BÉ", title:"Cơ Thể Đáng Yêu Của Bé", visualTheme:"sun",
+    flipCards:[
+    {frontTitle:"❓ Mắt dùng để làm gì?",frontText:"Đôi mắt xinh của bé dùng để làm gì?",backTitle:"👀 MẮT ĐỂ NHÌN",backText:"Mắt để nhìn thấy cô giáo, bạn bè, hoa thơm và nắng vàng."},
+    {frontTitle:"❓ Tai dùng để làm gì?",frontText:"Đôi tai của bé dùng để làm gì?",backTitle:"👂 TAI ĐỂ NGHE",backText:"Tai để nghe tiếng cô kể chuyện, tiếng chim hót và tiếng nhạc hay."},
+    {frontTitle:"❓ Mũi dùng để làm gì?",frontText:"Chiếc mũi xinh dùng để làm gì?",backTitle:"👃 MŨI ĐỂ NGỬI",backText:"Mũi để ngửi mùi hoa thơm, mùi cơm ngon mẹ nấu."},
+    {frontTitle:"❓ Miệng và tay dùng để làm gì?",frontText:"Miệng và đôi tay của bé làm được gì?",backTitle:"😋 MIỆNG ĂN – ✋ TAY CẦM NẮM",backText:"Miệng để ăn ngon, nói lời hay; tay để cầm nắm, vẽ tranh và ôm bạn."}],
+    bullets:["🔹 Bé biết tên các bộ phận cơ thể và 5 giác quan.","🔹 Bé biết giữ gìn các giác quan luôn sạch sẽ, khỏe mạnh."],
+    stateOld:"🤔 Bé chưa biết gọi tên các giác quan", bridgeVerb:"NHẬN BIẾT", stateNew:"🌟 Bé gọi đúng tên và công dụng từng giác quan",
+    script:"Cơ thể của bé thật đáng yêu! Mắt để nhìn, tai để nghe, mũi để ngửi, miệng để ăn và nói lời hay, tay để vẽ tranh thật đẹp. Bé hãy giữ gìn cơ thể của mình luôn sạch sẽ nhé!" },
+  { id:2, tag:"🧼 RỬA TAY SẠCH", title:"6 Bước Rửa Tay Bằng Xà Phòng", visualTheme:"water",
+    flipCards:[
+    {frontTitle:"❓ Khi nào bé phải rửa tay?",frontText:"Những lúc nào bé cần rửa tay?",backTitle:"🖐️ TRƯỚC KHI ĂN, SAU KHI CHƠI",backText:"Bé rửa tay trước khi ăn, sau khi đi vệ sinh và sau khi chơi đồ chơi."},
+    {frontTitle:"❓ Bước 1 và 2 là gì?",frontText:"Bé nhớ hai bước đầu tiên nào?",backTitle:"💧 LÀM ƯỚT TAY – XOA XÀ PHÒNG",backText:"Bước 1: làm ướt tay. Bước 2: lấy xà phòng, xoa đều hai bàn tay."},
+    {frontTitle:"❓ Bước 3 và 4 là gì?",frontText:"Sau khi xoa xà phòng, bé làm gì tiếp?",backTitle:"🤲 CHÀ LÒNG – CHÀ MU BÀN TAY",backText:"Bước 3: chà lòng bàn tay. Bước 4: chà mu bàn tay và kẽ ngón tay."},
+    {frontTitle:"❓ Bước 5 và 6 là gì?",frontText:"Hai bước cuối cùng là gì nào?",backTitle:"🚿 RỬA SẠCH – LAU KHÔ",backText:"Bước 5: rửa sạch tay dưới vòi nước. Bước 6: lau khô tay bằng khăn sạch."}],
+    bullets:["🔹 Bé nhớ và thực hiện đúng 6 bước rửa tay bằng xà phòng.","🔹 Bé biết rửa tay là cách đuổi vi trùng, giữ cơ thể khỏe mạnh."],
+    stateOld:"🦠 Tay bé còn dính bẩn, có vi trùng", bridgeVerb:"THỰC HÀNH", stateNew:"✨ Tay bé sạch thơm, khỏe mạnh",
+    script:"Vi trùng nhỏ xíu bám trên tay bé sau khi chơi đấy! Cô dạy bé 6 bước rửa tay thần kỳ: làm ướt tay, xoa xà phòng, chà lòng bàn tay, chà mu bàn tay, rửa sạch rồi lau khô. Tay sạch thơm, bé khỏe mạnh!" },
+  { id:3, tag:"😁 VỆ SINH CÁ NHÂN", title:"Bé Giữ Vệ Sinh Cá Nhân", visualTheme:"flower",
+    flipCards:[
+    {frontTitle:"❓ Sáng ngủ dậy, bé làm gì?",frontText:"Bé kể các việc buổi sáng nào?",backTitle:"🪥 ĐÁNH RĂNG, RỬA MẶT",backText:"Sáng dậy, bé đánh răng trắng bóng, rửa mặt sạch sẽ rồi mới ăn sáng."},
+    {frontTitle:"❓ Bé ho, hắt hơi thì làm sao?",frontText:"Khi ho, bé phải che gì?",backTitle:"🤧 CHE MIỆNG BẰNG KHUỶU TAY",backText:"Bé che miệng bằng khuỷu tay hoặc khăn giấy, không ho vào mặt bạn."},
+    {frontTitle:"❓ Quần áo bẩn, bé làm gì?",frontText:"Áo bé bị bẩn thì bé làm sao?",backTitle:"👕 NHỜ CÔ THAY ÁO SẠCH",backText:"Bé báo cô để được thay áo sạch, mặc quần áo gọn gàng, xinh xắn."},
+    {frontTitle:"❓ Bé có nên ăn quà vặt bẩn không?",frontText:"Kẹo màu, đồ ăn không rõ nguồn gốc thì sao?",backTitle:"🚫 KHÔNG ĂN QUÀ VẶT BẨN",backText:"Bé chỉ ăn thức ăn sạch do cô và mẹ chuẩn bị, không ăn quà vặt bẩn ngoài cổng."}],
+    bullets:["🔹 Bé biết đánh răng, rửa mặt mỗi ngày.","🔹 Bé biết che miệng khi ho và giữ quần áo sạch sẽ."],
+    stateOld:"😷 Bé chưa biết giữ vệ sinh cá nhân", bridgeVerb:"THỰC HÀNH", stateNew:"🌸 Bé sạch sẽ, khỏe mạnh mỗi ngày",
+    script:"Bé ngoan là bé sạch sẽ! Sáng dậy đánh răng, rửa mặt; ho thì che miệng; tay bẩn thì rửa sạch. Cơ thể sạch sẽ thì bé khỏe mạnh, học giỏi và chơi vui cả ngày!" }
+  ]},
+{ id:"cd3", theme:"Chủ đề 3", icon:"🏠", title:"Gia Đình Yêu Thương", desc:"Ngôi nhà thân yêu của bé, thơ 'Yêu Mẹ' (Nguyễn Bao), hát & vận động 'Cháu Yêu Bà', bé lễ phép chào hỏi.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết các thành viên trong gia đình và công việc của từng người; thuộc thơ 'Yêu Mẹ'.\n2. Kỹ năng: Trẻ chào hỏi lễ phép, biết thể hiện tình cảm với người thân.\n3. Thái độ: Trẻ yêu thương, kính trọng ông bà, cha mẹ.",
+  chuanBi:"1. Đồ dùng của cô: Tranh gia đình, tranh minh họa bài thơ 'Yêu Mẹ'.\n2. Đồ dùng của trẻ: Ảnh gia đình (nếu có).",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Cháu Yêu Bà', trò chuyện về gia đình bé.\nHoạt động 2: Nội dung trọng tâm — Cô đọc thơ 'Yêu Mẹ' diễn cảm; trẻ kể tên các thành viên gia đình và việc làm của từng người; thực hành chào hỏi lễ phép.\nHoạt động 3: Kết thúc — Trẻ đọc lại thơ 'Yêu Mẹ', cô khen trẻ." },
+  slides:[
+  { id:1, tag:"🏠 NGÔI NHÀ CỦA BÉ", title:"Ngôi Nhà Thân Yêu Của Bé", visualTheme:"sun",
+    flipCards:[
+    {frontTitle:"❓ Nhà bé có những ai?",frontText:"Bé kể tên người thân trong nhà nào?",backTitle:"👨‍👩‍👧‍👦 ÔNG BÀ, BỐ MẸ, ANH CHỊ",backText:"Nhà bé có ông bà, bố mẹ, anh chị em — ai cũng yêu thương bé."},
+    {frontTitle:"❓ Bố làm nghề gì?",frontText:"Bé có biết bố làm công việc gì không?",backTitle:"👨 BỐ ĐI LÀM NUÔI GIA ĐÌNH",backText:"Bố đi làm vất vả để nuôi cả nhà, bé thương bố nhiều lắm."},
+    {frontTitle:"❓ Mẹ làm nghề gì?",frontText:"Mẹ của bé làm gì mỗi ngày?",backTitle:"👩 MẸ NẤU CƠM, CHĂM BÉ",backText:"Mẹ nấu cơm ngon, giặt áo sạch và ôm bé ngủ mỗi tối."},
+    {frontTitle:"❓ Bé giúp được gì cho gia đình?",frontText:"Bé nhỏ có thể giúp bố mẹ việc gì?",backTitle:"🧹 CẤT ĐỒ CHƠI, XẾP GIÀY",backText:"Bé cất đồ chơi gọn gàng, xếp giày ngay ngắn — bé ngoan giúp mẹ!"}],
+    bullets:["🔹 Bé biết tên các thành viên trong gia đình.","🔹 Bé biết giúp đỡ bố mẹ những việc vừa sức."],
+    stateOld:"🏠 Bé chưa kể được về gia đình mình", bridgeVerb:"YÊU THƯƠNG", stateNew:"💗 Bé yêu thương gia đình thật nhiều",
+    script:"Ngôi nhà của bé ấm áp lắm! Có ông bà, bố mẹ và các anh chị em. Bố đi làm, mẹ nấu cơm ngon, còn bé thì ngoan ngoãn, cất đồ chơi gọn gàng để giúp mẹ. Gia đình mình thương nhau nhất!" },
+  { id:2, tag:"📜 THƠ YÊU MẸ", title:"Thơ 'Yêu Mẹ' — Nguyễn Bao", visualTheme:"flower",
+    flipCards:[
+    {frontTitle:"❓ Bài thơ 'Yêu Mẹ' nói về ai?",frontText:"Bài thơ hôm nay nói về ai nào?",backTitle:"💗 NÓI VỀ MẸ CỦA BÉ",backText:"Bài thơ 'Yêu Mẹ' của nhà thơ Nguyễn Bao nói về tình yêu của bé dành cho mẹ."},
+    {frontTitle:"❓ Mẹ làm gì cho bé?",frontText:"Trong thơ, mẹ đã làm gì cho bé?",backTitle:"🤱 MẸ BẾ BÉ, RU BÉ NGỦ",backText:"Mẹ bế bé, ru bé ngủ, hát cho bé nghe những lời yêu thương."},
+    {frontTitle:"❓ Bé yêu mẹ như thế nào?",frontText:"Bé thể hiện tình yêu với mẹ ra sao?",backTitle:"😘 ÔM MẸ, HÔN MẸ MỖI NGÀY",backText:"Bé ôm mẹ, hôn mẹ và nói: 'Con yêu mẹ nhiều lắm!'"},
+    {frontTitle:"❓ Bé đọc thơ cùng cô nhé?",frontText:"Bé có thuộc bài thơ 'Yêu Mẹ' không?",backTitle:"📖 BÉ ĐỌC THƠ THẬT HAY",backText:"Bé đọc thơ diễn cảm cùng cô, giọng đọc trong trẻo và tình cảm."}],
+    bullets:["🔹 Bé thuộc và đọc diễn cảm bài thơ 'Yêu Mẹ' (Nguyễn Bao).","🔹 Bé biết thể hiện tình yêu thương với mẹ."],
+    stateOld:"📖 Bé chưa thuộc thơ 'Yêu Mẹ'", bridgeVerb:"NHẬN BIẾT", stateNew:"🎤 Bé đọc thơ hay, tình cảm",
+    script:"Cô đọc thơ 'Yêu Mẹ' cho bé nghe nhé. Mẹ là người thương bé nhất trên đời. Bé hãy ôm mẹ thật chặt và nói 'Con yêu mẹ' mỗi ngày. Bây giờ bé đọc cùng cô nào!" },
+  { id:3, tag:"🎵 CHÁU YÊU BÀ", title:"Hát & Vận Động 'Cháu Yêu Bà'", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Bài hát nói về ai?",frontText:"Bài 'Cháu Yêu Bà' nói về ai nào?",backTitle:"👵 NÓI VỀ BÀ CỦA BÉ",backText:"Bài hát nói về bà ngoại, bà nội — người thương bé nhất sau mẹ."},
+    {frontTitle:"❓ Bà làm gì cho bé?",frontText:"Bà thường làm gì cho bé?",backTitle:"🍲 BÀ NẤU CHÁO, KỂ CHUYỆN",backText:"Bà nấu cháo ngon, kể chuyện cổ tích và ru bé ngủ trưa."},
+    {frontTitle:"❓ Bé vận động theo bài hát ra sao?",frontText:"Bé múa theo điệu nhạc thế nào?",backTitle:"💃 VỖ TAY, NHÚN NHẢY THEO NHẠC",backText:"Bé vỗ tay theo nhịp, nhún nhảy và xoay vòng thật vui."},
+    {frontTitle:"❓ Bé chào hỏi người lớn thế nào?",frontText:"Gặp ông bà, bé nói gì?",backTitle:"🙏 CON CHÀO ÔNG BÀ Ạ!",backText:"Bé chắp tay chào: 'Con chào ông bà ạ!' — lễ phép và ngoan ngoãn."}],
+    bullets:["🔹 Bé hát và vận động theo bài 'Cháu Yêu Bà'.","🔹 Bé chào hỏi ông bà, người lớn lễ phép."],
+    stateOld:"🎵 Bé chưa thuộc bài hát về bà", bridgeVerb:"THỰC HÀNH", stateNew:"🎶 Bé hát hay, múa đẹp, lễ phép",
+    script:"Bà là người thương bé nhất! Bà nấu cháo ngon, kể chuyện hay. Bé hát bài 'Cháu Yêu Bà' và múa thật đẹp tặng bà nhé. Gặp ông bà, bé nhớ chào thật to: 'Con chào ông bà ạ!'" }
+  ]},
+{ id:"cd4", theme:"Chủ đề 4", icon:"👩‍🌾", title:"Nghề Nghiệp Quanh Bé", desc:"Cô giáo mầm non, bác nông dân làm ra hạt gạo – củ khoai quê hương Cam Lộ, bác sĩ khám bệnh cho bé.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết tên và công việc của một số nghề: cô giáo, bác nông dân, bác sĩ.\n2. Kỹ năng: Trẻ kể được công việc của từng nghề, chơi đóng vai nghề nghiệp.\n3. Thái độ: Trẻ kính trọng, biết ơn người lao động.",
+  chuanBi:"1. Đồ dùng của cô: Tranh các nghề, đồ chơi đóng vai (áo bác sĩ, nón nông dân).\n2. Đồ dùng của trẻ: Đồ chơi góc phân vai.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Cháu yêu cô chú công nhân', đố vui về nghề nghiệp.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu nghề cô giáo, bác nông dân Cam Lộ làm ra hạt gạo, bác sĩ khám bệnh; trẻ chơi đóng vai các nghề.\nHoạt động 3: Kết thúc — Cô nhận xét, khen trẻ; trẻ hát bài về nghề nghiệp." },
+  slides:[
+  { id:1, tag:"👩‍🏫 CÔ GIÁO MẦM NON", title:"Nghề Cô Giáo Mầm Non", visualTheme:"book",
+    flipCards:[
+    {frontTitle:"❓ Cô giáo làm việc ở đâu?",frontText:"Cô giáo mầm non làm việc ở đâu nào?",backTitle:"🏫 Ở TRƯỜNG MẦM NON",backText:"Cô giáo làm việc ở trường mầm non, dạy dỗ và chăm sóc các bé."},
+    {frontTitle:"❓ Cô giáo làm gì mỗi ngày?",frontText:"Cô giáo làm những việc gì?",backTitle:"📖 DẠY HÁT, KỂ CHUYỆN, CHĂM BÉ",backText:"Cô dạy bé hát, kể chuyện, dạy bé học và chăm bé ăn, ngủ."},
+    {frontTitle:"❓ Bé yêu cô như thế nào?",frontText:"Bé thể hiện tình cảm với cô ra sao?",backTitle:"💗 NGHE LỜI CÔ, ÔM CÔ",backText:"Bé nghe lời cô, ôm cô và nói: 'Con yêu cô ạ!'"},
+    {frontTitle:"❓ Bé muốn làm cô giáo không?",frontText:"Lớn lên bé muốn làm nghề gì?",backTitle:"🌟 BÉ MUỐN LÀM CÔ GIÁO",backText:"Nhiều bé mơ ước lớn lên làm cô giáo như cô Niềm đấy!"}],
+    bullets:["🔹 Bé biết công việc của nghề cô giáo mầm non.","🔹 Bé yêu quý và nghe lời cô giáo."],
+    stateOld:"🤔 Bé chưa biết cô giáo làm gì", bridgeVerb:"NHẬN BIẾT", stateNew:"💗 Bé yêu cô, mơ làm cô giáo",
+    script:"Cô giáo mầm non là người dạy bé hát, kể chuyện và chăm sóc bé mỗi ngày. Cô Niềm yêu các bé nhiều lắm! Bé nào cũng ngoan, nghe lời cô nhé. Lớn lên, bé có muốn làm cô giáo không nào?" },
+  { id:2, tag:"👩‍🌾 BÁC NÔNG DÂN CAM LỘ", title:"Bác Nông Dân Làm Ra Hạt Gạo", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Hạt gạo từ đâu mà có?",frontText:"Bé có biết hạt gạo trắng ngon từ đâu ra?",backTitle:"🌾 TỪ CÂY LÚA NGOÀI ĐỒNG",backText:"Hạt gạo từ cây lúa ngoài đồng, do bác nông dân trồng và chăm sóc."},
+    {frontTitle:"❓ Bác nông dân làm việc gì?",frontText:"Bác nông dân làm những việc gì?",backTitle:"🚜 CÀY RUỘNG, GIEO MẠ, GẶT LÚA",backText:"Bác cày ruộng, gieo mạ, gặt lúa dưới nắng — vất vả lắm!"},
+    {frontTitle:"❓ Quê Cam Lộ trồng gì ngon?",frontText:"Quê hương Cam Lộ có gì ngon nào?",backTitle:"🍠 GẠO, KHOAI, SẮN, RAU XANH",backText:"Quê Cam Lộ có hạt gạo thơm, củ khoai bùi và rau xanh mướt."},
+    {frontTitle:"❓ Bé ăn cơm phải làm sao?",frontText:"Bé phải làm gì khi ăn cơm?",backTitle:"🍚 ĂN HẾT, KHÔNG LÃNG PHÍ",backText:"Bé ăn hết suất cơm, không làm rơi vãi — trân trọng công sức bác nông dân!"}],
+    bullets:["🔹 Bé biết hạt gạo do bác nông dân làm ra.","🔹 Bé biết trân trọng thức ăn, không lãng phí."],
+    stateOld:"🍚 Bé chưa biết gạo từ đâu mà có", bridgeVerb:"KHÁM PHÁ", stateNew:"🌾 Bé biết ơn bác nông dân",
+    script:"Hạt gạo trắng thơm trong bát cơm của bé từ cây lúa ngoài đồng Cam Lộ đấy! Bác nông dân cày ruộng, gieo mạ, gặt lúa dưới nắng gắt. Bé ăn cơm nhớ ăn hết, không lãng phí nhé!" },
+  { id:3, tag:"👩‍⚕️ BÁC SĨ", title:"Bác Sĩ Khám Bệnh Cho Bé", visualTheme:"shapes",
+    flipCards:[
+    {frontTitle:"❓ Bác sĩ làm việc ở đâu?",frontText:"Bác sĩ khám bệnh ở đâu nào?",backTitle:"🏥 Ở BỆNH VIỆN, TRẠM Y TẾ",backText:"Bác sĩ làm việc ở bệnh viện và trạm y tế, khám bệnh cho mọi người."},
+    {frontTitle:"❓ Bác sĩ dùng dụng cụ gì?",frontText:"Bé kể dụng cụ của bác sĩ nào?",backTitle:"🩺 ỐNG NGHE, NHIỆT KẾ, KIM TIÊM",backText:"Bác sĩ dùng ống nghe nghe tim, nhiệt kế đo sốt và kim tiêm chích ngừa."},
+    {frontTitle:"❓ Bé bị ốm thì làm sao?",frontText:"Bé bị sốt, ho thì phải làm gì?",backTitle:"🤒 BÁO CÔ, ĐI KHÁM BÁC SĨ",backText:"Bé báo cô ngay, cô gọi bố mẹ đưa bé đi khám bác sĩ."},
+    {frontTitle:"❓ Bé có sợ tiêm không?",frontText:"Tiêm ngừa có đau không nào?",backTitle:"💪 TIÊM MỘT CHÚT, KHỎE CẢ NĂM",backText:"Tiêm hơi đau một chút thôi, nhưng giúp bé khỏe mạnh cả năm — bé dũng cảm nhé!"}],
+    bullets:["🔹 Bé biết công việc của bác sĩ.","🔹 Bé không sợ khám bệnh, dũng cảm khi tiêm ngừa."],
+    stateOld:"😨 Bé sợ bác sĩ, sợ tiêm", bridgeVerb:"YÊU THƯƠNG", stateNew:"💪 Bé dũng cảm, không sợ khám bệnh",
+    script:"Bác sĩ là người chữa bệnh cho bé. Bác dùng ống nghe nghe tim bé đập thình thịch, đo nhiệt độ xem bé có sốt không. Tiêm ngừa hơi đau một chút thôi, nhưng bé sẽ khỏe mạnh cả năm. Bé dũng cảm nhé!" }
+  ]},
+{ id:"cd5", theme:"Chủ đề 5", icon:"🐰", title:"Thế Giới Động Vật", desc:"Truyện 'Thỏ Con Không Vâng Lời', truyện 'Cáo, Thỏ và Gà Trống', phân biệt vật nuôi trong gia đình và động vật sống trong rừng.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết tên, đặc điểm một số con vật nuôi và động vật rừng; hiểu nội dung truyện 'Thỏ Con Không Vâng Lời'.\n2. Kỹ năng: Trẻ kể lại truyện ngắn, phân biệt vật nuôi và động vật rừng.\n3. Thái độ: Trẻ yêu quý, bảo vệ động vật; biết vâng lời người lớn.",
+  chuanBi:"1. Đồ dùng của cô: Tranh các con vật, rối thỏ, rối cáo, rối gà trống.\n2. Đồ dùng của trẻ: Mặt nạ con vật.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Con thỏ', đố vui tiếng kêu các con vật.\nHoạt động 2: Nội dung trọng tâm — Cô kể truyện 'Thỏ Con Không Vâng Lời' bằng rối; trẻ phân biệt vật nuôi trong nhà và động vật sống trong rừng.\nHoạt động 3: Kết thúc — Trẻ đóng vai các con vật, cô nhận xét và khen trẻ." },
+  slides:[
+  { id:1, tag:"🐰 TRUYỆN THỎ CON", title:"Truyện 'Thỏ Con Không Vâng Lời'", visualTheme:"rabbit",
+    flipCards:[
+    {frontTitle:"❓ Thỏ con sống với ai?",frontText:"Thỏ con sống cùng ai trong nhà?",backTitle:"🏠 SỐNG VỚI THỎ MẸ",backText:"Thỏ con sống với thỏ mẹ trong một ngôi nhà nhỏ bên rừng."},
+    {frontTitle:"❓ Thỏ mẹ dặn thỏ con điều gì?",frontText:"Trước khi đi chợ, thỏ mẹ dặn gì?",backTitle:"⚠️ Ở NHÀ, ĐỪNG MỞ CỬA CHO NGƯỜI LẠ",backText:"Thỏ mẹ dặn: 'Con ở nhà ngoan, đừng mở cửa cho người lạ nhé!'"},
+    {frontTitle:"❓ Thỏ con có nghe lời mẹ không?",frontText:"Thỏ con đã làm gì khi mẹ đi vắng?",backTitle:"😢 THỎ CON KHÔNG VÂNG LỜI",backText:"Thỏ con ham chơi, mở cửa cho cáo vào nhà — nguy hiểm quá!"},
+    {frontTitle:"❓ Bài học của truyện là gì?",frontText:"Qua truyện, bé học được điều gì?",backTitle:"💗 BÉ PHẢI VÂNG LỜI NGƯỜI LỚN",backText:"Bé phải vâng lời bố mẹ, không mở cửa cho người lạ — như thỏ con đã sai rồi!"}],
+    bullets:["🔹 Bé hiểu nội dung truyện 'Thỏ Con Không Vâng Lời'.","🔹 Bé biết vâng lời bố mẹ, không mở cửa cho người lạ."],
+    stateOld:"🐰 Bé chưa biết truyện Thỏ Con", bridgeVerb:"NHẬN BIẾT", stateNew:"💗 Bé vâng lời, biết tự bảo vệ mình",
+    script:"Ngày xưa có một chú thỏ con sống với thỏ mẹ. Một hôm thỏ mẹ đi chợ, dặn thỏ con ở nhà ngoan. Nhưng thỏ con ham chơi, mở cửa cho cáo vào nhà. May mà thỏ mẹ về kịp! Bé nhớ nhé: phải vâng lời bố mẹ, không mở cửa cho người lạ!" },
+  { id:2, tag:"🦊 CÁO, THỎ VÀ GÀ TRỐNG", title:"Truyện 'Cáo, Thỏ và Gà Trống'", visualTheme:"rabbit",
+    flipCards:[
+    {frontTitle:"❓ Cáo sống ở đâu?",frontText:"Cáo sống trong nhà hay trong rừng?",backTitle:"🌲 CÁO SỐNG TRONG RỪNG",backText:"Cáo sống trong rừng sâu, hay rình bắt gà và thỏ."},
+    {frontTitle:"❓ Gà trống giúp thỏ thế nào?",frontText:"Ai đã giúp thỏ đuổi cáo đi?",backTitle:"🐓 GÀ TRỐNG GÁY TO ĐUỔI CÁO",backText:"Gà trống gáy vang, vung cánh đuổi cáo chạy mất dép!"},
+    {frontTitle:"❓ Thỏ cảm ơn gà trống ra sao?",frontText:"Thỏ nói gì với gà trống?",backTitle:"🙏 CẢM ƠN BẠN GÀ TRỐNG NHÉ!",backText:"Thỏ cảm ơn gà trống: 'Cảm ơn bạn đã cứu mình!'"},
+    {frontTitle:"❓ Bé học được gì từ gà trống?",frontText:"Gà trống dũng cảm như thế nào?",backTitle:"💪 DŨNG CẢM GIÚP BẠN",backText:"Gà trống dũng cảm giúp bạn — bé cũng phải dũng cảm giúp bạn nhé!"}],
+    bullets:["🔹 Bé hiểu nội dung truyện 'Cáo, Thỏ và Gà Trống'.","🔹 Bé biết giúp đỡ bạn bè khi bạn gặp khó khăn."],
+    stateOld:"🦊 Bé chưa biết truyện Cáo, Thỏ, Gà", bridgeVerb:"KHÁM PHÁ", stateNew:"🤝 Bé dũng cảm giúp bạn như gà trống",
+    script:"Cáo gian ác đuổi thỏ ra khỏi nhà. Thỏ khóc hu hu. Gà trống nghe thấy, chạy đến gáy vang và đuổi cáo chạy mất! Thỏ cảm ơn gà trống. Bé nhớ nhé: bạn bè phải giúp đỡ nhau như gà trống giúp thỏ!" },
+  { id:3, tag:"🐶 VẬT NUÔI & ĐỘNG VẬT RỪNG", title:"Vật Nuôi Trong Nhà & Động Vật Trong Rừng", visualTheme:"fish",
+    flipCards:[
+    {frontTitle:"❓ Con gì sống trong nhà với bé?",frontText:"Bé kể tên vật nuôi trong nhà nào?",backTitle:"🐶 CHÓ, MÈO, GÀ, VỊT, LỢN",backText:"Chó giữ nhà, mèo bắt chuột, gà đẻ trứng, vịt bơi ao — đều sống gần nhà bé."},
+    {frontTitle:"❓ Con gì sống trong rừng?",frontText:"Bé kể tên động vật trong rừng nào?",backTitle:"🐘 VOI, HỔ, KHỈ, HƯƠU, CÁO",backText:"Voi, hổ, khỉ, hươu sống trong rừng sâu — bé chỉ ngắm trong sách, không đến gần nhé!"},
+    {frontTitle:"❓ Chó kêu thế nào? Mèo kêu thế nào?",frontText:"Bé bắt chước tiếng kêu nào?",backTitle:"🐶 GÂU GÂU – 🐱 MEO MEO",backText:"Chó kêu gâu gâu, mèo kêu meo meo, gà kêu ò ó o, vịt kêu cạp cạp!"},
+    {frontTitle:"❓ Bé chăm sóc vật nuôi ra sao?",frontText:"Bé cho vật nuôi ăn gì?",backTitle:"🥛 CHO ĂN, CHO UỐNG, VUỐT VE",backText:"Bé cho chó ăn cơm, cho mèo uống sữa, vuốt ve nhẹ nhàng — yêu quý vật nuôi!"}],
+    bullets:["🔹 Bé phân biệt vật nuôi trong nhà và động vật trong rừng.","🔹 Bé biết tiếng kêu và cách chăm sóc vật nuôi."],
+    stateOld:"🤔 Bé chưa phân biệt được vật nuôi", bridgeVerb:"NHẬN BIẾT", stateNew:"🌟 Bé phân biệt đúng, yêu quý động vật",
+    script:"Chó, mèo, gà, vịt sống trong nhà với bé. Voi, hổ, khỉ sống trong rừng sâu. Chó kêu gâu gâu, mèo kêu meo meo! Bé nhớ chăm sóc vật nuôi: cho ăn, cho uống và vuốt ve nhẹ nhàng nhé!" }
+  ]},
+
+{ id:"cd6", theme:"Chủ đề 6", icon:"🌱", title:"Thế Giới Thực Vật & Mùa Xuân", desc:"Khám phá 'Bé Yêu Các Loại Rau Củ Quả', thơ 'Bắp Cải Xanh' (Phạm Hổ), truyện 'Nhổ Củ Cải', hoa đẹp ngày Tết.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết tên, đặc điểm một số loại rau củ quả; thuộc thơ 'Bắp Cải Xanh'.\n2. Kỹ năng: Trẻ phân loại rau củ quả, kể lại truyện 'Nhổ Củ Cải'.\n3. Thái độ: Trẻ thích ăn rau củ, yêu thiên nhiên.",
+  chuanBi:"1. Đồ dùng của cô: Rau củ quả thật, tranh minh họa thơ 'Bắp Cải Xanh', rối củ cải.\n2. Đồ dùng của trẻ: Rau củ quả bằng nhựa.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Quả gì', đố vui về rau củ quả.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu các loại rau củ quả; đọc thơ 'Bắp Cải Xanh'; kể truyện 'Nhổ Củ Cải' bằng rối.\nHoạt động 3: Kết thúc — Trẻ chơi trò 'Ai nhanh hơn' phân loại rau củ, cô khen trẻ." },
+  slides:[
+  { id:1, tag:"🥬 RAU CỦ QUẢ", title:"Bé Yêu Các Loại Rau Củ Quả", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Rau nào màu xanh?",frontText:"Bé kể tên rau màu xanh nào?",backTitle:"🥬 BẮP CẢI, RAU MUỐNG, CẢI XANH",backText:"Bắp cải, rau muống, cải xanh — rau xanh giúp bé khỏe mạnh!"},
+    {frontTitle:"❓ Củ nào màu cam?",frontText:"Củ gì màu cam, ăn giòn giòn?",backTitle:"🥕 CỦ CÀ RỐT MÀU CAM",backText:"Củ cà rốt màu cam, ăn giòn, tốt cho mắt bé sáng!"},
+    {frontTitle:"❓ Quả nào màu đỏ?",frontText:"Quả gì tròn tròn, màu đỏ?",backTitle:"🍅 QUẢ CÀ CHUA MÀU ĐỎ",backText:"Quả cà chua đỏ mọng, chua chua ngọt ngọt, bé thích lắm!"},
+    {frontTitle:"❓ Bé có thích ăn rau không?",frontText:"Ăn rau củ có lợi gì cho bé?",backTitle:"💪 ĂN RAU KHỎE MẠNH, CAO LỚN",backText:"Ăn rau củ giúp bé cao lớn, khỏe mạnh và không bị táo bón!"}],
+    bullets:["🔹 Bé biết tên và màu sắc một số loại rau củ quả.","🔹 Bé thích ăn rau củ quả mỗi ngày."],
+    stateOld:"🥦 Bé còn kén ăn rau củ", bridgeVerb:"KHÁM PHÁ", stateNew:"🥕 Bé thích ăn rau, khỏe mạnh",
+    script:"Rau củ quả nhiều màu sắc quá! Bắp cải xanh, cà rốt cam, cà chua đỏ. Ăn rau giúp bé cao lớn, khỏe mạnh và mắt sáng long lanh. Bé nào cũng thích ăn rau nhé!" },
+  { id:2, tag:"📜 THƠ BẮP CẢI XANH", title:"Thơ 'Bắp Cải Xanh' — Phạm Hổ", visualTheme:"flower",
+    flipCards:[
+    {frontTitle:"❓ Bài thơ nói về rau gì?",frontText:"Bài thơ hôm nay nói về rau gì nào?",backTitle:"🥬 NÓI VỀ BẮP CẢI XANH",backText:"Bài thơ 'Bắp Cải Xanh' của nhà thơ Phạm Hổ nói về cây bắp cải xanh mướt."},
+    {frontTitle:"❓ Bắp cải mọc ở đâu?",frontText:"Bắp cải mọc ở đâu?",backTitle:"🌱 MỌC Ở VƯỜN RAU",backText:"Bắp cải mọc ở vườn rau, lá xanh mơn mởn, cuộn tròn xinh xắn."},
+    {frontTitle:"❓ Ai chăm sóc bắp cải?",frontText:"Ai tưới nước, bắt sâu cho bắp cải?",backTitle:"👩‍🌾 BÁC NÔNG DÂN CHĂM SÓC",backText:"Bác nông dân tưới nước, bắt sâu để bắp cải lớn nhanh."},
+    {frontTitle:"❓ Bé đọc thơ cùng cô nhé?",frontText:"Bé có thuộc thơ 'Bắp Cải Xanh' không?",backTitle:"📖 BÉ ĐỌC THƠ THẬT HAY",backText:"Bé đọc thơ diễn cảm cùng cô, giọng trong trẻo như chim hót."}],
+    bullets:["🔹 Bé thuộc và đọc diễn cảm thơ 'Bắp Cải Xanh' (Phạm Hổ).","🔹 Bé biết bắp cải mọc ở vườn rau, do bác nông dân chăm sóc."],
+    stateOld:"📖 Bé chưa thuộc thơ 'Bắp Cải Xanh'", bridgeVerb:"NHẬN BIẾT", stateNew:"🎤 Bé đọc thơ hay, nhớ lâu",
+    script:"Cô đọc thơ 'Bắp Cải Xanh' cho bé nghe nhé. Bắp cải xanh mướt mọc ở vườn rau, bác nông dân tưới nước mỗi ngày. Bé đọc cùng cô nào, giọng đọc trong trẻo như chim hót!" },
+  { id:3, tag:"🥕 TRUYỆN NHỔ CỦ CẢI", title:"Truyện 'Nhổ Củ Cải'", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Ông trồng cây gì?",frontText:"Ông trồng cây gì trong vườn?",backTitle:"🥕 ÔNG TRỒNG CỦ CẢI",backText:"Ông trồng một cây củ cải, củ cải lớn nhanh như thổi!"},
+    {frontTitle:"❓ Ông nhổ củ cải được không?",frontText:"Một mình ông có nhổ được củ cải không?",backTitle:"😅 ÔNG NHỔ MÃI KHÔNG ĐƯỢC",backText:"Củ cải to quá, ông nhổ mãi không được, phải gọi bà ra giúp!"},
+    {frontTitle:"❓ Ai đã đến giúp ông?",frontText:"Những ai đã cùng nhau nhổ củ cải?",backTitle:"👵 BÀ, CHÁU, CHÓ, MÈO CÙNG NHỔ",backText:"Bà nắm áo ông, cháu nắm áo bà, chó nắm áo cháu, mèo nắm áo chó — cùng kéo!"},
+    {frontTitle:"❓ Cuối cùng củ cải có lên không?",frontText:"Mọi người cùng kéo thì sao?",backTitle:"🎉 CỦ CẢI BẬT LÊN RỒI!",backText:"Một, hai, ba — kéo! Củ cải bật lên. Đoàn kết là sức mạnh!"}],
+    bullets:["🔹 Bé hiểu nội dung truyện 'Nhổ Củ Cải'.","🔹 Bé biết đoàn kết, giúp đỡ nhau thì việc khó cũng xong."],
+    stateOld:"🥕 Bé chưa biết truyện Nhổ Củ Cải", bridgeVerb:"YÊU THƯƠNG", stateNew:"🤝 Bé biết đoàn kết giúp nhau",
+    script:"Ông trồng củ cải to ơi là to! Ông nhổ mãi không được, gọi bà, gọi cháu, gọi cả chó mèo cùng kéo. Một, hai, ba — củ cải bật lên! Bé nhớ nhé: đoàn kết giúp nhau thì việc khó cũng xong!" }
+  ]},
+{ id:"cd7", theme:"Chủ đề 7", icon:"🚦", title:"Giao Thông & An Toàn", desc:"Nhận biết đèn tín hiệu giao thông (Đỏ dừng lại – Xanh mới đi – Vàng đi chậm), kỹ năng đội mũ bảo hiểm & không đi theo người lạ.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết ý nghĩa 3 màu đèn tín hiệu giao thông; biết đội mũ bảo hiểm khi đi xe máy.\n2. Kỹ năng: Trẻ thực hành dừng – đi theo đèn tín hiệu, đội mũ bảo hiểm đúng cách.\n3. Thái độ: Trẻ chấp hành luật giao thông, không đi theo người lạ.",
+  chuanBi:"1. Đồ dùng của cô: Mô hình đèn giao thông, mũ bảo hiểm, tranh đường phố.\n2. Đồ dùng của trẻ: Mũ bảo hiểm, xe đạp đồ chơi.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Đèn xanh đèn đỏ', đố vui về đèn giao thông.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu đèn đỏ – vàng – xanh; trẻ thực hành đi – dừng theo đèn; hướng dẫn đội mũ bảo hiểm; dặn bé không đi theo người lạ.\nHoạt động 3: Kết thúc — Trẻ chơi trò 'Đèn xanh đèn đỏ', cô nhận xét và khen trẻ." },
+  slides:[
+  { id:1, tag:"🚦 ĐÈN GIAO THÔNG", title:"Đèn Đỏ – Đèn Vàng – Đèn Xanh", visualTheme:"traffic",
+    flipCards:[
+    {frontTitle:"❓ Đèn đỏ nghĩa là gì?",frontText:"Thấy đèn đỏ, bé phải làm gì?",backTitle:"🔴 ĐỎ LÀ DỪNG LẠI",backText:"Đèn đỏ bật sáng, mọi xe và người đi bộ đều dừng lại!"},
+    {frontTitle:"❓ Đèn vàng nghĩa là gì?",frontText:"Thấy đèn vàng, bé làm gì?",backTitle:"🟡 VÀNG LÀ ĐI CHẬM LẠI",backText:"Đèn vàng bật sáng, bé đi chậm lại và chuẩn bị dừng!"},
+    {frontTitle:"❓ Đèn xanh nghĩa là gì?",frontText:"Thấy đèn xanh, bé được làm gì?",backTitle:"🟢 XANH LÀ ĐƯỢC ĐI",backText:"Đèn xanh bật sáng, bé được đi — nhưng vẫn phải nhìn trước nhìn sau!"},
+    {frontTitle:"❓ Bé qua đường ở đâu?",frontText:"Bé qua đường ở chỗ nào mới an toàn?",backTitle:"🦓 QUA VẠCH TRẮNG, NẮM TAY NGƯỜI LỚN",backText:"Bé qua đường ở vạch trắng dành cho người đi bộ, nắm chặt tay người lớn!"}],
+    bullets:["🔹 Bé biết ý nghĩa đèn đỏ – vàng – xanh.","🔹 Bé biết qua đường ở vạch trắng, nắm tay người lớn."],
+    stateOld:"🚗 Bé chưa biết đèn giao thông", bridgeVerb:"NHẬN BIẾT", stateNew:"🚦 Bé nhớ đèn, qua đường an toàn",
+    script:"Đèn giao thông có ba màu: đỏ dừng lại, vàng đi chậm, xanh mới đi. Bé qua đường nhớ đi trên vạch trắng và nắm chặt tay người lớn nhé. Bé ngoan là bé an toàn!" },
+  { id:2, tag:"🪖 MŨ BẢO HIỂM", title:"Đội Mũ Bảo Hiểm Đúng Cách", visualTheme:"traffic",
+    flipCards:[
+    {frontTitle:"❓ Khi nào bé đội mũ bảo hiểm?",frontText:"Đi xe máy, bé phải làm gì?",backTitle:"🪖 ĐỘI MŨ KHI ĐI XE MÁY",backText:"Ngồi xe máy, bé luôn đội mũ bảo hiểm để bảo vệ đầu!"},
+    {frontTitle:"❓ Đội mũ thế nào mới đúng?",frontText:"Bé đội mũ ra sao?",backTitle:"✅ ĐỘI NGAY NGẮN, CÀI QUAI CHẶT",backText:"Bé đội mũ ngay ngắn, cài quai chặt dưới cằm — không đội lệch!"},
+    {frontTitle:"❓ Mũ bảo hiểm bảo vệ bé khỏi gì?",frontText:"Mũ bảo hiểm có tác dụng gì?",backTitle:"🛡️ BẢO VỆ ĐẦU CỦA BÉ",backText:"Mũ bảo hiểm như chiếc khiên bảo vệ đầu bé khi không may bị ngã."},
+    {frontTitle:"❓ Bé nhắc bố mẹ điều gì?",frontText:"Bố mẹ quên đội mũ thì bé nói gì?",backTitle:"🗣️ BỐ MẸ NHỚ ĐỘI MŨ NHÉ!",backText:"Bé nhắc bố mẹ: 'Bố mẹ nhớ đội mũ bảo hiểm nhé!'"}],
+    bullets:["🔹 Bé biết đội mũ bảo hiểm khi đi xe máy.","🔹 Bé biết đội mũ ngay ngắn, cài quai chặt."],
+    stateOld:"🪖 Bé chưa biết đội mũ bảo hiểm", bridgeVerb:"THỰC HÀNH", stateNew:"✅ Bé đội mũ đúng, an toàn",
+    script:"Ngồi xe máy, bé nhớ đội mũ bảo hiểm nhé! Đội ngay ngắn, cài quai chặt dưới cằm. Mũ bảo hiểm bảo vệ đầu của bé. Bé còn nhắc bố mẹ cùng đội mũ nữa đấy!" },
+  { id:3, tag:"⚠️ KHÔNG ĐI THEO NGƯỜI LẠ", title:"Bé Không Đi Theo Người Lạ", visualTheme:"sun",
+    flipCards:[
+    {frontTitle:"❓ Người lạ cho kẹo, bé làm sao?",frontText:"Người lạ cho bé kẹo, bé có lấy không?",backTitle:"🚫 KHÔNG LẤY, KHÔNG ĐI THEO",backText:"Bé không lấy kẹo của người lạ, không đi theo người lạ — chạy về báo cô ngay!"},
+    {frontTitle:"❓ Bé bị lạc thì làm sao?",frontText:"Bé đi lạc khỏi bố mẹ thì làm gì?",backTitle:"📢 ĐỨNG YÊN, GỌI TO TÌM NGƯỜI GIÚP",backText:"Bé đứng yên một chỗ, gọi to: 'Bố ơi! Mẹ ơi!' hoặc nhờ chú công an giúp."},
+    {frontTitle:"❓ Bé nhớ số điện thoại của ai?",frontText:"Bé nhớ số của bố hay mẹ?",backTitle:"📞 NHỚ SỐ ĐIỆN THOẠI CỦA BỐ MẸ",backText:"Bé học thuộc số điện thoại của bố mẹ để nhờ người lớn gọi giúp khi cần."},
+    {frontTitle:"❓ Bé chơi ở đâu mới an toàn?",frontText:"Bé chỉ chơi ở những nơi nào?",backTitle:"🏫 CHƠI TRONG SÂN TRƯỜNG, SÂN NHÀ",backText:"Bé chỉ chơi trong sân trường, sân nhà có người lớn trông — không ra đường một mình!"}],
+    bullets:["🔹 Bé biết không lấy đồ và không đi theo người lạ.","🔹 Bé biết cách xử lý khi bị lạc."],
+    stateOld:"😟 Bé chưa biết tự bảo vệ mình", bridgeVerb:"THỰC HÀNH", stateNew:"🛡️ Bé biết tự bảo vệ mình an toàn",
+    script:"Người lạ cho kẹo, bé không lấy nhé! Người lạ rủ đi chơi, bé không đi theo! Bé chỉ chơi trong sân trường, sân nhà. Nếu bị lạc, bé đứng yên và gọi to tìm người giúp. Bé thông minh, bé an toàn!" }
+  ]},
+{ id:"cd8", theme:"Chủ đề 8", icon:"💧", title:"Nước & Hiện Tượng Tự Nhiên", desc:"Sự kỳ diệu của Nước (ích lợi & tiết kiệm nước), nhận biết Trời nắng – Trời mưa, Ngày và Đêm.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết ích lợi của nước, biết tiết kiệm nước; nhận biết trời nắng – trời mưa, ngày – đêm.\n2. Kỹ năng: Trẻ phân biệt trời nắng – trời mưa, kể được hoạt động ban ngày – ban đêm.\n3. Thái độ: Trẻ biết tiết kiệm nước, yêu thiên nhiên.",
+  chuanBi:"1. Đồ dùng của cô: Tranh nước, trời nắng, trời mưa, ngày và đêm; cốc nước, khăn.\n2. Đồ dùng của trẻ: Ô, áo mưa đồ chơi.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Cho tôi đi làm mưa với', trò chuyện về nước.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu ích lợi của nước và cách tiết kiệm nước; trẻ nhận biết trời nắng – trời mưa, ngày – đêm qua tranh.\nHoạt động 3: Kết thúc — Trẻ chơi trò 'Trời nắng – Trời mưa', cô khen trẻ." },
+  slides:[
+  { id:1, tag:"💧 NƯỚC KỲ DIỆU", title:"Sự Kỳ Diệu Của Nước", visualTheme:"water",
+    flipCards:[
+    {frontTitle:"❓ Nước dùng để làm gì?",frontText:"Bé kể công dụng của nước nào?",backTitle:"🥛 UỐNG, TẮM, RỬA, NẤU ĂN",backText:"Nước để uống, tắm rửa, nấu cơm và tưới cây — không có nước, bé không sống được!"},
+    {frontTitle:"❓ Nước từ đâu mà có?",frontText:"Nước trong vòi từ đâu ra?",backTitle:"🌧️ TỪ MƯA, SÔNG, GIẾNG",backText:"Nước từ mưa rơi, sông chảy và giếng khoan — rồi chảy về vòi nhà bé."},
+    {frontTitle:"❓ Bé tiết kiệm nước thế nào?",frontText:"Bé làm gì để không lãng phí nước?",backTitle:"🚰 KHÓA VÒI KHI KHÔNG DÙNG",backText:"Bé khóa vòi nước ngay sau khi rửa tay, không để nước chảy hoài!"},
+    {frontTitle:"❓ Cây cối cần nước không?",frontText:"Không tưới nước, cây sẽ ra sao?",backTitle:"🌱 CÂY HÉO, KHÔNG LỚN ĐƯỢC",backText:"Cây cần nước để lớn xanh tốt — bé nhớ tưới cây mỗi ngày nhé!"}],
+    bullets:["🔹 Bé biết ích lợi của nước trong đời sống.","🔹 Bé biết tiết kiệm nước: khóa vòi khi không dùng."],
+    stateOld:"💧 Bé chưa biết quý trọng nước", bridgeVerb:"KHÁM PHÁ", stateNew:"💙 Bé biết tiết kiệm nước mỗi ngày",
+    script:"Nước kỳ diệu lắm! Nước để uống, tắm, nấu cơm và tưới cây. Bé nhớ khóa vòi nước sau khi rửa tay nhé, đừng để nước chảy hoài. Tiết kiệm nước là bé ngoan!" },
+  { id:2, tag:"☀️🌧️ NẮNG – MƯA", title:"Trời Nắng – Trời Mưa", visualTheme:"sun",
+    flipCards:[
+    {frontTitle:"❓ Trời nắng thì sao?",frontText:"Trời nắng, bé thấy gì?",backTitle:"☀️ NẮNG VÀNG, TRỜI XANH",backText:"Trời nắng có nắng vàng rực rỡ, bầu trời xanh trong và mây trắng bay."},
+    {frontTitle:"❓ Trời mưa thì sao?",frontText:"Trời mưa, bé thấy gì?",backTitle:"🌧️ MƯA RƠI, TRỜI TỐI",backText:"Trời mưa có hạt mưa rơi lộp độp, bầu trời xám xịt và đường ướt."},
+    {frontTitle:"❓ Trời mưa, bé mang gì?",frontText:"Đi mưa, bé cần mang gì?",backTitle:"☂️ Ô, ÁO MƯA, ỦNG",backText:"Trời mưa, bé mang ô, mặc áo mưa và đi ủng để không bị ướt!"},
+    {frontTitle:"❓ Sau mưa có gì đẹp?",frontText:"Sau cơn mưa, bầu trời có gì?",backTitle:"🌈 CẦU VỒNG BẢY SẮC",backText:"Sau mưa, cầu vồng bảy sắc hiện lên — đẹp ơi là đẹp!"}],
+    bullets:["🔹 Bé nhận biết trời nắng và trời mưa.","🔹 Bé biết mang ô, áo mưa khi trời mưa và thích ngắm cầu vồng."],
+    stateOld:"🌦️ Bé chưa phân biệt nắng – mưa", bridgeVerb:"NHẬN BIẾT", stateNew:"🌈 Bé phân biệt đúng, thích ngắm cầu vồng",
+    script:"Trời nắng vàng rực rỡ, trời mưa hạt rơi lộp độp. Đi mưa, bé nhớ mang ô và mặc áo mưa nhé. Sau cơn mưa, cầu vồng bảy sắc hiện lên đẹp lắm! Bé có thích cầu vồng không?" },
+  { id:3, tag:"🌞🌙 NGÀY – ĐÊM", title:"Ngày Và Đêm", visualTheme:"sun",
+    flipCards:[
+    {frontTitle:"❓ Ban ngày có gì?",frontText:"Ban ngày, bé thấy gì trên trời?",backTitle:"☀️ MẶT TRỜI CHIẾU SÁNG",backText:"Ban ngày có mặt trời chiếu sáng, bé đi học, chơi đùa và ăn cơm."},
+    {frontTitle:"❓ Ban đêm có gì?",frontText:"Ban đêm, bé thấy gì trên trời?",backTitle:"🌙 MẶT TRĂNG VÀ NGÔI SAO",backText:"Ban đêm có mặt trăng và ngôi sao lấp lánh, bé ngủ ngon trong vòng tay mẹ."},
+    {frontTitle:"❓ Ban ngày bé làm gì?",frontText:"Ban ngày bé làm những việc gì?",backTitle:"🏫 ĐI HỌC, CHƠI, ĂN CƠM",backText:"Ban ngày bé đi học, chơi với bạn, ăn cơm và ngủ trưa ở trường."},
+    {frontTitle:"❓ Ban đêm bé làm gì?",frontText:"Ban đêm bé làm gì nào?",backTitle:"😴 ĐÁNH RĂNG, NGỦ NGON",backText:"Ban đêm bé đánh răng, nghe mẹ kể chuyện rồi ngủ ngon đến sáng!"}],
+    bullets:["🔹 Bé phân biệt ngày và đêm.","🔹 Bé biết hoạt động ban ngày và ban đêm."],
+    stateOld:"🌞 Bé chưa phân biệt ngày – đêm", bridgeVerb:"NHẬN BIẾT", stateNew:"🌙 Bé phân biệt đúng ngày và đêm",
+    script:"Ban ngày mặt trời chiếu sáng, bé đi học thật vui. Ban đêm mặt trăng lên, sao lấp lánh, bé đánh răng rồi ngủ ngon. Ngày và đêm thay nhau, bé lớn lên mỗi ngày!" }
+  ]},
+{ id:"cd9", theme:"Chủ đề 9", icon:"🇻🇳", title:"Quê Hương Quảng Trị – Đất Nước – Bác Hồ", desc:"Bác Hồ với các cháu thiếu nhi (thơ 'Ảnh Bác'), yêu quê hương Cam Lộ – Quảng Trị.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ biết Bác Hồ là vị lãnh tụ kính yêu, biết quê hương Cam Lộ – Quảng Trị; thuộc thơ 'Ảnh Bác'.\n2. Kỹ năng: Trẻ đọc thơ diễn cảm, kể được về quê hương mình.\n3. Thái độ: Trẻ kính yêu Bác Hồ, yêu quê hương đất nước.",
+  chuanBi:"1. Đồ dùng của cô: Ảnh Bác Hồ, tranh quê hương Cam Lộ, cờ Tổ quốc.\n2. Đồ dùng của trẻ: Cờ nhỏ, hoa.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Ai yêu Bác Hồ Chí Minh hơn thiếu niên nhi đồng', trò chuyện về Bác Hồ.\nHoạt động 2: Nội dung trọng tâm — Cô kể chuyện Bác Hồ với các cháu thiếu nhi; đọc thơ 'Ảnh Bác'; trẻ kể về quê hương Cam Lộ – Quảng Trị.\nHoạt động 3: Kết thúc — Trẻ đọc lại thơ 'Ảnh Bác', dâng hoa lên ảnh Bác, cô khen trẻ." },
+  slides:[
+  { id:1, tag:"🇻🇳 BÁC HỒ KÍNH YÊU", title:"Bác Hồ Với Các Cháu Thiếu Nhi", visualTheme:"flag",
+    flipCards:[
+    {frontTitle:"❓ Bác Hồ là ai?",frontText:"Bé có biết Bác Hồ là ai không?",backTitle:"🌟 VỊ LÃNH TỤ KÍNH YÊU CỦA DÂN TỘC",backText:"Bác Hồ là vị lãnh tụ kính yêu của dân tộc Việt Nam, người cha già của các cháu thiếu nhi."},
+    {frontTitle:"❓ Bác Hồ thương thiếu nhi thế nào?",frontText:"Bác Hồ đối với các cháu ra sao?",backTitle:"💗 BÁC YÊU THƯƠNG CÁC CHÁU NHẤT",backText:"Bác Hồ rất yêu thương thiếu nhi, Bác viết thư khen các cháu chăm ngoan, học giỏi."},
+    {frontTitle:"❓ Bé thể hiện lòng kính yêu Bác ra sao?",frontText:"Bé làm gì để Bác vui?",backTitle:"🌸 CHĂM NGOAN, HỌC GIỎI",backText:"Bé chăm ngoan, học giỏi, nghe lời cô và bố mẹ — đó là cách bé kính yêu Bác!"},
+    {frontTitle:"❓ Ảnh Bác treo ở đâu?",frontText:"Trong lớp mình, ảnh Bác treo ở đâu?",backTitle:"🖼️ TREO TRANG TRỌNG GIỮA LỚP",backText:"Ảnh Bác được treo trang trọng giữa lớp, bé ngắm Bác mỗi ngày đến lớp."}],
+    bullets:["🔹 Bé biết Bác Hồ là vị lãnh tụ kính yêu.","🔹 Bé biết chăm ngoan, học giỏi để Bác vui."],
+    stateOld:"🇻🇳 Bé chưa biết về Bác Hồ", bridgeVerb:"YÊU THƯƠNG", stateNew:"💗 Bé kính yêu Bác Hồ",
+    script:"Bác Hồ là người cha già kính yêu của các cháu thiếu nhi. Bác rất thương các bé, Bác mong bé chăm ngoan, học giỏi. Bé hứa với Bác: bé sẽ ngoan, sẽ giỏi mỗi ngày nhé!" },
+  { id:2, tag:"📜 THƠ ẢNH BÁC", title:"Thơ 'Ảnh Bác'", visualTheme:"flag",
+    flipCards:[
+    {frontTitle:"❓ Bài thơ nói về ai?",frontText:"Bài thơ 'Ảnh Bác' nói về ai nào?",backTitle:"🇻🇳 NÓI VỀ BÁC HỒ",backText:"Bài thơ 'Ảnh Bác' nói về Bác Hồ — người cha già kính yêu của thiếu nhi."},
+    {frontTitle:"❓ Ảnh Bác như thế nào?",frontText:"Trong thơ, ảnh Bác ra sao?",backTitle:"😊 BÁC CƯỜI HIỀN, RÂU TÓC BẠC",backText:"Ảnh Bác treo giữa lớp, Bác cười hiền, râu tóc bạc phơ, mắt sáng long lanh."},
+    {frontTitle:"❓ Bé nhìn ảnh Bác thì làm gì?",frontText:"Bé thấy ảnh Bác thì nói gì?",backTitle:"🙏 BÉ CHÀO BÁC, HỨA NGOAN",backText:"Bé chào Bác, hứa chăm ngoan học giỏi để Bác vui lòng."},
+    {frontTitle:"❓ Bé đọc thơ cùng cô nhé?",frontText:"Bé có thuộc thơ 'Ảnh Bác' không?",backTitle:"📖 BÉ ĐỌC THƠ THẬT HAY",backText:"Bé đọc thơ diễn cảm cùng cô, giọng trong trẻo và đầy tình cảm."}],
+    bullets:["🔹 Bé thuộc và đọc diễn cảm thơ 'Ảnh Bác'.","🔹 Bé biết thể hiện lòng kính yêu Bác Hồ."],
+    stateOld:"📖 Bé chưa thuộc thơ 'Ảnh Bác'", bridgeVerb:"NHẬN BIẾT", stateNew:"🎤 Bé đọc thơ hay, kính yêu Bác",
+    script:"Cô đọc thơ 'Ảnh Bác' cho bé nghe nhé. Ảnh Bác treo giữa lớp, Bác cười hiền lắm! Bé đọc cùng cô nào, giọng đọc trong trẻo và tình cảm. Bé hứa với Bác sẽ chăm ngoan, học giỏi!" },
+  { id:3, tag:"🏡 QUÊ HƯƠNG CAM LỘ", title:"Yêu Quê Hương Cam Lộ – Quảng Trị", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Quê bé ở đâu?",frontText:"Bé sống ở đâu nào?",backTitle:"🏡 XÃ CAM LỘ, TỈNH QUẢNG TRỊ",backText:"Bé sống ở xã Cam Lộ, tỉnh Quảng Trị — quê hương anh hùng và xinh đẹp!"},
+    {frontTitle:"❓ Quảng Trị có gì nổi tiếng?",frontText:"Bé biết di tích nào ở Quảng Trị?",backTitle:"🏰 THÀNH CỔ QUẢNG TRỊ, SÔNG BẾN HẢI",backText:"Quảng Trị có Thành Cổ anh hùng, sông Bến Hải và cầu Hiền Lương lịch sử."},
+    {frontTitle:"❓ Quê Cam Lộ có gì ngon?",frontText:"Quê mình có đặc sản gì nào?",backTitle:"🍠 GẠO THƠM, KHOAI BÙI, RAU XANH",backText:"Quê Cam Lộ có hạt gạo thơm, củ khoai bùi và vườn rau xanh mướt."},
+    {frontTitle:"❓ Bé yêu quê hương thế nào?",frontText:"Bé thể hiện tình yêu quê ra sao?",backTitle:"💗 GIỮ SẠCH, TRỒNG CÂY, HỌC GIỎI",backText:"Bé giữ quê sạch đẹp, trồng cây xanh và học giỏi — yêu quê hương lắm!"}],
+    bullets:["🔹 Bé biết quê hương Cam Lộ – Quảng Trị của mình.","🔹 Bé biết yêu và giữ gìn quê hương sạch đẹp."],
+    stateOld:"🏡 Bé chưa biết về quê hương mình", bridgeVerb:"YÊU THƯƠNG", stateNew:"💗 Bé yêu quê Cam Lộ – Quảng Trị",
+    script:"Quê hương của bé là xã Cam Lộ, tỉnh Quảng Trị — nơi có Thành Cổ anh hùng và dòng sông Bến Hải. Quê mình có gạo thơm, khoai bùi. Bé giữ quê sạch đẹp, trồng thêm cây xanh và học giỏi nhé!" }
+  ]},
+{ id:"cd10", theme:"Chuyên đề Toán", icon:"🔢", title:"Làm Quen Với Toán (3–4 Tuổi)", desc:"Nhận biết hình tròn – hình vuông – hình tam giác; đếm đến 3 và nhận biết nhóm có 1, 2, 3 đối tượng; so sánh to – nhỏ, cao – thấp.",
+  plan:{ mucDich:"1. Kiến thức: Trẻ nhận biết hình tròn, hình vuông, hình tam giác; đếm đến 3; so sánh to – nhỏ, cao – thấp.\n2. Kỹ năng: Trẻ chỉ đúng hình theo yêu cầu, đếm nhóm 1–3 đối tượng, so sánh hai đối tượng.\n3. Thái độ: Trẻ thích học toán qua trò chơi.",
+  chuanBi:"1. Đồ dùng của cô: Bộ hình tròn – vuông – tam giác, thẻ số 1–3, đồ chơi to – nhỏ.\n2. Đồ dùng của trẻ: Bộ hình bằng nhựa.",
+  tienHanh:"Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô và trẻ hát 'Một con vịt', đố vui về hình dạng đồ vật.\nHoạt động 2: Nội dung trọng tâm — Cô giới thiệu hình tròn, hình vuông, hình tam giác; trẻ đếm nhóm 1–3 đối tượng; so sánh to – nhỏ, cao – thấp qua đồ chơi.\nHoạt động 3: Kết thúc — Trẻ chơi trò 'Tìm hình giống nhau', cô khen trẻ." },
+  slides:[
+  { id:1, tag:"🔵 HÌNH TRÒN – VUÔNG – TAM GIÁC", title:"Nhận Biết Hình Tròn, Vuông, Tam Giác", visualTheme:"shapes",
+    flipCards:[
+    {frontTitle:"❓ Hình tròn giống cái gì?",frontText:"Bé kể đồ vật hình tròn nào?",backTitle:"🔵 BÁNH XE, MẶT TRĂNG, QUẢ CAM",backText:"Hình tròn giống bánh xe, mặt trăng và quả cam — tròn xoe, lăn được!"},
+    {frontTitle:"❓ Hình vuông giống cái gì?",frontText:"Bé kể đồ vật hình vuông nào?",backTitle:"⬛ KHĂN TAY, HỘP BÁNH, CỬA SỔ",backText:"Hình vuông giống khăn tay, hộp bánh — có 4 cạnh bằng nhau!"},
+    {frontTitle:"❓ Hình tam giác giống cái gì?",frontText:"Bé kể đồ vật hình tam giác nào?",backTitle:"🔺 MÁI NHÀ, NÚI, BÁNH CHƯNG",backText:"Hình tam giác giống mái nhà, ngọn núi — có 3 cạnh, 3 góc nhọn!"},
+    {frontTitle:"❓ Bé tìm hình trong lớp nhé?",frontText:"Bé tìm đồ vật hình tròn trong lớp nào?",backTitle:"🔍 ĐỒNG HỒ TRÒN, BÓNG TRÒN",backText:"Đồng hồ treo tường hình tròn, quả bóng hình tròn — bé tìm giỏi quá!"}],
+    bullets:["🔹 Bé nhận biết hình tròn, hình vuông, hình tam giác.","🔹 Bé tìm được đồ vật có dạng hình đã học trong lớp."],
+    stateOld:"🔷 Bé chưa phân biệt các hình", bridgeVerb:"NHẬN BIẾT", stateNew:"🌟 Bé gọi đúng tên từng hình",
+    script:"Hình tròn lăn được như quả bóng, hình vuông có 4 cạnh bằng nhau như khăn tay, hình tam giác nhọn như mái nhà. Bé tìm trong lớp xem còn đồ vật nào hình tròn, hình vuông nữa nhé!" },
+  { id:2, tag:"🔢 ĐẾM ĐẾN 3", title:"Đếm Đến 3 Và Nhóm 1, 2, 3 Đối Tượng", visualTheme:"shapes",
+    flipCards:[
+    {frontTitle:"❓ Đếm cùng cô: 1, 2, 3!",frontText:"Bé đếm theo cô nào?",backTitle:"1️⃣2️⃣3️⃣ MỘT, HAI, BA!",backText:"Một, hai, ba — bé đếm giỏi quá! Đếm lại nào: một quả cam, hai quả cam, ba quả cam!"},
+    {frontTitle:"❓ Nhóm có 1 đối tượng là sao?",frontText:"Một quả táo là nhóm mấy?",backTitle:"1️⃣ NHÓM CÓ 1 QUẢ TÁO",backText:"Một quả táo là nhóm có 1 đối tượng — bé chỉ đúng rồi!"},
+    {frontTitle:"❓ Nhóm có 2, 3 đối tượng là sao?",frontText:"Hai con vịt, ba bông hoa là nhóm mấy?",backTitle:"2️⃣3️⃣ NHÓM 2 VỊT, NHÓM 3 HOA",backText:"Hai con vịt là nhóm có 2, ba bông hoa là nhóm có 3 — bé đếm đúng rồi!"},
+    {frontTitle:"❓ Bé đếm ngón tay nào?",frontText:"Bé giơ mấy ngón tay?",backTitle:"✋ BÉ ĐẾM NGÓN TAY 1–2–3",backText:"Bé giơ một ngón, hai ngón, ba ngón tay và đếm to: một, hai, ba!"}],
+    bullets:["🔹 Bé đếm đến 3 và nhận biết nhóm có 1, 2, 3 đối tượng.","🔹 Bé đếm đúng số lượng đồ vật trong trò chơi."],
+    stateOld:"🔢 Bé chưa đếm được đến 3", bridgeVerb:"THỰC HÀNH", stateNew:"🎉 Bé đếm đến 3 thật giỏi",
+    script:"Một, hai, ba! Bé đếm cùng cô nào. Một quả táo, hai con vịt, ba bông hoa. Bé giơ ngón tay lên đếm nhé: một, hai, ba — bé giỏi quá!" },
+  { id:3, tag:"📏 TO – NHỎ, CAO – THẤP", title:"So Sánh To – Nhỏ, Cao – Thấp", visualTheme:"tree",
+    flipCards:[
+    {frontTitle:"❓ Quả nào to, quả nào nhỏ?",frontText:"Quả dưa hấu và quả nho, quả nào to hơn?",backTitle:"🍉 DƯA HẤU TO – 🍇 NHO NHỎ",backText:"Quả dưa hấu to ơi là to, quả nho nhỏ xíu xiu!"},
+    {frontTitle:"❓ Ai cao hơn, ai thấp hơn?",frontText:"Cô và bé, ai cao hơn?",backTitle:"👩 CÔ CAO HƠN BÉ",backText:"Cô cao hơn bé, bé thấp hơn cô — bé sẽ lớn nhanh và cao lên mỗi ngày!"},
+    {frontTitle:"❓ Cây nào cao, cây nào thấp?",frontText:"Cây bàng và cây hoa, cây nào cao hơn?",backTitle:"🌳 CÂY BÀNG CAO – 🌸 CÂY HOA THẤP",backText:"Cây bàng cao vút, cây hoa thấp lè tè — bé nhìn đúng rồi!"},
+    {frontTitle:"❓ Bé xếp đồ chơi to – nhỏ nhé?",frontText:"Bé xếp gấu to trước hay gấu nhỏ trước?",backTitle:"🧸 XẾP TỪ TO ĐẾN NHỎ",backText:"Bé xếp gấu bông từ to đến nhỏ thành một hàng thật đẹp!"}],
+    bullets:["🔹 Bé so sánh được to – nhỏ, cao – thấp.","🔹 Bé xếp đồ vật theo thứ tự to – nhỏ."],
+    stateOld:"📏 Bé chưa so sánh được to – nhỏ", bridgeVerb:"NHẬN BIẾT", stateNew:"🌟 Bé so sánh đúng to – nhỏ, cao – thấp",
+    script:"Quả dưa hấu to, quả nho nhỏ. Cô cao, bé thấp — nhưng bé sẽ lớn nhanh! Cây bàng cao vút, cây hoa thấp lè tè. Bé xếp gấu bông từ to đến nhỏ nhé, bé giỏi quá!" }
+  ]}
+];
+/*__SLIDES_DATA_END__*/
+
+/*__POEMS_START__*/
+const POEMS = [
+{ id:1, type:"tho", title:"Yêu Mẹ — Nguyễn Bao", content:"Mẹ đi làm\nTừ sáng sớm\nDậy thổi cơm\nMua thịt cá\nEm kề má\nĐược mẹ yêu\nÔi mẹ ơi\nYêu mẹ lắm!" },
+{ id:2, type:"tho", title:"Bắp Cải Xanh — Phạm Hổ", content:"Bắp cải xanh\nXanh mơn mởn\nLá xanh um\nXanh mát rượi\nBắp cải ơi\nBắp cải xanh\nLớn nhanh nhé\nCho bé ăn!" },
+{ id:3, type:"tho", title:"Ảnh Bác", content:"Ảnh Bác Hồ\nTreo giữa lớp\nBác cười hiền\nMắt sáng trong\nBé yêu Bác\nHứa chăm ngoan\nHọc thật giỏi\nBác vui lòng!" },
+{ id:4, type:"tho", title:"Đi Học", content:"Sáng nay bé\nĐi học vui\nChào cô giáo\nChào bạn thân\nVào lớp học\nBé ngoan ngoãn\nNghe cô giảng\nChăm học hành!" },
+{ id:5, type:"tho", title:"Mưa Rơi", content:"Mưa rơi lộp độp\nTrên mái nhà\nMưa rơi tí tách\nTrên lá hoa\nBé ngồi trong lớp\nNgắm mưa rơi\nMưa ơi mưa à\nĐừng rơi nữa!" },
+{ id:6, type:"tho", title:"Con Mèo", content:"Con mèo nhỏ\nLông trắng muốt\nMắt tròn xoe\nKêu meo meo\nMèo bắt chuột\nGiỏi lắm thay\nBé yêu mèo\nMèo ngoan ngoan!" },
+{ id:7, type:"tho", title:"Quả Thị", content:"Quả thị thơm\nVàng ươm nắng\nBé ngửi thấy\nThơm ngát hương\nThị ơi thị\nThơm quá chừng\nBé yêu thị\nThị thơm lừng!" },
+{ id:8, type:"tho", title:"Xe Đạp", content:"Xe đạp nhỏ\nBé đạp đi\nVòng quanh sân\nVui quá chừng\nĐạp nhanh nào\nĐạp chậm nào\nBé đi xe\nCẩn thận nhé!" },
+{ id:9, type:"tho", title:"Cây Bàng", content:"Cây bàng cao\nLá xanh rờn\nChim về đậu\nHót líu lo\nBóng mát rượi\nBé chơi đùa\nYêu cây bàng\nCây của bé!" },
+{ id:10, type:"tho", title:"Bé Ngoan", content:"Bé ngoan ngoãn\nNghe lời cô\nChơi với bạn\nKhông giành đồ\nĂn hết cơm\nNgủ trưa ngoan\nBé ngoan lắm\nCô yêu bé!" },
+{ id:11, type:"tho", title:"Trăng Sáng", content:"Trăng sáng tỏ\nTrên bầu trời\nSao lấp lánh\nĐẹp tuyệt vời\nBé ngắm trăng\nCười toe toét\nTrăng ơi trăng\nSáng mãi nhé!" },
+{ id:12, type:"tho", title:"Hoa Hồng", content:"Hoa hồng đỏ\nThơm ngát hương\nBé ngắm hoa\nCười rạng rỡ\nHoa ơi hoa\nĐẹp quá chừng\nBé yêu hoa\nHoa hồng thắm!" },
+{ id:13, type:"dongdao", title:"Đồng dao: Chi Chi Chành Chành", content:"Chi chi chành chành\nCái đanh thổi lửa\nCon ngựa đứt cương\nBa vương ngũ đế\nChấp chế đi tìm\nÙ à ù ập!" },
+{ id:14, type:"dongdao", title:"Đồng dao: Dung Dăng Dung Dẻ", content:"Dung dăng dung dẻ\nDắt trẻ đi chơi\nĐến ngõ nhà trời\nLạy cậu lạy mợ\nCho cháu về quê\nCho dê đi học\nCho cóc ở nhà\nCho gà bới bếp!" },
+{ id:15, type:"dongdao", title:"Đồng dao: Nu Na Nu Nống", content:"Nu na nu nống\nCái cống nằm trong\nCon ong nằm ngoài\nCủ khoai chấm mật\nPhật ngồi phật khóc\nCon cóc nhảy ra\nCon gà chạy đi!" },
+{ id:16, type:"dongdao", title:"Đồng dao: Rồng Rắn Lên Mây", content:"Rồng rắn lên mây\nCó cây lúc lắc\nCó nhà điểm binh\nHỏi thăm thầy thuốc\nCó nhà hay không?" },
+{ id:17, type:"dongdao", title:"Đồng dao: Thả Đỉa Ba Ba", content:"Thả đỉa ba ba\nChớ bắt con gà\nChớ bắt con vịt\nChớ bắt con ngan\nChớ bắt con ngỗng\nBắt con cá rô\nCho vào nồi cháo!" },
+{ id:18, type:"dongdao", title:"Đồng dao: Kéo Cưa Lừa Xẻ", content:"Kéo cưa lừa xẻ\nÔng thợ nào khỏe\nVề ăn cơm vua\nÔng thợ nào thua\nVề bú tí mẹ!" },
+{ id:19, type:"dongdao", title:"Đồng dao: Tay Đẹp", content:"Tay đẹp tay đẹp\nTay xinh tay xinh\nVỗ tay thật đều\nVỗ tay thật vui\nTay này tay này\nTay của bé ngoan!" },
+{ id:20, type:"dongdao", title:"Đồng dao: Con Vịt", content:"Con vịt bầu\nBơi trong ao\nCạp cạp cạp\nVịt kêu to\nBé nhìn vịt\nCười ha ha\nVịt ơi vịt\nBơi nhanh nào!" },
+{ id:21, type:"caudo", title:"Câu đố: Cái gì có 4 chân, kêu gâu gâu?", content:"Con gì bốn chân\nGiữ nhà rất giỏi\nKêu gâu gâu\nĐuổi trộm chạy xa?", answer:"Đáp án: Con chó 🐶" },
+{ id:22, type:"caudo", title:"Câu đố: Cái gì đỏ, tròn, ăn chua chua?", content:"Quả gì đỏ mọng\nTròn xoe xinh xắn\nĂn chua chua ngọt\nBé thích mê?", answer:"Đáp án: Quả cà chua 🍅" },
+{ id:23, type:"caudo", title:"Câu đố: Cái gì bay trên trời, hót líu lo?", content:"Con gì nhỏ xinh\nBay lượn trên trời\nHót líu lo\nVui tai bé?", answer:"Đáp án: Con chim 🐦" },
+{ id:24, type:"caudo", title:"Câu đố: Cái gì có 3 màu, sau mưa mới thấy?", content:"Sau cơn mưa rào\nTrên trời hiện ra\nBảy sắc lung linh\nĐẹp ơi là đẹp?", answer:"Đáp án: Cầu vồng 🌈" },
+{ id:25, type:"caudo", title:"Câu đố: Cái gì soi sáng ban đêm?", content:"Ban đêm tối om\nCái gì sáng tỏ\nTròn vành vạnh\nTrên bầu trời cao?", answer:"Đáp án: Mặt trăng 🌙" },
+{ id:26, type:"caudo", title:"Câu đố: Cái gì kêu ò ó o mỗi sáng?", content:"Sáng sớm tinh mơ\nKêu ò ó o\nĐánh thức mọi người\nDậy đi học thôi?", answer:"Đáp án: Con gà trống 🐓" },
+{ id:27, type:"caudo", title:"Câu đố: Cái gì có vòi dài, tai to?", content:"Con gì to lớn\nVòi dài tai to\nSống trong rừng sâu\nBé có biết không?", answer:"Đáp án: Con voi 🐘" },
+{ id:28, type:"caudo", title:"Câu đố: Cái gì giúp bé nhìn thấy mọi thứ?", content:"Hai hạt ngọc nhỏ\nNằm trên khuôn mặt\nGiúp bé nhìn thấy\nCô, bạn và hoa?", answer:"Đáp án: Đôi mắt 👀" },
+{ id:29, type:"trochoi", title:"Trò chơi ngón tay: Gia Đình Ngón Tay", content:"Ngón cái là bố (giơ ngón cái)\nNgón trỏ là mẹ (giơ ngón trỏ)\nNgón giữa là anh (giơ ngón giữa)\nNgón áp út là chị (giơ ngón áp út)\nNgón út là bé (giơ ngón út)\nCả nhà thương nhau!" },
+{ id:30, type:"trochoi", title:"Trò chơi ngón tay: Con Cua", content:"Con cua bò ngang (hai tay bò ngang)\nCua bò vào hang (chụm tay lại)\nCua kẹp kẹp kẹp (bấm ngón tay)\nBé cười ha ha!" },
+{ id:31, type:"trochoi", title:"Trò chơi ngón tay: Mưa Rơi", content:"Mưa rơi lộp độp (gõ ngón tay lên bàn)\nMưa rơi tí tách (gõ nhẹ hơn)\nMưa to rồi (gõ nhanh, mạnh)\nNắng lên rồi (giơ tay lên cao)!" },
+{ id:32, type:"trochoi", title:"Trò chơi vận động: Đèn Xanh Đèn Đỏ", content:"Cô hô 'Đèn xanh' — bé chạy tại chỗ.\nCô hô 'Đèn đỏ' — bé đứng yên như tượng.\nCô hô 'Đèn vàng' — bé đi chậm lại.\nBé nào cử động khi đèn đỏ sẽ bị 'phạt' nhảy lò cò một vòng!" },
+{ id:33, type:"trochoi", title:"Trò chơi vận động: Mèo Đuổi Chuột", content:"Một bé làm mèo, các bé khác làm chuột.\nMèo kêu 'meo meo' rồi đuổi bắt chuột.\nChuột chạy vào 'hang' (vòng tròn) sẽ an toàn.\nĐổi vai mèo – chuột sau mỗi lượt!" },
+{ id:34, type:"trochoi", title:"Trò chơi ngón tay: Bông Hoa Nở", content:"Hai tay chụm lại thành nụ hoa (chụm tay)\nHoa nở ra nào (xòe tay từ từ)\nHoa thơm quá (đưa tay lên mũi ngửi)\nOng bay đến (vẫy tay như cánh ong)!" },
+{ id:35, type:"trochoi", title:"Trò chơi vận động: Ai Nhanh Hơn", content:"Cô gọi tên một đồ vật hoặc màu sắc.\nBé chạy nhanh đến chạm vào đồ vật đó.\nBé chạm đúng và nhanh nhất được +1 Hoa Bé Ngoan!" },
+{ id:36, type:"trochoi", title:"Trò chơi ngón tay: Con Thỏ", content:"Hai ngón tay làm tai thỏ (giơ ngón trỏ và ngón giữa)\nThỏ nhảy nhót (nhảy hai ngón tay)\nThỏ ăn cà rốt (đưa tay lên miệng nhai)\nThỏ ngủ ngon (úp tay xuống bàn)!" },
+{ id:37, type:"dongdao", title:"Đồng dao: Dung dăng dung dẻ", content:"Dung dăng dung dẻ\nDắt trẻ đi chơi\nĐến ngõ nhà trời\nLạy cầu lạy mợ\nCho cháu về quê\nCho dê đi học\nCho cóc ở nhà\nCho gà bới bếp\nNgồi xệp xuống đây!" },
+{ id:38, type:"dongdao", title:"Đồng dao: Chi chi chành chành", content:"Chi chi chành chành\nCái đanh thổi lửa\nCon ngựa đứt cương\nBa vương ngũ đế\nChấp chế đi tìm\nÙ à ù ập!" },
+{ id:39, type:"dongdao", title:"Đồng dao: Nu na nu nống", content:"Nu na nu nống\nCái bống nằm trong\nCon ong nằm ngoài\nCủ khoai chấm mật\nPhật ngồi Phật khóc\nCon cóc nhảy ra\nCon gà ú ụ\nNhà mụ thổi xôi\nNhà tôi nấu chè\nTay xòe tay nắm!" },
+{ id:40, type:"dongdao", title:"Đồng dao: Tập tầm vông", content:"Tập tầm vông\nTay không tay có\nTập tầm vó\nTay có tay không\nMời các bạn đoán sao cho đúng\nTay nào có, tay nào không?" },
+{ id:41, type:"dongdao", title:"Đồng dao: Thả đỉa ba ba", content:"Thả đỉa ba ba\nChớ bắt chớ bắt\nĐược bắt được bắt\nThả đỉa ba ba!" },
+{ id:42, type:"dongdao", title:"Đồng dao: Trồng đậu trồng cà", content:"Trồng đậu trồng cà\nĐậu lên đậu xuống\nCà lên cà xuống\nTrồng đậu trồng cà\nĐậu ra hoa\nCà ra quả\nBé hái về nhà!" },
+{ id:43, type:"dongdao", title:"Đồng dao về củ", content:"Củ gì trắng muốt\nNằm dưới đất sâu\nBé nhổ lên mau\nCủ cải trắng tinh!\nCủ gì vàng ươm\nNgọt lịm thơm ngon\nBé ăn ngon miệng\nCủ cà rốt vàng!" }
+];
+/*__POEMS_END__*/
+/*__COMMENTS_START__*/
+const COMMENTS = [
+{domain:"Thể chất",level:"Hoàn thành tốt",text:"Bé vận động nhanh nhẹn, khéo léo, thực hiện tốt các bài tập thể dục và trò chơi vận động."},
+{domain:"Thể chất",level:"Hoàn thành tốt",text:"Bé ăn hết suất, ngủ ngoan, tự phục vụ tốt (tự xúc cơm, tự mặc áo, tự rửa tay)."},
+{domain:"Thể chất",level:"Hoàn thành tốt",text:"Bé giữ vệ sinh cá nhân rất tốt, rửa tay đúng 6 bước và nhắc bạn cùng thực hiện."},
+{domain:"Thể chất",level:"Hoàn thành tốt",text:"Bé tham gia tích cực các hoạt động ngoài trời, chạy nhảy dẻo dai, ít ốm vặt."},
+{domain:"Thể chất",level:"Đạt yêu cầu",text:"Bé vận động tương đối tốt, cần rèn thêm sự khéo léo khi tham gia trò chơi vận động."},
+{domain:"Thể chất",level:"Đạt yêu cầu",text:"Bé ăn được khá, đôi lúc còn cần cô nhắc nhở khi ăn và ngủ trưa."},
+{domain:"Thể chất",level:"Đạt yêu cầu",text:"Bé tự phục vụ được một số việc đơn giản, cần cô hỗ trợ khi mặc áo và buộc dây giày."},
+{domain:"Thể chất",level:"Đạt yêu cầu",text:"Bé giữ vệ sinh cá nhân ở mức khá, thỉnh thoảng quên rửa tay sau khi chơi."},
+{domain:"Thể chất",level:"Cần rèn thêm",text:"Bé còn biếng ăn, ăn chậm; bố mẹ cho bé ăn đúng giờ và động viên bé ăn rau củ thêm."},
+{domain:"Thể chất",level:"Cần rèn thêm",text:"Bé ngủ trưa chưa ngoan, hay trằn trọc; cô và bố mẹ cùng rèn nề nếp ngủ cho bé."},
+{domain:"Thể chất",level:"Cần rèn thêm",text:"Bé vận động còn rụt rè; bố mẹ cho bé chơi ngoài trời nhiều hơn để bé mạnh dạn."},
+{domain:"Thể chất",level:"Cần rèn thêm",text:"Bé chưa tự rửa tay đúng cách; cô sẽ hướng dẫn lại 6 bước rửa tay và nhờ bố mẹ nhắc bé ở nhà."},
+{domain:"Nhận thức",level:"Hoàn thành tốt",text:"Bé nhận biết nhanh màu sắc, hình dạng, số lượng; trả lời đúng các câu hỏi đàm thoại của cô."},
+{domain:"Nhận thức",level:"Hoàn thành tốt",text:"Bé quan sát tinh tế, kể lại được nội dung truyện ngắn và nêu bài học của truyện."},
+{domain:"Nhận thức",level:"Hoàn thành tốt",text:"Bé đếm đến 3 chính xác, phân biệt tốt to – nhỏ, cao – thấp và các hình cơ bản."},
+{domain:"Nhận thức",level:"Hoàn thành tốt",text:"Bé tò mò, ham khám phá, luôn đặt câu hỏi 'Vì sao?' về thế giới xung quanh."},
+{domain:"Nhận thức",level:"Đạt yêu cầu",text:"Bé nhận biết được màu sắc và hình dạng cơ bản, đôi lúc còn nhầm lẫn hình tam giác với hình vuông."},
+{domain:"Nhận thức",level:"Đạt yêu cầu",text:"Bé kể lại được ý chính của truyện với sự gợi ý của cô."},
+{domain:"Nhận thức",level:"Đạt yêu cầu",text:"Bé đếm được đến 3 khi có đồ vật trực quan, cần rèn thêm đếm nhóm đối tượng."},
+{domain:"Nhận thức",level:"Đạt yêu cầu",text:"Bé tập trung nghe cô giảng được khoảng 10–15 phút, cần cô nhắc nhở khi mất tập trung."},
+{domain:"Nhận thức",level:"Cần rèn thêm",text:"Bé còn nhầm lẫn màu sắc cơ bản; bố mẹ chơi trò phân loại màu cùng bé ở nhà thêm."},
+{domain:"Nhận thức",level:"Cần rèn thêm",text:"Bé trả lời câu hỏi còn ngập ngừng; cô sẽ gọi bé phát biểu nhiều hơn để bé tự tin."},
+{domain:"Nhận thức",level:"Cần rèn thêm",text:"Bé chưa đếm được đến 3; bố mẹ đếm cùng bé khi chơi đồ chơi, khi ăn hoa quả."},
+{domain:"Nhận thức",level:"Cần rèn thêm",text:"Bé ít chú ý nghe kể chuyện; cô sẽ kể chuyện bằng rối và tranh minh họa sinh động hơn."},
+{domain:"Ngôn ngữ",level:"Hoàn thành tốt",text:"Bé nói rõ ràng, mạch lạc, vốn từ phong phú; đọc thuộc nhiều bài thơ, đồng dao."},
+{domain:"Ngôn ngữ",level:"Hoàn thành tốt",text:"Bé kể chuyện diễn cảm, biết dùng giọng điệu phù hợp với nhân vật."},
+{domain:"Ngôn ngữ",level:"Hoàn thành tốt",text:"Bé mạnh dạn phát biểu trước lớp, đặt câu hỏi hay và trả lời đầy đủ câu."},
+{domain:"Ngôn ngữ",level:"Hoàn thành tốt",text:"Bé hát thuộc nhiều bài hát, vận động nhịp nhàng theo nhạc."},
+{domain:"Ngôn ngữ",level:"Đạt yêu cầu",text:"Bé nói được câu ngắn rõ ràng, đôi lúc còn nói ngọng một số âm khó."},
+{domain:"Ngôn ngữ",level:"Đạt yêu cầu",text:"Bé thuộc một số bài thơ ngắn, cần cô nhắc câu đầu khi đọc."},
+{domain:"Ngôn ngữ",level:"Đạt yêu cầu",text:"Bé trả lời được câu hỏi đơn giản của cô, còn ngại phát biểu trước lớp."},
+{domain:"Ngôn ngữ",level:"Đạt yêu cầu",text:"Bé hát theo được giai điệu, đôi lúc chưa thuộc lời."},
+{domain:"Ngôn ngữ",level:"Cần rèn thêm",text:"Bé nói còn ngọng nhiều âm; bố mẹ trò chuyện với bé nhiều hơn và sửa nhẹ nhàng cho bé."},
+{domain:"Ngôn ngữ",level:"Cần rèn thêm",text:"Bé ít nói, ngại giao tiếp; cô sẽ tạo nhiều tình huống để bé nói chuyện với bạn."},
+{domain:"Ngôn ngữ",level:"Cần rèn thêm",text:"Bé chưa thuộc thơ; bố mẹ đọc thơ cùng bé mỗi tối trước khi ngủ."},
+{domain:"Ngôn ngữ",level:"Cần rèn thêm",text:"Bé nói câu còn cụt lủn; cô hướng dẫn bé nói thành câu đầy đủ chủ ngữ – vị ngữ."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Hoàn thành tốt",text:"Bé lễ phép, chào hỏi cô và bạn bè; biết cảm ơn và xin lỗi đúng lúc."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Hoàn thành tốt",text:"Bé hòa đồng, chia sẻ đồ chơi với bạn, giúp đỡ bạn khi bạn gặp khó khăn."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Hoàn thành tốt",text:"Bé vâng lời cô và bố mẹ, tự giác cất đồ chơi đúng nơi quy định."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Hoàn thành tốt",text:"Bé thể hiện tình cảm rõ ràng: ôm cô, hôn mẹ, an ủi bạn khi bạn buồn."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Đạt yêu cầu",text:"Bé chào hỏi được khi có người nhắc, đôi lúc còn quên chào."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Đạt yêu cầu",text:"Bé chơi cùng bạn khá hòa đồng, thỉnh thoảng còn giành đồ chơi."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Đạt yêu cầu",text:"Bé nghe lời cô ở mức khá, đôi lúc còn mải chơi quên nhiệm vụ."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Đạt yêu cầu",text:"Bé biết nói cảm ơn, còn ngại nói xin lỗi khi làm sai."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Cần rèn thêm",text:"Bé hay giành đồ chơi với bạn; cô và bố mẹ cùng nhắc bé biết chờ đến lượt và chia sẻ."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Cần rèn thêm",text:"Bé chưa biết chào hỏi; bố mẹ làm gương chào hỏi mỗi ngày để bé học theo."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Cần rèn thêm",text:"Bé hay khóc khi không vừa ý; cô sẽ hướng dẫn bé nói ra mong muốn thay vì khóc."},
+{domain:"Tình cảm – Kỹ năng xã hội",level:"Cần rèn thêm",text:"Bé còn nhút nhát, ít chơi với bạn; bố mẹ cho bé chơi với bạn hàng xóm nhiều hơn."},
+{domain:"Thẩm mỹ",level:"Hoàn thành tốt",text:"Bé tô màu đẹp, đúng màu, không lem ra ngoài; biết phối màu hài hòa."},
+{domain:"Thẩm mỹ",level:"Hoàn thành tốt",text:"Bé nặn được các hình đơn giản (quả, con vật) và trang trí sáng tạo."},
+{domain:"Thẩm mỹ",level:"Hoàn thành tốt",text:"Bé múa dẻo, vận động theo nhạc đúng nhịp và biểu cảm."},
+{domain:"Thẩm mỹ",level:"Hoàn thành tốt",text:"Bé thích vẽ tranh, tranh của bé có bố cục rõ ràng và màu sắc tươi sáng."},
+{domain:"Thẩm mỹ",level:"Đạt yêu cầu",text:"Bé tô màu được khá, đôi lúc còn lem ra ngoài đường viền."},
+{domain:"Thẩm mỹ",level:"Đạt yêu cầu",text:"Bé nặn được hình đơn giản với sự gợi ý của cô."},
+{domain:"Thẩm mỹ",level:"Đạt yêu cầu",text:"Bé vận động theo nhạc được, còn lúng túng khi đổi động tác."},
+{domain:"Thẩm mỹ",level:"Đạt yêu cầu",text:"Bé thích nghe nhạc và xem tranh, còn ít chủ động sáng tạo."},
+{domain:"Thẩm mỹ",level:"Cần rèn thêm",text:"Bé tô màu còn lem nhiều; bố mẹ cho bé tập tô mỗi ngày 10 phút để rèn tay."},
+{domain:"Thẩm mỹ",level:"Cần rèn thêm",text:"Bé chưa mạnh dạn múa hát trước lớp; cô sẽ cho bé múa cùng bạn để bé tự tin dần."},
+{domain:"Thẩm mỹ",level:"Cần rèn thêm",text:"Bé ít hứng thú với hoạt động tạo hình; cô sẽ cho bé chơi đất nặn, xé dán nhiều hơn."},
+{domain:"Thẩm mỹ",level:"Cần rèn thêm",text:"Bé vẽ còn nguệch ngoạc; đây là bình thường ở lứa tuổi này, bố mẹ cứ động viên bé vẽ tự do."}
+];
+/*__COMMENTS_END__*/
+/*__CLASS_RECORDS_START__*/
+let STUDENTS = [
+{ id:1, name:"Bé An (mẫu)", group:0, status:"co", flowers:5 },
+{ id:2, name:"Bé Bình (mẫu)", group:0, status:"co", flowers:3 },
+{ id:3, name:"Bé Chi (mẫu)", group:0, status:"co", flowers:4 },
+{ id:4, name:"Bé Dũng (mẫu)", group:0, status:"phep", flowers:2 },
+{ id:5, name:"Bé Hà (mẫu)", group:0, status:"co", flowers:6 },
+{ id:6, name:"Bé Khang (mẫu)", group:1, status:"co", flowers:4 },
+{ id:7, name:"Bé Linh (mẫu)", group:1, status:"co", flowers:5 },
+{ id:8, name:"Bé Minh (mẫu)", group:1, status:"co", flowers:3 },
+{ id:9, name:"Bé Ngọc (mẫu)", group:1, status:"khong", flowers:1 },
+{ id:10, name:"Bé Phúc (mẫu)", group:1, status:"co", flowers:4 },
+{ id:11, name:"Bé Quân (mẫu)", group:2, status:"co", flowers:2 },
+{ id:12, name:"Bé Thảo (mẫu)", group:2, status:"co", flowers:5 },
+{ id:13, name:"Bé Tuấn (mẫu)", group:2, status:"co", flowers:3 },
+{ id:14, name:"Bé Vy (mẫu)", group:2, status:"phep", flowers:2 },
+{ id:15, name:"Bé Yến (mẫu)", group:2, status:"co", flowers:4 }
+];
+let FLOWERS = { classTotal: 0 };
+let WHO_RECORDS = [];
+let OBS_LOG = [];
+let CARE_LOG = [];
+let ASSETS = [];
+/*__CLASS_RECORDS_END__*/
+const GROUPS = ["🐰 Tổ Thỏ Trắng", "🐻 Tổ Gấu Bông", "🐿️ Tổ Sóc Nâu"];
+const SCHEDULE = [
+["7h00 – 7h45", "Đón trẻ, chơi tự do, trò chuyện sáng"],
+["7h45 – 8h15", "Thể dục buổi sáng"],
+["8h15 – 8h45", "Ăn sáng"],
+["8h45 – 9h10", "Hoạt động học chính (tiết dạy 20–25 phút)"],
+["9h10 – 9h40", "Hoạt động góc"],
+["9h40 – 10h10", "Hoạt động ngoài trời"],
+["10h10 – 10h40", "Ăn trưa"],
+["10h40 – 11h00", "Vệ sinh, chuẩn bị ngủ trưa"],
+["11h00 – 13h30", "Ngủ trưa (hát ru)"],
+["13h30 – 14h00", "Thức dậy, vệ sinh, ăn xế"],
+["14h00 – 15h00", "Hoạt động chiều: ôn luyện, trò chơi, kể chuyện"],
+["15h00 – 15h30", "Ăn xế, vệ sinh"],
+["15h30 – 16h30", "Chơi tự do, trả trẻ"] ];
+const ZALO_TEMPLATES = [
+{ id:1, title:"📋 Báo cáo cuối ngày", body:"Kính chào quý phụ huynh lớp 3–4 tuổi! Hôm nay các bé học bài “{lesson}”, sĩ số {present}/{total} bé. Các bé ăn trưa ngoan, ngủ trưa tốt. Cô Niềm cảm ơn quý phụ huynh đã phối hợp!" },
+{ id:2, title:"🧥 Dặn dò mặc ấm mùa mưa lạnh Quảng Trị", body:"Kính chào quý phụ huynh! Trời Quảng Trị đang mưa lạnh, phụ huynh nhớ mặc ấm cho bé (áo khoác, tất, mũ len) khi đến lớp. Cô Niềm cảm ơn!" },
+{ id:3, title:"🦠 Phòng dịch bệnh theo mùa", body:"Kính chào quý phụ huynh! Mùa này dễ cảm cúm, phụ huynh cho bé ăn đủ chất, uống nước ấm, rửa tay thường xuyên. Bé nào ốm, phụ huynh báo cô Niềm để cô theo dõi nhé!" },
+{ id:4, title:"👨‍👩‍👧 Thông báo họp phụ huynh", body:"Kính mời quý phụ huynh lớp 3–4 tuổi dự buổi họp phụ huynh vào lúc {time} tại lớp học. Nội dung: tổng kết chủ đề, kế hoạch tháng tới. Cô Đặng Thị Niềm trân trọng kính mời!" },
+{ id:5, title:"💉 Nhắc lịch tiêm chủng / cân đo", body:"Kính chào quý phụ huynh! Ngày {date}, nhà trường tổ chức cân đo / tiêm chủng cho các bé. Phụ huynh cho bé ăn sáng đầy đủ và mang theo sổ tiêm chủng. Cô Niềm cảm ơn!" },
+{ id:6, title:"🎂 Chúc mừng sinh nhật bé", body:"🎉 Chúc mừng sinh nhật bé {name}! Cô Niềm và các bạn lớp 3–4 tuổi chúc bé luôn khỏe mạnh, chăm ngoan, học giỏi và mãi là niềm vui của bố mẹ!" },
+{ id:7, title:"🌟 Khen ngợi bé tiến bộ", body:"Kính chào phụ huynh bé {name}! Hôm nay bé tiến bộ rõ rệt: {note}. Cô Niềm khen bé và mong phụ huynh cùng động viên bé ở nhà nhé!" },
+{ id:8, title:"🎊 Thông báo nghỉ lễ", body:"Kính chào quý phụ huynh! Lớp 3–4 tuổi nghỉ lễ {holiday} từ ngày {date}. Phụ huynh đón bé lúc 16h30 ngày hôm trước. Cô Đặng Thị Niềm chúc cả nhà nghỉ lễ vui vẻ!" } ];
+/* Bảng ngưỡng WHO tham khảo (trung bình −2SD / +2SD) cho trẻ 36–48 tháng — giá trị làm tròn để tra cứu nhanh, không thay thế bảng chuẩn y tế. */
+const WHO_TABLE = {
+boy:{ w36:[11.3,14.3,18.3], h36:[88.7,96.1,103.5], w48:[12.7,16.3,20.9], h48:[94.9,102.7,110.5] },
+girl:{ w36:[10.8,13.9,17.9], h36:[87.4,95.1,102.7], w48:[12.2,15.7,20.4], h48:[93.4,101.6,109.8] } };
+
+/* ================= TRẠNG THÁI CHUNG ================= */
+let currentLesson = LESSONS[0];
+let SLIDES_DATA = currentLesson.slides;
+let currentSlideIdx = 0;
+let hiddenSlides = new Set();
+let speechRate = 1.0, voiceGender = 'female', isSpeaking = false, autoLecture = false;
+let lastCharIndex = 0, currentScriptText = "", currentUtter = null;
+let musicOn = false, sfxOn = true, audioCtx = null, musicGain = null, musicNodes = [];
+let extractedPages = [];
+let planTemplate = 'hoc';
+let lastCalledStudent = null, countdownTimer = null, countdownLeft = 0;
+let deckMode = 'horizontal';
+DEFAULT_MASTER_SLIDES.push(...LESSONS[0].slides);
+
+function $(id){ return document.getElementById(id); }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',2600); }
+function copyTextFromElement(id,msg){ const el=$(id); const txt = el.value!==undefined?el.value:el.textContent; (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast(msg||'Đã sao chép!')).catch(()=>{ el.select&&el.select(); document.execCommand('copy'); toast(msg||'Đã sao chép!'); }); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ================= CHUYỂN TAB + PHONG CÁCH ================= */
+function switchWorkspace(name){
+  document.querySelectorAll('.workspace').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ws-tab-btn').forEach(b=>b.classList.remove('active'));
+  const map={deck:'ws-deck',library:'ws-library',studio:'ws-studio',plan:'ws-plan',class:'ws-class',health:'ws-health'};
+  $(map[name]).classList.add('active');
+  const btnMap={deck:'tabBtnDeck',library:'tabBtnLibrary',studio:'tabBtnStudio',plan:'tabBtnPlan',class:'tabBtnClass',health:'tabBtnHealth'};
+  $(btnMap[name]).classList.add('active');
+  if(name==='library') renderThemeGrid();
+  if(name==='studio') renderSlideEditor();
+  if(name==='plan') renderPlanPreview();
+  if(name==='class'){ renderAttendance(); renderFlowerBoard(); renderSchedule(); renderZaloList(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); }
+  if(name==='health'){ renderWhoList(); renderCommentBank(); fillCommentStudents(); fillProfileStudents(); renderProfile(); }
+}
+function setVisualArtStyle(v){
+  document.body.className = 'style-'+v;
+  $('artStyleSelect').value = v;
+  toast('Đã đổi phong cách: ' + $('artStyleSelect').selectedOptions[0].textContent);
+}
+function setDeckMode(m){
+  deckMode = m;
+  document.querySelectorAll('#ws-deck .pill-btn').forEach(b=>b.classList.remove('active'));
+  event && event.target && event.target.classList.add('active');
+  const old = $('scrollAllSlides'); if(old) old.remove();
+  if(m==='scroll'){
+    const host = $('artFrame').parentElement;
+    const div = document.createElement('div'); div.id='scrollAllSlides';
+    div.innerHTML = SLIDES_DATA.map((s,i)=>'<div class="panel" style="margin-top:12px"><b>'+esc(s.title)+'</b><div style="margin:8px 0">'+buildAnimatedVisual4D(s,i)+'</div><p>'+esc(s.script)+'</p></div>').join('');
+    host.appendChild(div);
+  }
+  renderDeck();
+}
+function toggleWide16x9Stage(){
+  const f=$('artFrame'); f.style.position = f.style.position==='fixed' ? '' : 'fixed';
+  if(f.style.position==='fixed'){ f.style.inset='4vh 4vw'; f.style.zIndex='90'; f.style.maxHeight='92vh'; }
+  else { f.style.inset=''; f.style.zIndex=''; f.style.maxHeight=''; }
+}
+
+/* ================= TRANH SVG 4D (10 MẪU HOẠT HÌNH) ================= */
+function buildAnimatedVisual4D(slide, idx){
+  if(slide.image){ return '<img src="'+slide.image+'" alt="Tranh bài học">'; }
+  const t = slide.visualTheme || 'flower';
+  const wrap = (inner)=>'<svg viewBox="0 0 800 450" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';
+  const sun = '<circle cx="650" cy="80" r="55" fill="#FFD93D"><animate attributeName="r" values="55;62;55" dur="3s" repeatCount="indefinite"/></circle><circle cx="400" cy="380" r="150" fill="#7ED957" opacity=".55"/><circle cx="150" cy="350" r="90" fill="#FF9F45"/><text x="400" y="230" font-size="52" text-anchor="middle" fill="#fff" font-weight="bold">☀️ Nắng vàng rực rỡ</text>';
+  const flower = '<rect width="800" height="450" fill="#E8F9E3"/><circle cx="200" cy="200" r="70" fill="#FFD93D"/><g><circle cx="200" cy="130" r="28" fill="#FF6B9D"/><circle cx="200" cy="270" r="28" fill="#FF6B9D"/><circle cx="130" cy="200" r="28" fill="#FF6B9D"/><circle cx="270" cy="200" r="28" fill="#FF6B9D"/><circle cx="200" cy="200" r="34" fill="#FF9F1C"><animate attributeName="r" values="34;40;34" dur="2.5s" repeatCount="indefinite"/></circle></g><circle cx="520" cy="220" r="70" fill="#FFD93D"/><circle cx="520" cy="150" r="26" fill="#B388FF"/><circle cx="520" cy="290" r="26" fill="#B388FF"/><circle cx="450" cy="220" r="26" fill="#B388FF"/><circle cx="590" cy="220" r="26" fill="#B388FF"/><circle cx="520" cy="220" r="32" fill="#FF9F1C"/><rect x="195" y="270" width="10" height="110" fill="#2E9E4F"/><rect x="515" y="290" width="10" height="90" fill="#2E9E4F"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#2E7D32" font-weight="bold">🌸 Hoa thơm khoe sắc</text>';
+  const rabbit = '<rect width="800" height="450" fill="#DFF3FF"/><ellipse cx="400" cy="330" rx="300" ry="90" fill="#A8E063"/><ellipse cx="330" cy="180" rx="26" ry="70" fill="#fff" stroke="#E5A9C6" stroke-width="4"/><ellipse cx="430" cy="180" rx="26" ry="70" fill="#fff" stroke="#E5A9C6" stroke-width="4"/><circle cx="380" cy="300" r="85" fill="#fff"/><circle cx="350" cy="285" r="10" fill="#333"/><circle cx="410" cy="285" r="10" fill="#333"/><ellipse cx="380" cy="315" rx="12" ry="8" fill="#FF8FA3"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#1565C0" font-weight="bold">🐰 Thỏ con đáng yêu</text>';
+  const fish = '<rect width="800" height="450" fill="#B3E5FC"/><g><ellipse cx="380" cy="220" rx="110" ry="60" fill="#FF8A65"/><polygon points="490,220 560,170 560,270" fill="#FF8A65"/><circle cx="330" cy="205" r="12" fill="#fff"/><circle cx="330" cy="205" r="6" fill="#333"/><path d="M380 250 q20 15 40 0" stroke="#E64A19" stroke-width="5" fill="none"/></g><circle cx="150" cy="120" r="14" fill="#fff" opacity=".7"><animate attributeName="cy" values="120;60;120" dur="3s" repeatCount="indefinite"/></circle><circle cx="620" cy="320" r="10" fill="#fff" opacity=".7"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#01579B" font-weight="bold">🐟 Cá bơi tung tăng</text>';
+  const tree = '<rect width="800" height="450" fill="#E3F2FD"/><rect x="380" y="220" width="40" height="130" fill="#8D6E63"/><circle cx="400" cy="160" r="120" fill="#66BB6A"/><circle cx="300" cy="210" r="70" fill="#81C784"/><circle cx="500" cy="210" r="70" fill="#81C784"/><circle cx="330" cy="130" r="16" fill="#FF7043"/><circle cx="470" cy="150" r="16" fill="#FF7043"/><circle cx="400" cy="110" r="16" fill="#FF7043"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#2E7D32" font-weight="bold">🌳 Cây xanh cho bóng mát</text>';
+  const traffic = '<rect width="800" height="450" fill="#ECEFF1"/><rect x="360" y="60" width="80" height="220" rx="20" fill="#37474F"/><circle cx="400" cy="110" r="28" fill="#EF5350"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle><circle cx="400" cy="170" r="28" fill="#FFEE58"/><circle cx="400" cy="230" r="28" fill="#66BB6A"/><rect x="80" y="330" width="640" height="26" fill="#fff"/><rect x="80" y="330" width="640" height="26" fill="none" stroke="#90A4AE" stroke-width="3"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#37474F" font-weight="bold">🚦 Đỏ dừng – Vàng chậm – Xanh đi</text>';
+  const water = '<rect width="800" height="450" fill="#E1F5FE"/><path d="M400 80 C 320 200, 280 260, 280 310 A120 120 0 0 0 520 310 C 520 260, 480 200, 400 80 Z" fill="#29B6F6"><animate attributeName="opacity" values="1;.75;1" dur="2s" repeatCount="indefinite"/></path><circle cx="360" cy="300" r="14" fill="#B3E5FC"/><circle cx="430" cy="330" r="10" fill="#B3E5FC"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#0277BD" font-weight="bold">💧 Nước trong mát lành</text>';
+  const flag = '<rect width="800" height="450" fill="#E8F5E9"/><rect x="390" y="60" width="14" height="320" fill="#8D6E63"/><polygon points="404,70 700,130 404,200" fill="#D32F2F"/><polygon points="470,118 478,140 502,140 483,154 490,176 470,163 450,176 457,154 438,140 462,140" fill="#FFEB3B"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#C62828" font-weight="bold">🇻🇳 Lá cờ đỏ sao vàng</text>';
+  const shapes = '<rect width="800" height="450" fill="#FFF8E1"/><circle cx="200" cy="200" r="90" fill="#EF5350"/><rect x="360" y="110" width="180" height="180" fill="#42A5F5"/><polygon points="640,110 750,290 530,290" fill="#FFCA28"/><text x="400" y="420" font-size="34" text-anchor="middle" fill="#5D4037" font-weight="bold">🔵 Tròn – ⬛ Vuông – 🔺 Tam giác</text>';
+  const book = '<rect width="800" height="450" fill="#FFF3E0"/><rect x="180" y="80" width="220" height="290" rx="12" fill="#FFECB3" stroke="#FF8F00" stroke-width="4"/><rect x="400" y="80" width="220" height="290" rx="12" fill="#E3F2FD" stroke="#1976D2" stroke-width="4"/><text x="290" y="220" font-size="90" text-anchor="middle">📖</text><text x="510" y="220" font-size="90" text-anchor="middle">🌈</text><text x="400" y="420" font-size="34" text-anchor="middle" fill="#E65100" font-weight="bold">📚 Sách hay mở mang trí tuệ</text>';
+  const map = {sun,flower,rabbit,fish,tree,traffic,water,flag,shapes,book};
+  return wrap(map[t] || flower);
+}
+
+/* ================= TRÌNH CHIẾU 4D ================= */
+function renderDeck(){
+  const s = SLIDES_DATA[currentSlideIdx];
+  if(!s) return;
+  $('deckLessonTag').textContent = '🎬 ' + currentLesson.theme + ' • ' + currentLesson.title;
+  $('deckLessonTitle').textContent = currentLesson.title;
+  $('artVisual').innerHTML = buildAnimatedVisual4D(s, currentSlideIdx);
+  $('slideTitle').textContent = s.title;
+  $('stateOldBox').textContent = s.stateOld || '';
+  $('bridgeVerbBox').textContent = s.bridgeVerb || 'KHÁM PHÁ';
+  $('stateNewBox').textContent = s.stateNew || '';
+  $('slideBullets').innerHTML = (s.bullets||[]).map(b=>'<li>'+b+'</li>').join('');
+  $('teleprompterBar').textContent = '🎙️ ' + (s.script||'');
+  renderFlipCards(s); renderDots();
+  initCanvasFx();
+}
+function renderFlipCards(s){
+  $('flipCardsGrid').innerHTML = (s.flipCards||[]).map((c,i)=>
+    '<div class="flip-card-3d" id="flipCard'+i+'" onclick="this.classList.toggle(\'flipped\'); sfxChime();"><div class="flip-card-inner">'+
+    '<div class="flip-face flip-front"><b>'+esc(c.frontTitle)+'</b><span>'+esc(c.frontText)+'</span></div>'+
+    '<div class="flip-face flip-back"><b>'+esc(c.backTitle)+'</b><span>'+esc(c.backText)+'</span></div>'+
+    '</div></div>').join('');
+}
+function renderDots(){
+  $('dotsContainer').innerHTML = SLIDES_DATA.map((s,i)=>'<span class="dot'+(i===currentSlideIdx?' active':'')+'" onclick="goToSlide('+i+')"></span>').join('');
+}
+function goToSlide(i){ if(i<0||i>=SLIDES_DATA.length) return; if(hiddenSlides.has(i)){ const nx = nextVisible(i); if(nx==null) return; i=nx; } currentSlideIdx=i; stopSpeaking(); renderDeck(); }
+function nextVisible(from){ for(let k=from+1;k<SLIDES_DATA.length;k++) if(!hiddenSlides.has(k)) return k; for(let k=0;k<=from;k++) if(!hiddenSlides.has(k)) return k; return null; }
+function prevVisible(from){ for(let k=from-1;k>=0;k--) if(!hiddenSlides.has(k)) return k; for(let k=SLIDES_DATA.length-1;k>=from;k--) if(!hiddenSlides.has(k)) return k; return null; }
+function nextSlide(){ const n=nextVisible(currentSlideIdx); const wasAuto=autoLecture; if(n!=null){ currentSlideIdx=n; stopSpeaking(); renderDeck(); if(wasAuto){ autoLecture=true; $('btnMasterSpeak').textContent='⏹ DỪNG KỂ CHUYỆN'; speakCurrentScript(); } } else if(wasAuto){ stopSpeaking(); toast('🎉 Đã kể hết bài!'); } }
+function prevSlide(){ const p=prevVisible(currentSlideIdx); const wasAuto=autoLecture; if(p!=null){ currentSlideIdx=p; stopSpeaking(); renderDeck(); if(wasAuto){ autoLecture=true; $('btnMasterSpeak').textContent='⏹ DỪNG KỂ CHUYỆN'; speakCurrentScript(); } } }
+function flipAllCardsOnCurrentSlide(){ document.querySelectorAll('.flip-card-3d').forEach(c=>c.classList.toggle('flipped')); sfxWhoosh(); }
+function openHideModal(){
+  $('hideListContainer').innerHTML = SLIDES_DATA.map((s,i)=>'<label style="display:flex;gap:8px;align-items:center;padding:8px;border-bottom:1px solid #e2e8f0"><input type="checkbox" '+(hiddenSlides.has(i)?'checked':'')+' onchange="toggleHideSlide('+i+',this.checked)"> Trang '+(i+1)+': '+esc(s.title)+'</label>').join('');
+  $('hideModal').classList.add('open');
+}
+function closeHideModal(){ $('hideModal').classList.remove('open'); }
+function toggleHideSlide(i,hide){ hide?hiddenSlides.add(i):hiddenSlides.delete(i); renderDeck(); }
+
+/* ================= CANVAS HOLOGRAM 4D + KÍNH LÚP ================= */
+let fxParticles=[], fxRipples=[], fxRAF=null;
+function initCanvasFx(){
+  const c=$('fxCanvas'); if(!c) return;
+  const frame=$('artFrame'); c.width=frame.clientWidth; c.height=frame.clientHeight;
+  if(fxParticles.length===0){ for(let i=0;i<46;i++) fxParticles.push({x:Math.random(),y:Math.random(),r:1+Math.random()*2.6,s:.0004+Math.random()*.0012,hue:45+Math.random()*40}); }
+  if(!fxRAF) animateLivingOverlaysLoop();
+}
+function animateLivingOverlaysLoop(){
+  const c=$('fxCanvas'); if(!c){ fxRAF=null; return; }
+  const ctx=c.getContext('2d'); if(!ctx){ fxRAF=null; return; }
+  ctx.clearRect(0,0,c.width,c.height);
+  const t=Date.now()/1000;
+  fxParticles.forEach(p=>{ p.y-=p.s; if(p.y<0) p.y=1; const tw=.45+.55*Math.abs(Math.sin(t*2+p.x*9)); ctx.beginPath(); ctx.arc(p.x*c.width,p.y*c.height,p.r,0,7); ctx.fillStyle='rgba(255,233,173,'+tw+')'; ctx.fill(); });
+  const gx=((Math.sin(t*.45)+1)/2)*c.width;
+  const grad=ctx.createLinearGradient(gx-90,0,gx+90,0); grad.addColorStop(0,'rgba(255,255,255,0)'); grad.addColorStop(.5,'rgba(255,255,255,.20)'); grad.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=grad; ctx.fillRect(gx-90,0,180,c.height);
+  fxRipples=fxRipples.filter(r=>r.a>0.02);
+  fxRipples.forEach(r=>{ r.r+=2.4; r.a*=.94; ctx.beginPath(); ctx.arc(r.x,r.y,r.r,0,7); ctx.strokeStyle='rgba(245,196,81,'+r.a+')'; ctx.lineWidth=3; ctx.stroke(); });
+  fxRAF=requestAnimationFrame(animateLivingOverlaysLoop);
+}
+function onPdfStageClickRipple(e){
+  const r=$('artFrame').getBoundingClientRect();
+  fxRipples.push({x:e.clientX-r.left,y:e.clientY-r.top,r:8,a:.9});
+  if(sfxOn) sfxChime();
+}
+function onPdfStageMouseMove(e){
+  const lens=$('magnifierLens'); const frame=$('artFrame'); const r=frame.getBoundingClientRect();
+  const img=$('artVisual').querySelector('img');
+  if(!img){ hideMagnifier(); return; }
+  lens.style.display='block';
+  const x=e.clientX-r.left, y=e.clientY-r.top;
+  lens.style.left=(x-85)+'px'; lens.style.top=(y-85)+'px';
+  lens.style.backgroundImage='url('+img.src+')';
+  lens.style.backgroundSize=(r.width*2.2)+'px '+(r.height*2.2)+'px';
+  lens.style.backgroundPosition=(-(x*2.2-85))+'px '+(-(y*2.2-85))+'px';
+}
+function hideMagnifier(){ const l=$('magnifierLens'); if(l) l.style.display='none'; }
+function toggleZoomQuadrant(q){
+  const v=$('artVisual');
+  const origins=['left top','right top','left bottom','right bottom'];
+  if(v.style.transform==='scale(2.2)'){ v.style.transform=''; }
+  else { v.style.transform='scale(2.2)'; v.style.transformOrigin=origins[q]; v.style.transition='transform .5s'; }
+  setTimeout(()=>{ v.style.transform=''; },2600);
+}
+
+/* ================= GIỌNG ĐỌC AI DUAL-ENGINE (MID-SENTENCE RESUME) ================= */
+function toSpokenVietnameseText(t){
+  let s=String(t||'');
+  s=s.replace(/\bMN\b/g,'Mầm non').replace(/KPKH/g,'Khám phá khoa học').replace(/LQVH/g,'Làm quen văn học').replace(/LQVT/g,'Làm quen với toán');
+  s=s.replace(/(\d+)\s*-\s*(\d+)\s*tuổi/g,'$1 đến $2 tuổi');
+  s=s.replace(/(\d+)h(\d*)/g,'$1 giờ $2 phút');
+  return s;
+}
+let VI_VOICES=[];
+function loadViVoices(){ if(!('speechSynthesis' in window)) return; VI_VOICES=(window.speechSynthesis.getVoices()||[]).filter(v=>/^vi/i.test(v.lang||'')); }
+if('speechSynthesis' in window){ loadViVoices(); window.speechSynthesis.onvoiceschanged=loadViVoices; }
+function pickVoice(){
+  if(!('speechSynthesis' in window)) return null;
+  if(!VI_VOICES.length) loadViVoices();
+  const vs=window.speechSynthesis.getVoices()||[];
+  const pool=VI_VOICES.length?VI_VOICES:vs;
+  if(!pool.length) return null;
+  const femaleHint=/linh|thu|ngan|female|nữ|google.*vi/i, maleHint=/nam|male|quốc|google.*vi/i;
+  const pick=pool.find(v=>voiceGender==='female'?femaleHint.test(v.name):maleHint.test(v.name));
+  return pick||pool[0];
+}
+function estimateCurrentCharOffset(){ return lastCharIndex||0; }
+function snapToNextWordBoundary(text, offset){
+  const i=text.indexOf(' ', Math.max(0,offset));
+  return i===-1?text.length:i+1;
+}
+let speakErrCount=0;
+function speakText(text, onend){
+  if(!('speechSynthesis' in window)){ toast('Trình duyệt này không hỗ trợ giọng đọc. Cô dùng Chrome hoặc Safari nhé!'); return; }
+  window.speechSynthesis.cancel();
+  const clean=toSpokenVietnameseText(text);
+  const u=new SpeechSynthesisUtterance(clean);
+  const v=pickVoice(); if(v) u.voice=v;
+  u.lang='vi-VN'; u.rate=speechRate; u.pitch=voiceGender==='female'?1.05:0.9;
+  u.onboundary=(e)=>{ if(typeof e.charIndex==='number') lastCharIndex=e.charIndex; };
+  u.onend=()=>{ speakErrCount=0; isSpeaking=false; updateMusicGainLevel(); if(onend) onend(); };
+  u.onerror=()=>{ isSpeaking=false; updateMusicGainLevel(); speakErrCount++;
+    if(autoLecture){ if(speakErrCount>=2){ stopSpeaking(); toast('🔇 Giọng đọc gặp lỗi trên máy này — cô bấm lại nút kể chuyện nhé!'); } else { nextSlide(); } }
+  };
+  currentUtter=u; currentScriptText=clean; lastCharIndex=0; isSpeaking=true;
+  updateMusicGainLevel();
+  window.speechSynthesis.speak(u);
+}
+function stopSpeaking(){ if('speechSynthesis' in window) window.speechSynthesis.cancel(); isSpeaking=false; autoLecture=false; $('btnMasterSpeak').textContent='🎙️ BẤM NÚT KỂ CHUYỆN'; updateMusicGainLevel(); }
+function speakCurrentScript(){ const s=SLIDES_DATA[currentSlideIdx]; if(s&&s.script) speakText(s.script, ()=>{ if(autoLecture) nextSlide(); }); }
+function toggleAutoLecture(){
+  if(autoLecture){ stopSpeaking(); return; }
+  autoLecture=true; speakErrCount=0; $('btnMasterSpeak').textContent='⏹ DỪNG KỂ CHUYỆN';
+  speakCurrentScript();
+}
+function resumeMidSentenceOnVoiceOrSpeedChange(){
+  if(!isSpeaking||!currentScriptText) return;
+  const off=snapToNextWordBoundary(currentScriptText, estimateCurrentCharOffset());
+  const rest=currentScriptText.slice(off);
+  if(!rest.trim()) return;
+  const wasAuto=autoLecture;
+  speakText(rest, ()=>{ if(wasAuto) nextSlide(); });
+}
+function setVoiceGender(g, announce){
+  voiceGender=g;
+  $('btnVoiceFemale').classList.toggle('active', g==='female');
+  $('btnVoiceMale').classList.toggle('active', g==='male');
+  resumeMidSentenceOnVoiceOrSpeedChange();
+  if(announce) toast(g==='female'?'Đã đổi sang 👩 Giọng Cô':'Đã đổi sang 👨 Giọng Chú');
+}
+function onTopSpeedInput(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; }
+function onTopSpeedCommit(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; resumeMidSentenceOnVoiceOrSpeedChange(); }
+function stepSpeechSpeed(d){ const nv=Math.min(1.5,Math.max(0.6,+(speechRate+d).toFixed(2))); speechRate=nv; $('topSpeedSlider').value=nv; $('topSpeedVal').textContent=nv.toFixed(2)+'x'; resumeMidSentenceOnVoiceOrSpeedChange(); }
+
+/* ================= ÂM THANH WEB AUDIO API ================= */
+function ensureAudioCtx(){
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+  return audioCtx;
+}
+function tone(freq, start, dur, type, vol, dest){
+  const ac=ensureAudioCtx(); const o=ac.createOscillator(), g=ac.createGain();
+  o.type=type||'sine'; o.frequency.value=freq;
+  g.gain.setValueAtTime(0,start); g.gain.linearRampToValueAtTime(vol||.18,start+.02);
+  g.gain.exponentialRampToValueAtTime(.0001,start+dur);
+  o.connect(g); g.connect(dest||ac.destination); o.start(start); o.stop(start+dur+.05);
+}
+function updateMusicGainLevel(){
+  if(!musicGain) return;
+  musicGain.gain.setTargetAtTime(isSpeaking?0.03:0.12, ensureAudioCtx().currentTime, .4);
+}
+function toggleMusic(){
+  const ac=ensureAudioCtx();
+  if(musicOn){ musicNodes.forEach(n=>{try{n.stop()}catch(e){}}); musicNodes=[]; if(musicGain) musicGain.disconnect(); musicGain=null; musicOn=false; $('btnMusicToggle').textContent='🎵 Nhạc Nền'; toast('Đã tắt nhạc nền'); return; }
+  musicGain=ac.createGain(); musicGain.gain.value=0.12; musicGain.connect(ac.destination);
+  [216,324,432,540].forEach((f,i)=>{ const o=ac.createOscillator(); o.type='sine'; o.frequency.value=f; const g=ac.createGain(); g.gain.value=.05; const lfo=ac.createOscillator(); lfo.frequency.value=.07+i*.03; const lg=ac.createGain(); lg.gain.value=.025; lfo.connect(lg); lg.connect(g.gain); o.connect(g); g.connect(musicGain); o.start(); lfo.start(); musicNodes.push(o,lfo); });
+  musicOn=true; $('btnMusicToggle').textContent='⏸ Tắt Nhạc'; updateMusicGainLevel(); toast('Đã bật nhạc nền êm dịu 432Hz');
+}
+function toggleSfx(){ sfxOn=!sfxOn; $('btnSfxToggle') && ($('btnSfxToggle').textContent = sfxOn?'🔔 SFX':'🔕 SFX'); toast(sfxOn?'Đã bật hiệu ứng âm thanh':'Đã tắt hiệu ứng âm thanh'); }
+function setMusicVol(v){ if(musicGain) musicGain.gain.setTargetAtTime((v/100)*.25, ensureAudioCtx().currentTime, .2); }
+function sfxChime(){ if(!sfxOn) return; const ac=ensureAudioCtx(); const t=ac.currentTime; tone(880,t,.5,'sine',.15); tone(1318,t+.06,.5,'sine',.1); }
+function sfxWhoosh(){ if(!sfxOn) return; const ac=ensureAudioCtx(); const t=ac.currentTime; const buf=ac.createBuffer(1,ac.sampleRate*.3,ac.sampleRate); const d=buf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*(1-i/d.length); const src=ac.createBufferSource(); src.buffer=buf; const f=ac.createBiquadFilter(); f.type='bandpass'; f.frequency.setValueAtTime(400,t); f.frequency.exponentialRampToValueAtTime(2400,t+.25); src.connect(f); f.connect(ac.destination); src.start(t); }
+function playApplauseSound(){
+  const ac=ensureAudioCtx(); const t=ac.currentTime;
+  for(let i=0;i<14;i++){ const tt=t+Math.random()*.7; const buf=ac.createBuffer(1,ac.sampleRate*.12,ac.sampleRate); const d=buf.getChannelData(0); for(let j=0;j<d.length;j++) d[j]=(Math.random()*2-1)*(1-j/d.length); const s=ac.createBufferSource(); s.buffer=buf; const g=ac.createGain(); g.gain.value=.22; s.connect(g); g.connect(ac.destination); s.start(tt); }
+  tone(523,t,.4,'triangle',.12); tone(659,t+.1,.4,'triangle',.12); tone(784,t+.2,.5,'triangle',.12);
+  toast('👏 Cả lớp vỗ tay hoan hô!');
+}
+function playBellTransition(){ const ac=ensureAudioCtx(); const t=ac.currentTime; [432,648,864].forEach((f,i)=>tone(f,t+i*.12,1.6,'sine',.16)); toast('🔔 Chuông báo hết giờ — các bé thu dọn đồ chơi nào!'); }
+function playLullabyMelody(){
+  const ac=ensureAudioCtx(); const t=ac.currentTime;
+  const notes=[[523,0],[659,.5],[784,1],[659,1.5],[523,2],[587,2.5],[659,3],[523,3.5],[392,4],[523,4.5]];
+  notes.forEach(([f,dt])=>tone(f,t+dt,.55,'sine',.13));
+  toast('🎵 Giai điệu hát ru cho giờ ngủ trưa');
+}
+
+/* ================= HOA BÉ NGOAN + TRÒ CHƠI MINI ================= */
+function addFlower(n){ FLOWERS.classTotal=(FLOWERS.classTotal||0)+n; $('flowerCount').textContent='🌸 '+(FLOWERS.classTotal||0); if(n>0){ sfxChime(); } }
+function praiseWholeClass(){ addFlower(1); playApplauseSound(); toast('👏 Cô khen cả lớp thật ngoan!'); }
+function callRandomStudent(){
+  const present=STUDENTS.filter(s=>s.status==='co');
+  if(!present.length){ toast('Chưa có bé nào có mặt hôm nay!'); return; }
+  const st=present[Math.floor(Math.random()*present.length)];
+  lastCalledStudent=st;
+  $('randomStudentBox').innerHTML='🎲 Bé được gọi: <b>'+esc(st.name)+'</b> ('+GROUPS[st.group]+') — cô hỏi bé câu hỏi đàm thoại nhé!';
+  $('studentModalName').textContent=st.name;
+  $('studentModal').classList.add('open');
+  speakText('Mời bé '+st.name.replace(' (mẫu)','')+' trả lời câu hỏi nào!');
+}
+function closeStudentModal(){ $('studentModal').classList.remove('open'); }
+function addFlowerToWheelStudent(){ if(!lastCalledStudent){ toast('Chưa gọi bé nào!'); return; } lastCalledStudent.flowers=(lastCalledStudent.flowers||0)+1; addFlower(1); renderFlowerBoard(); toast('🌸 Đã cộng 1 Hoa Bé Ngoan cho '+lastCalledStudent.name); }
+function startMiniGame(type){
+  const box=$('miniGameBox');
+  if(type==='color'){
+    const colors=[['🔴','Đỏ','#ef4444'],['🟡','Vàng','#eab308'],['🔵','Xanh dương','#3b82f6'],['🟢','Xanh lá','#22c55e']];
+    const ans=colors[Math.floor(Math.random()*colors.length)];
+    box.innerHTML='<b>🎨 Bé bấm vào màu <span style="color:'+ans[2]+'">'+ans[1]+'</span> nào!</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">'+colors.map(c=>'<button class="mini-game-btn" style="font-size:30px" onclick="checkMiniGame(this,\''+c[1]+'\',\''+ans[1]+'\')">'+c[0]+'</button>').join('')+'</div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
+  } else if(type==='count'){
+    const n=1+Math.floor(Math.random()*3);
+    box.innerHTML='<b>🔢 Bé đếm có bao nhiêu quả bóng? '+('⚽'.repeat(n))+'</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px">'+[1,2,3].map(v=>'<button class="mini-game-btn" style="font-size:24px" onclick="checkMiniGame(this,'+v+','+n+')">'+v+'</button>').join('')+'</div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
+  } else {
+    const foods=[['🥦','Bông cải xanh — TỐT',1],['🍭','Kẹo mút — KHÔNG TỐT',0],['🥛','Sữa — TỐT',1],['🍟','Khoai tây chiên — KHÔNG TỐT',0]];
+    const f=foods[Math.floor(Math.random()*foods.length)];
+    box.innerHTML='<b>🥦 '+f[0]+' có tốt cho sức khỏe của bé không?</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px"><button class="mini-game-btn" onclick="checkMiniGame(this,1,'+f[2]+')">👍 Tốt</button><button class="mini-game-btn" onclick="checkMiniGame(this,0,'+f[2]+')">👎 Không tốt</button></div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
+  }
+}
+function checkMiniGame(btn, val, ans){
+  const ok = String(val)===String(ans);
+  btn.classList.add(ok?'correct':'wrong');
+  $('miniGameMsg').textContent = ok?'🎉 Đúng rồi! Bé giỏi quá! +1 Hoa Bé Ngoan':'😊 Chưa đúng, bé thử lại nhé!';
+  if(ok){ addFlower(1); playApplauseSound(); } else { sfxWhoosh(); }
+}
+
+/* ================= THƯ VIỆN 9 CHỦ ĐỀ + TỪ ĐIỂN THƠ TRUYỆN ================= */
+function renderThemeGrid(){
+  $('themeGrid').innerHTML = LESSONS.map(l=>
+    '<button class="theme-card" onclick="loadLesson(\''+l.id+'\')"><b>'+l.icon+' '+esc(l.title)+'</b><span>'+l.theme+' • '+l.slides.length+' trang slide • '+esc(l.desc)+'</span><br><span style="font-weight:800">🚀 Nạp Bài Này Vào Lớp Học</span></button>').join('');
+}
+function loadLesson(id){
+  const l=LESSONS.find(x=>x.id===id); if(!l) return;
+  currentLesson=l; SLIDES_DATA=l.slides; currentSlideIdx=0; hiddenSlides.clear();
+  DEFAULT_MASTER_SLIDES.length=0; DEFAULT_MASTER_SLIDES.push(...l.slides);
+  renderLessonDetail(l); renderDeck(); switchWorkspace('deck');
+  toast('🚀 Đã nạp bài “'+l.title+'” vào lớp học — cô dạy được ngay!');
+}
+function renderLessonDetail(l){
+  $('lessonDetailTitle').textContent = l.icon+' '+l.title+' — '+l.theme;
+  $('lessonDetailBody').innerHTML =
+    '<p class="sub">'+esc(l.desc)+'</p>'+
+    l.slides.map((s,i)=>'<div class="poem-item"><b>Trang '+(i+1)+': '+esc(s.title)+'</b><br><span class="small">'+esc(s.script)+'</span><br><span class="small">💬 '+s.flipCards.length+' thẻ hỏi đáp • 🎨 Tranh: '+esc(s.visualTheme)+'</span></div>').join('')+
+    '<button class="interactive-btn-lg" onclick="loadLesson(\''+l.id+'\')">🚀 Nạp Bài Này Vào Lớp Học</button> '+
+    '<button class="interactive-btn-lg blue" onclick="fillPlanFromLesson(\''+l.id+'\')">📝 Nạp Giáo Án Mẫu Này</button>';
+}
+function fillPlanFromLesson(id){
+  const l=LESSONS.find(x=>x.id===id); if(!l) return;
+  $('lpTitle').value=l.title; $('lpMucDich').value=l.plan.mucDich; $('lpChuanBi').value=l.plan.chuanBi; $('lpTienHanh').value=l.plan.tienHanh;
+  switchWorkspace('plan'); renderPlanPreview(); toast('Đã nạp giáo án mẫu của bài “'+l.title+'”');
+}
+function renderPoemLibrary(){
+  const q=($('poemSearch').value||'').toLowerCase();
+  const type=$('poemTypeFilter').value;
+  const typeName={tho:'📜 Thơ',dongdao:'🎵 Đồng dao',caudo:'❓ Câu đố',trochoi:'🤸 Trò chơi'};
+  const list=POEMS.filter(p=>(!type||p.type===type)&&(!q||(p.title+' '+p.content).toLowerCase().includes(q)));
+  $('poemList').innerHTML = list.length?list.map(p=>
+    '<div class="poem-item"><span class="tag">'+typeName[p.type]+'</span> <b>'+esc(p.title)+'</b><pre>'+esc(p.content)+(p.answer?'\n'+esc(p.answer):'')+'</pre>'+
+    '<button class="btn-hud-action" onclick="readPoemAloud('+p.id+')">🔊 Đọc Mẫu Cho Bé Nghe</button> '+
+    '<button class="btn-hud-action green" onclick="insertPoemAsSlide('+p.id+')">➕ Chèn Thành 1 Trang Slide Mới</button> '+
+    '<button class="btn-hud-action" onclick="copyPoemToPlan('+p.id+')">📋 Sao Chép Vào Giáo Án</button></div>').join('')
+    :'<p class="sub">Không tìm thấy tư liệu nào phù hợp. Cô thử từ khóa khác nhé!</p>';
+}
+function readPoemAloud(id){ const p=POEMS.find(x=>x.id===id); if(p) speakText(p.title+'. '+p.content.replace(/\n/g,'. ')+(p.answer?'. '+p.answer:'')); }
+function insertPoemAsSlide(id){
+  const p=POEMS.find(x=>x.id===id); if(!p) return;
+  const lines=p.content.split('\n').filter(Boolean);
+  const slide={ id:Date.now(), tag:'📖 TƯ LIỆU BÁCH KHOA', title:p.title, visualTheme:'book',
+    flipCards:[
+    {frontTitle:'❓ Bài này nói về điều gì?',frontText:'Bé lắng nghe và đoán nhé!',backTitle:'📖 '+p.title,backText:lines[0]||''},
+    {frontTitle:'❓ Bé thích câu nào nhất?',frontText:'Bé kể câu bé thích nào!',backTitle:'💗 BÉ KỂ CÂU MÌNH THÍCH',backText:'Bé đọc lại câu mình thích nhất trong bài.'},
+    {frontTitle:'❓ Bé học được gì?',frontText:'Qua bài này, bé học được điều gì?',backTitle:'🌟 BÀI HỌC CỦA BÉ',backText:'Bé nêu một điều hay học được từ bài.'},
+    {frontTitle:'❓ Bé đọc lại cùng cô nhé?',frontText:'Bé đọc lại bài cùng cô nào!',backTitle:'🎤 BÉ ĐỌC THẬT HAY',backText:'Cả lớp đọc lại bài cùng cô, giọng trong trẻo.'}],
+    bullets:['🔹 '+lines.slice(0,2).join(' / '),'🔹 Bé thuộc và đọc diễn cảm bài này.'],
+    stateOld:'📖 Bé chưa biết bài này', bridgeVerb:'NHẬN BIẾT', stateNew:'🎤 Bé thuộc bài, đọc hay',
+    script:p.content.replace(/\n/g,' ') };
+  SLIDES_DATA.push(slide); currentSlideIdx=SLIDES_DATA.length-1;
+  renderDeck(); renderSlideEditor(); switchWorkspace('deck');
+  toast('➕ Đã chèn “'+p.title+'” thành trang slide mới!');
+}
+function copyPoemToPlan(id){
+  const p=POEMS.find(x=>x.id===id); if(!p) return;
+  const txt=p.title+'\n'+p.content+(p.answer?'\n'+p.answer:'');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('📋 Đã sao chép “'+p.title+'” — cô dán vào giáo án nhé!')).catch(()=>{ toast('Cô bôi đen đoạn thơ để sao chép nhé!'); });
+}
+
+/* ================= XƯỞNG PDF + MAGIC SLIDE + BIÊN TẬP ================= */
+function extractFourVisualSlicesFromCanvas(sourceCanvas){
+  const w=sourceCanvas.width, h=sourceCanvas.height, out=[];
+  [[0,0],[w/2,0],[0,h/2],[w/2,h/2]].forEach(([x,y])=>{
+    const c=document.createElement('canvas'); c.width=w/2; c.height=h/2;
+    c.getContext('2d').drawImage(sourceCanvas,x,y,w/2,h/2,0,0,w/2,h/2);
+    out.push(c.toDataURL('image/jpeg',0.85));
+  });
+  return out;
+}
+async function processNotebookPdfFile(file){
+  if(!file){ toast('Cô chưa chọn file PDF nào!'); return; }
+  if(typeof pdfjsLib==='undefined'){ toast('Chưa tải được thư viện PDF (cần mạng). Cô kiểm tra mạng rồi thử lại nhé!'); return; }
+  $('pdfProgressStatus').textContent='⏳ Đang đọc file PDF: '+file.name+' ...';
+  try{
+    const buf=await file.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    const scale=parseFloat($('pdfScaleSelect').value)||2;
+    const mode=$('pdfCropModeSelect').value;
+    extractedPages=[];
+    for(let p=1;p<=pdf.numPages;p++){
+      const page=await pdf.getPage(p);
+      const vp=page.getViewport({scale});
+      const canvas=document.createElement('canvas'); canvas.width=vp.width; canvas.height=vp.height;
+      await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+      const w=canvas.width, h=canvas.height;
+      let sx=0, sw=w;
+      if(mode==='right'){ sx=w/2; sw=w/2; } else if(mode==='left'){ sw=w/2; } else if(mode==='center'){ sx=w/4; sw=w/2; }
+      const stage=document.createElement('canvas'); const tw=Math.round(sw*9/16)>h?Math.round(h*16/9):sw; const th=Math.round(tw*9/16);
+      stage.width=tw; stage.height=th;
+      stage.getContext('2d').drawImage(canvas,sx,Math.max(0,(h-th)/2),sw,th,0,0,tw,th);
+      const slices=extractFourVisualSlicesFromCanvas(stage);
+      extractedPages.push({ id:Date.now()+p, img:stage.toDataURL('image/jpeg',0.9), slices, title:'Trang '+p+' — '+file.name.replace(/\.pdf$/i,''),
+        cards:[0,1,2,3].map(i=>({frontTitle:'❓ Góc ảnh '+(i+1)+' có gì?',frontText:'Bé quan sát góc ảnh này và đoán nhé!',backTitle:'🖼️ Góc ảnh '+(i+1),backText:'Bé kể những gì mình thấy trong góc ảnh này.'})) });
+      $('pdfProgressStatus').textContent='⏳ Đang xử lý trang '+p+'/'+pdf.numPages+' ...';
+    }
+    $('pdfProgressStatus').textContent='✅ Đã tách xong '+pdf.numPages+' trang PDF thành tranh 16:9 + 4 lát ảnh mỗi trang.';
+    renderExtractedPagesEditor();
+    toast('✅ Đã xử lý xong '+pdf.numPages+' trang PDF!');
+  }catch(err){ $('pdfProgressStatus').textContent='❌ Lỗi đọc PDF: '+err.message; }
+}
+function renderExtractedPagesEditor(){
+  $('extractedPagesContainer').innerHTML = extractedPages.map((pg,pi)=>
+    '<div class="page-editor-card"><img src="'+pg.img+'" alt="Trang PDF"><label><b>Tiêu đề trang</b></label><input value="'+esc(pg.title)+'" onchange="extractedPages['+pi+'].title=this.value">'+
+    pg.cards.map((c,ci)=>'<div style="border-top:1px dashed #94a3b8;margin-top:8px;padding-top:8px"><b>Thẻ lật '+(ci+1)+'</b> <img src="'+pg.slices[ci]+'" style="width:100px;float:right;border-radius:8px"><input value="'+esc(c.frontTitle)+'" onchange="extractedPages['+pi+'].cards['+ci+'].frontTitle=this.value" placeholder="Câu hỏi mặt trước"><input value="'+esc(c.backTitle)+'" onchange="extractedPages['+pi+'].cards['+ci+'].backTitle=this.value" placeholder="Đáp án mặt sau"><textarea rows="2" onchange="extractedPages['+pi+'].cards['+ci+'].backText=this.value" placeholder="Nội dung mặt sau">'+esc(c.backText)+'</textarea></div>').join('')+
+    '<div style="margin-top:8px"><button class="btn-hud-action green" onclick="applyOneExtractedPage('+pi+')">🚀 Áp Dụng Trang Này Vào Trình Chiếu</button></div></div>').join('');
+}
+function applyOneExtractedPage(pi){
+  const pg=extractedPages[pi]; if(!pg) return;
+  const slide={ id:Date.now(), tag:'📄 TỪ PDF', title:pg.title, visualTheme:'book', image:pg.img,
+    flipCards:pg.cards.map(c=>({frontTitle:c.frontTitle,frontText:c.frontText,backTitle:c.backTitle,backText:c.backText})),
+    bullets:['🔹 Bé quan sát tranh và trả lời câu hỏi đàm thoại.','🔹 Bé kể lại những gì mình thấy trong tranh.'],
+    stateOld:'📄 Bé chưa xem tranh này', bridgeVerb:'KHÁM PHÁ', stateNew:'🌟 Bé kể được nội dung tranh',
+    script:'Các bé nhìn tranh nào! '+pg.title+'. Bé kể cho cô nghe bé thấy gì trong tranh nhé!' };
+  SLIDES_DATA.push(slide); currentSlideIdx=SLIDES_DATA.length-1;
+  renderDeck(); renderSlideEditor(); switchWorkspace('deck');
+  toast('🚀 Đã áp dụng “'+pg.title+'” vào trình chiếu!');
+}
+function applyExtractedToLiveDeck(){
+  if(!extractedPages.length){ toast('Chưa có trang PDF nào được tách! Cô tải file PDF lên trước nhé.'); return; }
+  const lesson={ id:'pdf-'+Date.now(), theme:'Bài giảng từ PDF', icon:'📄', title:'Bài Giảng Từ File PDF Của Cô',
+    desc:'Bài giảng được tạo tự động từ file PDF.', plan:{mucDich:'',chuanBi:'',tienHanh:''},
+    slides:extractedPages.map(pg=>({ id:pg.id, tag:'📄 TỪ PDF', title:pg.title, visualTheme:'book', image:pg.img,
+      flipCards:pg.cards, bullets:['🔹 Bé quan sát tranh và trả lời câu hỏi đàm thoại.','🔹 Bé kể lại những gì mình thấy trong tranh.'],
+      stateOld:'📄 Bé chưa xem tranh này', bridgeVerb:'KHÁM PHÁ', stateNew:'🌟 Bé kể được nội dung tranh',
+      script:'Các bé nhìn tranh nào! '+pg.title+'. Bé kể cho cô nghe bé thấy gì trong tranh nhé!' })) };
+  LESSONS.push(lesson); currentLesson=lesson; SLIDES_DATA=lesson.slides; currentSlideIdx=0;
+  DEFAULT_MASTER_SLIDES.length=0; DEFAULT_MASTER_SLIDES.push(...lesson.slides);
+  renderLessonDetail(lesson); renderDeck(); renderThemeGrid(); switchWorkspace('deck');
+  toast('🚀 Đã áp dụng toàn bộ '+extractedPages.length+' trang PDF vào trình chiếu!');
+}
+function exportSlidesJson(){
+  const blob=new Blob([JSON.stringify({lesson:currentLesson.title,slides:SLIDES_DATA},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bai-giang-'+Date.now()+'.json'; a.click();
+  toast('📦 Đã xuất file JSON bài giảng!');
+}
+function magicSlideGenerator(){
+  const domain=$('magicDomain').value, title=$('magicTitle').value.trim(), text=$('magicText').value.trim();
+  if(!title||!text){ toast('Cô nhập tên bài dạy và dán nội dung rồi bấm nút nhé!'); return; }
+  const paras=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  const chunks=[]; let cur='';
+  text.split(/(?<=[.!?])\s+/).forEach(sent=>{ if((cur+' '+sent).length>220&&cur){ chunks.push(cur.trim()); cur=sent; } else cur=(cur+' '+sent).trim(); });
+  if(cur) chunks.push(cur.trim());
+  const use=chunks.slice(0,4);
+  const themePick=(t)=>/thỏ|gà|cáo|chó|mèo|chim|voi/.test(t)?'rabbit':/nước|mưa|sông|biển/.test(t)?'water':/cây|hoa|rau|lá|vườn/.test(t)?'tree':/đèn|xe|đường/.test(t)?'traffic':/hình|tròn|vuông|đếm|số/.test(t)?'shapes':/bác hồ|cờ|quê/.test(t)?'flag':/mặt trời|nắng|ngày|đêm/.test(t)?'sun':'book';
+  const made=use.map((ch,i)=>{
+    const words=ch.split(/\s+/).slice(0,6).join(' ');
+    return { id:Date.now()+i, tag:'🪄 '+domain.toUpperCase(), title:title+' — Phần '+(i+1), visualTheme:themePick(ch),
+      flipCards:[
+      {frontTitle:'❓ Ai trong bài này?',frontText:'Bé kể tên nhân vật nào!',backTitle:'👤 NHÂN VẬT TRONG BÀI',backText:'Bé kể tên các nhân vật xuất hiện trong đoạn này.'},
+      {frontTitle:'❓ Chuyện gì đã xảy ra?',frontText:'Bé kể lại diễn biến nào!',backTitle:'📖 DIỄN BIẾN CHÍNH',backText:ch.slice(0,120)},
+      {frontTitle:'❓ Bé thấy ở đâu?',frontText:'Câu chuyện diễn ra ở đâu?',backTitle:'📍 NƠI DIỄN RA',backText:'Bé kể nơi diễn ra câu chuyện trong đoạn này.'},
+      {frontTitle:'❓ Bài học là gì?',frontText:'Qua đoạn này, bé học được gì?',backTitle:'💗 BÀI HỌC CỦA BÉ',backText:'Bé nêu một điều hay học được từ đoạn này.'}],
+      bullets:['🔹 '+words+'...','🔹 Bé lắng nghe, trả lời câu hỏi và kể lại đoạn này.'],
+      stateOld:'🤔 Bé chưa biết đoạn này', bridgeVerb:'KHÁM PHÁ', stateNew:'🌟 Bé hiểu và kể lại được',
+      script:ch };
+  });
+  const lesson={ id:'magic-'+Date.now(), theme:'Bài từ Magic Slide', icon:'🪄', title:title, desc:'Bài giảng tạo tự động từ ý tưởng của cô — lĩnh vực: '+domain+'.', plan:{mucDich:'1. Kiến thức: Trẻ hiểu nội dung bài “'+title+'”.\n2. Kỹ năng: Trẻ kể lại được nội dung bài.\n3. Thái độ: Trẻ thích học bài “'+title+'”.',chuanBi:'1. Đồ dùng của cô: Tranh minh họa bài “'+title+'”.\n2. Đồ dùng của trẻ: Thẻ tranh theo bài.',tienHanh:'Hoạt động 1: Ổn định tổ chức & gây hứng thú — Cô giới thiệu bài “'+title+'”.\nHoạt động 2: Nội dung trọng tâm — Cô kể/diẽn giải nội dung; trẻ trả lời câu hỏi đàm thoại.\nHoạt động 3: Kết thúc — Trẻ kể lại bài, cô nhận xét và khen trẻ.'}, slides:made };
+  LESSONS.push(lesson); currentLesson=lesson; SLIDES_DATA=lesson.slides; currentSlideIdx=0;
+  DEFAULT_MASTER_SLIDES.length=0; DEFAULT_MASTER_SLIDES.push(...lesson.slides);
+  $('magicResult').innerHTML='<div class="poem-item"><b>✅ Đã tạo xong '+made.length+' trang slide cho bài “'+esc(title)+'”!</b><br><span class="small">Mỗi trang có đủ 4 câu hỏi đàm thoại (Ai? Cái gì? Ở đâu? Bài học gì?) và tranh SVG phù hợp. Cô xem lại trong Trình Biên Tập bên dưới hoặc bấm nút để dạy ngay.</span><br><button class="interactive-btn-lg" style="margin-top:8px" onclick="switchWorkspace(\'deck\')">🚀 Dạy Bài Này Ngay</button></div>';
+  renderDeck(); renderThemeGrid(); renderSlideEditor();
+  toast('🪄 Đã tạo '+made.length+' trang slide cho bài “'+title+'”!');
+}
+function renderSlideEditor(){
+  $('slideEditorList').innerHTML = SLIDES_DATA.map((s,i)=>
+    '<div class="page-editor-card" style="margin-bottom:12px"><b>Trang '+(i+1)+' — '+esc(s.title)+'</b>'+
+    '<div style="margin:8px 0">'+buildAnimatedVisual4D(s,i)+'</div>'+
+    '<label>Tiêu đề <input value="'+esc(s.title)+'" onchange="SLIDES_DATA['+i+'].title=this.value;renderDeck()"></label>'+
+    '<label>Tranh minh họa <select onchange="SLIDES_DATA['+i+'].visualTheme=this.value;SLIDES_DATA['+i+'].image=\'\';renderDeck();renderSlideEditor()">'+
+    ['sun|☀️ Mặt trời','flower|🌸 Hoa','rabbit|🐰 Thỏ','fish|🐟 Cá','tree|🌳 Cây','traffic|🚦 Giao thông','water|💧 Nước','flag|🇻🇳 Cờ','shapes|🔷 Hình học','book|📚 Sách'].map(o=>{const [v,l]=o.split('|');return '<option value="'+v+'" '+(s.visualTheme===v?'selected':'')+'>'+l+'</option>';}).join('')+'</select></label>'+
+    '<label>Hoặc tải ảnh từ máy tính <input type="file" accept="image/*" onchange="uploadSlideImage('+i+',this.files[0])"></label>'+
+    s.flipCards.map((c,ci)=>'<div style="border-top:1px dashed #94a3b8;margin-top:8px;padding-top:8px"><b>Thẻ '+(ci+1)+'</b>'+
+      '<input value="'+esc(c.frontTitle)+'" onchange="SLIDES_DATA['+i+'].flipCards['+ci+'].frontTitle=this.value" placeholder="Tiêu đề mặt trước">'+
+      '<input value="'+esc(c.frontText)+'" onchange="SLIDES_DATA['+i+'].flipCards['+ci+'].frontText=this.value" placeholder="Nội dung mặt trước">'+
+      '<input value="'+esc(c.backTitle)+'" onchange="SLIDES_DATA['+i+'].flipCards['+ci+'].backTitle=this.value" placeholder="Tiêu đề mặt sau">'+
+      '<textarea rows="2" onchange="SLIDES_DATA['+i+'].flipCards['+ci+'].backText=this.value" placeholder="Nội dung mặt sau">'+esc(c.backText)+'</textarea></div>').join('')+
+    '<label>Dòng chuyển hóa: <input value="'+esc(s.stateOld||'')+'" onchange="SLIDES_DATA['+i+'].stateOld=this.value"> ➔ <input value="'+esc(s.bridgeVerb||'')+'" onchange="SLIDES_DATA['+i+'].bridgeVerb=this.value"> ➔ <input value="'+esc(s.stateNew||'')+'" onchange="SLIDES_DATA['+i+'].stateNew=this.value"></label>'+
+    '<label>Lời kể Teleprompter <textarea rows="3" onchange="SLIDES_DATA['+i+'].script=this.value">'+esc(s.script||'')+'</textarea></label>'+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button class="btn-hud-action" onclick="moveSlide('+i+',-1)">⬆ Lên</button><button class="btn-hud-action" onclick="moveSlide('+i+',1)">⬇ Xuống</button><button class="btn-hud-action green" onclick="duplicateSlide('+i+')">📄 Nhân bản</button><button class="btn-hud-action crimson" onclick="deleteSlide('+i+')">🗑 Xóa trang</button></div></div>').join('');
+}
+function uploadSlideImage(i,file){
+  if(!file) return;
+  const r=new FileReader(); r.onload=()=>{ SLIDES_DATA[i].image=r.result; renderDeck(); renderSlideEditor(); toast('✅ Đã thay ảnh cho trang '+(i+1)); }; r.readAsDataURL(file);
+}
+function moveSlide(i,d){ const j=i+d; if(j<0||j>=SLIDES_DATA.length) return; const t=SLIDES_DATA[i]; SLIDES_DATA[i]=SLIDES_DATA[j]; SLIDES_DATA[j]=t; currentSlideIdx=j; renderDeck(); renderSlideEditor(); }
+function duplicateSlide(i){ const c=JSON.parse(JSON.stringify(SLIDES_DATA[i])); c.id=Date.now(); SLIDES_DATA.splice(i+1,0,c); renderDeck(); renderSlideEditor(); toast('📄 Đã nhân bản trang '+(i+1)); }
+function deleteSlide(i){ if(SLIDES_DATA.length<=1){ toast('Bài giảng cần ít nhất 1 trang!'); return; } if(!confirm('Xóa trang “'+SLIDES_DATA[i].title+'” thật không?')) return; SLIDES_DATA.splice(i,1); currentSlideIdx=Math.min(currentSlideIdx,SLIDES_DATA.length-1); renderDeck(); renderSlideEditor(); }
+
+/* ================= GIÁO ÁN + XUẤT WORD / IN ================= */
+const PLAN_TEMPLATES={
+hoc:{label:'Hoạt động Học',head:'GIÁO ÁN HOẠT ĐỘNG HỌC',body:'<b>Hoạt động 1: Ổn định tổ chức &amp; Gây hứng thú</b><br><b>Hoạt động 2: Nội dung trọng tâm</b><br><b>Hoạt động 3: Kết thúc</b>'},
+goc:{label:'Hoạt động Góc',head:'KẾ HOẠCH HOẠT ĐỘNG GÓC',body:'<b>Góc Phân vai:</b> Gia đình, Bán hàng, Bác sĩ.<br><b>Góc Xây dựng:</b> Xây vườn hoa, lắp ghép hàng rào.<br><b>Góc Nghệ thuật:</b> Tô màu, nặn, hát múa.<br><b>Góc Sách truyện:</b> Đọc sách, kể chuyện.<br><b>Góc Thiên nhiên:</b> Chăm sóc cây, quan sát côn trùng.'},
+ngoaitroi:{label:'Hoạt động Ngoài trời',head:'KẾ HOẠCH HOẠT ĐỘNG NGOÀI TRỜI',body:'<b>1. Quan sát có mục đích:</b> Quan sát cây, hoa, thời tiết.<br><b>2. Trò chơi vận động:</b> Chạy, nhảy, ném bóng.<br><b>3. Chơi tự do với đồ chơi sân trường.</b>'},
+nhatky:{label:'Nhật ký Đánh giá',head:'NHẬT KÝ ĐÁNH GIÁ HÀNG NGÀY',body:'<b>Tình trạng sức khỏe:</b> ...<br><b>Trạng thái cảm xúc:</b> ...<br><b>Thái độ và kiến thức kỹ năng:</b> ...<br><b>Trẻ cần lưu ý hôm sau:</b> ...'}};
+function setPlanTemplate(t,btn){
+  planTemplate=t;
+  document.querySelectorAll('#ws-plan .pill-btn').forEach(b=>b.classList.remove('active'));
+  btn&&btn.classList.add('active');
+  if(t==='goc'){ $('lpTienHanh').value='Góc Phân vai (Gia đình, Bán hàng, Bác sĩ): Trẻ đóng vai, giao tiếp, chia sẻ.\nGóc Xây dựng (Xây vườn hoa, lắp ghép hàng rào): Trẻ xây dựng theo ý tưởng.\nGóc Nghệ thuật (Tô màu, nặn, hát múa): Trẻ tô màu, nặn hình, hát múa.\nGóc Sách truyện: Trẻ xem tranh, kể chuyện theo tranh.\nGóc Thiên nhiên: Trẻ chăm sóc cây, quan sát côn trùng.'; }
+  if(t==='ngoaitroi'){ $('lpTienHanh').value='1. Quan sát có mục đích: Cô hướng dẫn trẻ quan sát cây, hoa, thời tiết.\n2. Trò chơi vận động: Trẻ chơi chạy, nhảy, ném bóng.\n3. Chơi tự do với đồ chơi sân trường: Trẻ chơi tự do, cô quan sát và hỗ trợ.'; }
+  if(t==='nhatky'){ $('lpTienHanh').value='Tình trạng sức khỏe: ...\nTrạng thái cảm xúc: ...\nThái độ và kiến thức kỹ năng: ...\nTrẻ cần lưu ý hôm sau: ...'; }
+  renderPlanPreview();
+}
+function fmtDateVN(d){ if(!d) return '....../....../......'; const p=d.split('-'); return p.length===3?('Ngày '+p[2]+' tháng '+p[1]+' năm '+p[0]):d; }
+function renderPlanPreview(){
+  const tpl=PLAN_TEMPLATES[planTemplate];
+  const rows=( $('lpTienHanh').value||'').split('\n').filter(Boolean).map(line=>{
+    const parts=line.split(/[:–—-]\s*/);
+    return '<tr><td>'+esc(line)+'</td><td></td></tr>';
+  }).join('');
+  $('lpPreviewPaper').innerHTML =
+  '<div class="quoc-hieu">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>Độc lập – Tự do – Hạnh phúc</div>'+
+  '<div style="display:flex;justify-content:space-between;font-size:14px;margin-top:6px"><span>TRƯỜNG MẦM NON LÊ THẾ HIẾU<br><b>Lớp: Mẫu giáo bé 3–4 tuổi</b></span><span style="text-align:right">Cam Lộ, '+esc(fmtDateVN($('lpDate').value))+'</span></div>'+
+  '<h2>'+tpl.head+'</h2><h3>Đề tài: '+esc($('lpTitle').value||'................................')+'<br>Lĩnh vực: '+esc($('lpDomain').value)+'</h3>'+
+  '<p><b>I. Mục đích – Yêu cầu</b><br>'+esc($('lpMucDich').value||'').replace(/\n/g,'<br>')+'</p>'+
+  '<p><b>II. Chuẩn bị</b><br>'+esc($('lpChuanBi').value||'').replace(/\n/g,'<br>')+'</p>'+
+  '<p><b>III. Tiến hành hoạt động</b></p>'+
+  '<table><tr><th style="width:50%">HOẠT ĐỘNG CỦA CÔ</th><th style="width:50%">HOẠT ĐỘNG CỦA TRẺ</th></tr>'+(rows||'<tr><td></td><td></td></tr>')+'</table>'+
+  '<p><b>Ghi chú / Đánh giá sau giờ dạy:</b><br>'+esc($('lpGhiChu').value||'').replace(/\n/g,'<br>')+'</p>'+
+  '<div style="text-align:right;margin-top:20px"><b>Người soạn</b><br><br><br><b>Đặng Thị Niềm</b></div>';
+}
+function syncSlideToPlan(){
+  const s=SLIDES_DATA[currentSlideIdx];
+  $('lpTitle').value=currentLesson.title+' — '+s.title;
+  $('lpMucDich').value=currentLesson.plan.mucDich||'';
+  $('lpChuanBi').value=currentLesson.plan.chuanBi||'';
+  $('lpTienHanh').value=currentLesson.plan.tienHanh||('Hoạt động 1: Ổn định tổ chức & Gây hứng thú\nHoạt động 2: Nội dung trọng tâm — '+s.script+'\nHoạt động 3: Kết thúc');
+  renderPlanPreview(); toast('🔄 Đã đồng bộ từ slide sang giáo án!');
+}
+function syncPlanToSlide(){
+  const title=$('lpTitle').value.trim()||'Bài giảng mới';
+  const slide={ id:Date.now(), tag:'📝 TỪ GIÁO ÁN', title:title, visualTheme:'book',
+    flipCards:[
+    {frontTitle:'❓ Bài hôm nay nói về gì?',frontText:'Bé đoán nội dung bài nào!',backTitle:'📖 '+title,backText:$('lpMucDich').value.slice(0,150)},
+    {frontTitle:'❓ Cô chuẩn bị gì cho bài?',frontText:'Bé kể đồ dùng của cô nào!',backTitle:'🎒 ĐỒ DÙNG CỦA CÔ',backText:$('lpChuanBi').value.slice(0,150)},
+    {frontTitle:'❓ Bé làm gì trong bài?',frontText:'Bé kể hoạt động của mình nào!',backTitle:'🙋 HOẠT ĐỘNG CỦA TRẺ',backText:'Bé lắng nghe, trả lời câu hỏi và tham gia trò chơi.'},
+    {frontTitle:'❓ Bé học được gì?',frontText:'Qua bài, bé học được gì?',backTitle:'🌟 BÀI HỌC CỦA BÉ',backText:'Bé nêu một điều hay học được từ bài.'}],
+    bullets:['🔹 '+title,'🔹 Bé tham gia tích cực và trả lời câu hỏi.'],
+    stateOld:'🤔 Bé chưa biết bài này', bridgeVerb:'KHÁM PHÁ', stateNew:'🌟 Bé hiểu bài và nhớ lâu',
+    script:$('lpTienHanh').value.replace(/\n/g,' ').slice(0,300) };
+  SLIDES_DATA.push(slide); currentSlideIdx=SLIDES_DATA.length-1;
+  renderDeck(); renderSlideEditor(); switchWorkspace('deck');
+  toast('🪄 Đã đồng bộ từ giáo án sang slide!');
+}
+function exportPlanDoc(){
+  renderPlanPreview();
+  const html='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" lang="vi"><head><meta charset="UTF-8"><title>Giáo án</title><style>body{font-family:"Times New Roman",serif;font-size:13pt} table{border-collapse:collapse;width:100%} td,th{border:1px solid #000;padding:6px;vertical-align:top} h2,h3{text-align:center}</style></head><body>'+$('lpPreviewPaper').innerHTML+'</body></html>';
+  const blob=new Blob(['\ufeff'+html],{type:'application/msword'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='giao-an-'+($('lpTitle').value||'bai-day').replace(/[^\wÀ-ỹ]+/g,'-')+'.doc'; a.click();
+  toast('📄 Đã xuất file Word (.doc) — mở trực tiếp trên Microsoft Word!');
+}
+function printPlan(){ renderPlanPreview(); window.print(); }
+
+/* ================= LỚP HỌC: ĐIỂM DANH, BÁO CƠM, VÒNG QUAY, ZALO ================= */
+function renderAttendance(){
+  $('attendanceTables').innerHTML = GROUPS.map((g,gi)=>{
+    const kids=STUDENTS.filter(s=>s.group===gi);
+    return '<h3 style="margin-top:10px">'+g+' ('+kids.length+' bé)</h3><table class="student-table"><tr><th>Tên bé</th><th>Điểm danh</th><th>🌸 Hoa</th><th></th></tr>'+
+    kids.map(s=>'<tr><td>'+esc(s.name)+'</td><td>'+
+      '<button class="att-btn '+(s.status==='co'?'on-co':'')+'" onclick="setAttendance('+s.id+',\'co\')">✅ Có mặt</button>'+
+      '<button class="att-btn '+(s.status==='phep'?'on-phep':'')+'" onclick="setAttendance('+s.id+',\'phep\')">🟡 Nghỉ phép</button>'+
+      '<button class="att-btn '+(s.status==='khong'?'on-khong':'')+'" onclick="setAttendance('+s.id+',\'khong\')">🔴 Nghỉ không phép</button></td>'+
+      '<td>'+(s.flowers||0)+' 🌸</td><td><button class="att-btn" onclick="removeStudent('+s.id+')">🗑</button></td></tr>').join('')+'</table>';
+  }).join('');
+  const present=STUDENTS.filter(s=>s.status==='co').length;
+  const total=STUDENTS.length;
+  const price=parseInt($('mealPrice').value)||0;
+  const warn=total>25?' <span style="color:#b91c1c">⚠️ Sĩ số '+total+' bé — vượt mức tối đa 25 trẻ/lớp mẫu giáo 3–4 tuổi (Thông tư 52/2020/TT-BGDĐT).</span>':'';
+  $('mealSummary').innerHTML='📊 Sĩ số: <b>'+present+'/'+total+'</b> bé có mặt • 🍚 Suất ăn báo nhà bếp: <b>'+present+' suất</b> • 💰 Tiền ăn trong ngày: <b>'+(present*price).toLocaleString('vi-VN')+' đ</b>'+warn;
+}
+function setAttendance(id,st){ const s=STUDENTS.find(x=>x.id===id); if(s){ s.status=st; renderAttendance(); } }
+function addStudent(){
+  const name=$('newStudentName').value.trim(); if(!name){ toast('Cô nhập tên bé rồi bấm Thêm Bé nhé!'); return; }
+  STUDENTS.push({ id:Date.now(), name:name, group:parseInt($('newStudentGroup').value), status:'co', flowers:0 });
+  $('newStudentName').value=''; renderAttendance(); renderFlowerBoard(); fillCommentStudents(); fillObsStudents(); fillCareStudents(); fillProfileStudents();
+  toast('➕ Đã thêm bé '+name+' vào lớp!');
+}
+function removeStudent(id){ if(!confirm('Xóa bé này khỏi danh sách thật không?')) return; STUDENTS=STUDENTS.filter(s=>s.id!==id); renderAttendance(); renderFlowerBoard(); fillCommentStudents(); fillObsStudents(); fillCareStudents(); fillProfileStudents(); }
+function fillObsStudents(){ const el=$('obsStudent'); if(!el) return; el.innerHTML=STUDENTS.map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join(''); }
+function saveObs(){
+  const sid=parseInt($('obsStudent').value); const note=$('obsNote').value.trim();
+  if(!note){ toast('Cô ghi vài chữ quan sát rồi bấm Lưu nhé!'); return; }
+  const s=STUDENTS.find(x=>x.id===sid);
+  OBS_LOG.unshift({ date:new Date().toLocaleDateString('vi-VN'), student:s?s.name:'', domain:$('obsDomain').value, note:note });
+  $('obsNote').value=''; renderObsList(); toast('📝 Đã lưu ghi chú quan sát cho '+(s?s.name:'bé')+'!');
+}
+function deleteObs(i){ OBS_LOG.splice(i,1); renderObsList(); }
+function renderObsList(){
+  const el=$('obsList'); if(!el) return;
+  if(!OBS_LOG.length){ el.innerHTML='<p class="sub">Chưa có ghi chú nào hôm nay. Cô quan sát được gì thì ghi ngay vào đây — cuối chủ đề sẽ dùng làm tư liệu đánh giá trẻ.</p>'; return; }
+  el.innerHTML='<table class="student-table"><tr><th>Ngày</th><th>Bé</th><th>Lĩnh vực</th><th>Quan sát</th><th></th></tr>'+
+    OBS_LOG.map((o,i)=>'<tr><td>'+esc(o.date)+'</td><td>'+esc(o.student)+'</td><td>'+esc(o.domain)+'</td><td>'+esc(o.note)+'</td><td><button class="att-btn" onclick="deleteObs('+i+')">🗑</button></td></tr>').join('')+'</table>';
+}
+function fillCareStudents(){ const el=$('careStudent'); if(!el) return; el.innerHTML=STUDENTS.map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join(''); }
+function saveCare(){
+  const sid=parseInt($('careStudent').value); const s=STUDENTS.find(x=>x.id===sid);
+  CARE_LOG.unshift({ date:new Date().toLocaleDateString('vi-VN'), student:s?s.name:'', meal:$('careMeal').value, sleep:$('careSleep').value, med:$('careMed').value.trim(), pickup:$('carePickup').value.trim() });
+  $('careMed').value=''; $('carePickup').value=''; renderCareList(); toast('🍚 Đã lưu chăm sóc trong ngày cho '+(s?s.name:'bé')+'!');
+}
+function deleteCare(i){ CARE_LOG.splice(i,1); renderCareList(); }
+function renderCareList(){
+  const el=$('careList'); if(!el) return;
+  if(!CARE_LOG.length){ el.innerHTML='<p class="sub">Chưa ghi chăm sóc hôm nay. Cô ghi nhanh bữa ăn, giấc ngủ, dặn thuốc và người đón của từng bé vào đây.</p>'; return; }
+  el.innerHTML='<table class="student-table"><tr><th>Ngày</th><th>Bé</th><th>Ăn</th><th>Ngủ</th><th>Dặn thuốc</th><th>Người đón</th><th></th></tr>'+
+    CARE_LOG.map((c,i)=>'<tr><td>'+esc(c.date)+'</td><td>'+esc(c.student)+'</td><td>'+esc(c.meal)+'</td><td>'+esc(c.sleep)+'</td><td>'+esc(c.med||'—')+'</td><td>'+esc(c.pickup||'—')+'</td><td><button class="att-btn" onclick="deleteCare('+i+')">🗑</button></td></tr>').join('')+'</table>';
+}
+function addAsset(){
+  const name=$('assetName').value.trim(); if(!name){ toast('Cô nhập tên đồ dùng rồi bấm Thêm Vào Sổ nhé!'); return; }
+  ASSETS.unshift({ name:name, qty:parseInt($('assetQty').value)||1, cond:$('assetCond').value });
+  $('assetName').value=''; renderAssetList(); toast('🧸 Đã ghi "'+name+'" vào sổ tài sản lớp!');
+}
+function deleteAsset(i){ ASSETS.splice(i,1); renderAssetList(); }
+function renderAssetList(){
+  const el=$('assetList'); if(!el) return;
+  if(!ASSETS.length){ el.innerHTML='<p class="sub">Sổ tài sản lớp còn trống. Cô ghi đồ dùng, thiết bị, đồ chơi của lớp vào đây để theo dõi và bàn giao cuối năm.</p>'; return; }
+  el.innerHTML='<table class="student-table"><tr><th>Tên đồ dùng / đồ chơi</th><th>Số lượng</th><th>Tình trạng</th><th></th></tr>'+
+    ASSETS.map((a,i)=>'<tr><td>'+esc(a.name)+'</td><td>'+a.qty+'</td><td>'+esc(a.cond)+'</td><td><button class="att-btn" onclick="deleteAsset('+i+')">🗑</button></td></tr>').join('')+'</table>';
+}
+function fillProfileStudents(){ const el=$('profileStudent'); if(!el) return; el.innerHTML=STUDENTS.map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join(''); }
+function renderProfile(){
+  const el=$('profileBox'); if(!el) return;
+  const sid=parseInt($('profileStudent').value); const s=STUDENTS.find(x=>x.id===sid); if(!s){ el.innerHTML='<p class="sub">Chưa có bé nào trong lớp.</p>'; return; }
+  const obs=OBS_LOG.filter(o=>o.student===s.name);
+  const byDomain={}; obs.forEach(o=>{ byDomain[o.domain]=(byDomain[o.domain]||0)+1; });
+  const care=CARE_LOG.filter(c=>c.student===s.name);
+  const who=WHO_RECORDS.filter(w=>w.name===s.name);
+  const stTxt={co:'✅ Có mặt',phep:'🟡 Nghỉ phép',khong:'🔴 Nghỉ không phép'}[s.status]||'';
+  el.innerHTML='<h3>'+esc(s.name)+' — '+esc(GROUPS[s.group]||'')+'</h3>'+
+    '<p>Điểm danh hôm nay: <b>'+stTxt+'</b> • 🌸 Hoa Bé Ngoan: <b>'+(s.flowers||0)+'</b></p>'+
+    '<p>📝 Ghi chú quan sát: <b>'+obs.length+'</b> mục '+(Object.keys(byDomain).length?('('+Object.keys(byDomain).map(d=>d+': '+byDomain[d]).join(', ')+')'):'')+'</p>'+
+    (obs.length?'<ul>'+obs.slice(0,5).map(o=>'<li>'+esc(o.date)+' — <b>'+esc(o.domain)+':</b> '+esc(o.note)+'</li>').join('')+'</ul>':'')+
+    '<p>🍚 Chăm sóc trong ngày: <b>'+care.length+'</b> lần ghi '+(care.length?('— mới nhất: '+esc(care[0].meal)+', '+esc(care[0].sleep)+(care[0].med?(', dặn thuốc: '+esc(care[0].med)):'')):'')+'</p>'+
+    '<p>🩺 Số đo sức khỏe đã lưu: <b>'+who.length+'</b> lần '+(who.length?('— mới nhất: '+who[who.length-1].w+'kg, '+who[who.length-1].h+'cm ('+esc(who[who.length-1].verdict||'')+')'):'')+'</p>';
+}
+function copyProfile(){
+  const el=$('profileBox'); if(!el) return;
+  const txt=el.innerText||el.textContent||'';
+  (navigator.clipboard?navigator.clipboard.writeText('HỒ SƠ BÉ — LỚP 3–4 TUỔI (CÔ ĐẶNG THỊ NIỀM)\n'+txt):Promise.reject()).then(()=>toast('📋 Đã sao chép hồ sơ bé!'));
+}
+function copyMealReport(){
+  const present=STUDENTS.filter(s=>s.status==='co').length;
+  const absent=STUDENTS.filter(s=>s.status!=='co');
+  const price=parseInt($('mealPrice').value)||0;
+  const txt='BÁO CÁO ĐIỂM DANH & BÁO CƠM — LỚP 3–4 TUỔI (CÔ ĐẶNG THỊ NIỀM)\nNgày: '+new Date().toLocaleDateString('vi-VN')+'\nSĩ số: '+present+'/'+STUDENTS.length+' bé có mặt\nNghỉ: '+(absent.map(s=>s.name+' ('+(s.status==='phep'?'có phép':'không phép')+')').join(', ')||'không có')+'\nSuất ăn báo nhà bếp: '+present+' suất\nTiền ăn trong ngày: '+(present*price).toLocaleString('vi-VN')+' đ\nBài học hôm nay: '+currentLesson.title;
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('📋 Đã sao chép báo cáo — cô dán gửi Ban giám hiệu nhé!'));
+}
+function renderFlowerBoard(){
+  const sorted=[...STUDENTS].sort((a,b)=>(b.flowers||0)-(a.flowers||0));
+  $('flowerBoard').innerHTML='<table class="student-table"><tr><th>#</th><th>Tên bé</th><th>🌸 Hoa Bé Ngoan</th></tr>'+
+    sorted.map((s,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(s.name)+'</td><td>'+(s.flowers||0)+' 🌸</td></tr>').join('')+'</table>'+
+    '<p class="small" style="margin-top:6px">Tổng Hoa Bé Ngoan của lớp hôm nay: <b>'+(FLOWERS.classTotal||0)+' 🌸</b></p>';
+}
+function spinWheel(){
+  const present=STUDENTS.filter(s=>s.status==='co');
+  if(!present.length){ toast('Chưa có bé nào có mặt hôm nay!'); return; }
+  let n=0; const total=14+Math.floor(Math.random()*8);
+  const iv=setInterval(()=>{
+    $('wheelName').textContent=present[Math.floor(Math.random()*present.length)].name;
+    if(++n>=total){ clearInterval(iv);
+      const st=present[Math.floor(Math.random()*present.length)];
+      lastCalledStudent=st; $('wheelName').textContent='🎉 '+st.name+'!';
+      $('studentModalName').textContent=st.name; $('studentModal').classList.add('open');
+      playBellTransition(); speakText('Mời bé '+st.name.replace(' (mẫu)','')+' trả lời câu hỏi nào!');
+    }
+  },90);
+}
+function renderSchedule(){
+  $('scheduleList').innerHTML=SCHEDULE.map(([t,act])=>'<div class="schedule-row"><span><b>'+t+'</b></span><span>'+act+'</span></div>').join('');
+}
+function startCountdown(min){
+  stopCountdown(); countdownLeft=min*60; updateCountdownDisplay();
+  countdownTimer=setInterval(()=>{
+    countdownLeft--;
+    if(countdownLeft<=0){ stopCountdown(); playBellTransition(); toast('⏰ Hết giờ! Cô cho các bé chuyển hoạt động nhé!'); $('countdownDisplay').textContent='00:00'; return; }
+    updateCountdownDisplay();
+  },1000);
+  toast('⏱ Đã bắt đầu đếm ngược '+min+' phút');
+}
+function stopCountdown(){ if(countdownTimer){ clearInterval(countdownTimer); countdownTimer=null; } }
+function updateCountdownDisplay(){ const m=String(Math.floor(countdownLeft/60)).padStart(2,'0'), s=String(countdownLeft%60).padStart(2,'0'); $('countdownDisplay').textContent=m+':'+s; }
+function renderZaloList(){
+  const present=STUDENTS.filter(s=>s.status==='co').length;
+  $('zaloList').innerHTML=ZALO_TEMPLATES.map(t=>{
+    let body=t.body.replace('{lesson}',currentLesson.title).replace('{present}',present).replace('{total}',STUDENTS.length)
+      .replace('{name}',(STUDENTS[0]?STUDENTS[0].name:'bé')).replace('{time}','15h00').replace('{date}',new Date().toLocaleDateString('vi-VN')).replace('{holiday}','lễ').replace('{note}','chăm ngoan, học giỏi hơn');
+    return '<div class="poem-item"><b>'+esc(t.title)+'</b><p style="margin:8px 0;font-size:14px;line-height:1.6">'+esc(body)+'</p><button class="btn-hud-action green" onclick="copyZalo('+t.id+')">📋 Sao Chép Tin Này</button></div>';
+  }).join('');
+}
+function copyZalo(id){
+  const t=ZALO_TEMPLATES.find(x=>x.id===id); if(!t) return;
+  const present=STUDENTS.filter(s=>s.status==='co').length;
+  const body=t.body.replace('{lesson}',currentLesson.title).replace('{present}',present).replace('{total}',STUDENTS.length)
+    .replace('{name}',(STUDENTS[0]?STUDENTS[0].name:'bé')).replace('{time}','15h00').replace('{date}',new Date().toLocaleDateString('vi-VN')).replace('{holiday}','lễ').replace('{note}','chăm ngoan, học giỏi hơn');
+  (navigator.clipboard?navigator.clipboard.writeText(body):Promise.reject()).then(()=>toast('📋 Đã sao chép tin Zalo — cô dán gửi phụ huynh nhé!'));
+}
+
+/* ================= SỨC KHỎE WHO + NGÂN HÀNG NHẬN XÉT ================= */
+function interpWho(sex, age, kind){
+  const tb=WHO_TABLE[sex];
+  const a=Math.min(48,Math.max(36,age));
+  const f=(a-36)/12;
+  const lo=tb['w36'][0]+(tb['w48'][0]-tb['w36'][0])*f, med=tb['w36'][1]+(tb['w48'][1]-tb['w36'][1])*f, hi=tb['w36'][2]+(tb['w48'][2]-tb['w36'][2])*f;
+  const hLo=tb['h36'][0]+(tb['h48'][0]-tb['h36'][0])*f, hMed=tb['h36'][1]+(tb['h48'][1]-tb['h36'][1])*f, hHi=tb['h36'][2]+(tb['h48'][2]-tb['h36'][2])*f;
+  return kind==='w'?[lo,med,hi]:[hLo,hMed,hHi];
+}
+function calcWHO(){
+  const name=$('whoName').value.trim()||'Bé';
+  const sex=$('whoSex').value, age=parseInt($('whoAge').value)||42;
+  const w=parseFloat($('whoWeight').value), h=parseFloat($('whoHeight').value);
+  if(!w||!h){ toast('Cô nhập cân nặng và chiều cao của bé rồi bấm Tính nhé!'); return; }
+  const [wLo,wMed,wHi]=interpWho(sex,age,'w');
+  const [hLo,hMed,hHi]=interpWho(sex,age,'h');
+  let res=[], cls='who-ok';
+  if(w<wLo){ res.push('⚠️ Cân nặng dưới ngưỡng −2SD ('+wLo.toFixed(1)+' kg): Suy dinh dưỡng nhẹ cân'); cls='who-bad'; }
+  else if(w>wHi){ res.push('⚠️ Cân nặng trên ngưỡng +2SD ('+wHi.toFixed(1)+' kg): Nguy cơ thừa cân – Béo phì'); cls='who-warn'; }
+  else res.push('✅ Cân nặng bình thường ('+wMed.toFixed(1)+' kg là trung bình lứa tuổi).');
+  if(h<hLo){ res.push('⚠️ Chiều cao dưới ngưỡng −2SD ('+hLo.toFixed(1)+' cm): Suy dinh dưỡng thấp còi'); cls='who-bad'; }
+  else if(h>hHi){ res.push('⚠️ Chiều cao trên ngưỡng +2SD ('+hHi.toFixed(1)+' cm): Cao vượt chuẩn — theo dõi thêm.'); cls=cls==='who-ok'?'who-warn':cls; }
+  else res.push('✅ Chiều cao bình thường ('+hMed.toFixed(1)+' cm là trung bình lứa tuổi).');
+  const advice = cls==='who-ok' ? 'Lời khuyên: Tiếp tục chế độ ăn đủ chất, ngủ đủ giấc, vận động mỗi ngày.' :
+    cls==='who-bad' ? 'Lời khuyên: Tăng cường bữa ăn giàu đạm, rau củ; theo dõi cân nặng hàng tháng; trao đổi với cán bộ y tế.' :
+    'Lời khuyên: Hạn chế đồ ngọt, nước ngọt; tăng vận động ngoài trời; theo dõi cân nặng hàng tháng.';
+  const verdict = cls==='who-ok'?'BÌNH THƯỜNG':(cls==='who-bad'?'CẦN LƯU Ý THEO DÕI':'NGUY CƠ — CẦN THEO DÕI');
+  $('whoResult').innerHTML='<div class="who-result '+cls+'">'+esc(name)+' — '+age+' tháng — '+verdict+'<br><span style="font-size:14px;font-weight:600">'+res.join('<br>')+'<br>'+advice+'</span></div>';
+  WHO_RECORDS.push({name,sex,age,w,h,verdict,date:new Date().toLocaleDateString('vi-VN')});
+  renderWhoList();
+}
+function renderWhoList(){
+  $('whoList').innerHTML = WHO_RECORDS.length?'<table class="student-table"><tr><th>Bé</th><th>Tuổi</th><th>Cân (kg)</th><th>Cao (cm)</th><th>Kết luận</th></tr>'+
+    WHO_RECORDS.map(r=>'<tr><td>'+esc(r.name)+'</td><td>'+r.age+' tháng</td><td>'+r.w+'</td><td>'+r.h+'</td><td>'+esc(r.verdict)+'</td></tr>').join('')+'</table>'
+    :'<p class="sub">Chưa có bé nào được đo trong phiên này. Cô nhập số liệu bên trên để lưu vào danh sách theo dõi.</p>';
+}
+function exportWhoSummary(){
+  if(!WHO_RECORDS.length){ toast('Chưa có dữ liệu sức khỏe để xuất!'); return; }
+  const txt='BẢNG TỔNG HỢP SỨC KHỎE LỚP 3–4 TUỔI — CÔ ĐẶNG THỊ NIỀM\nNgày: '+new Date().toLocaleDateString('vi-VN')+'\n\n'+WHO_RECORDS.map(r=>r.name+' — '+r.age+' tháng — '+r.w+' kg — '+r.h+' cm — '+r.verdict).join('\n');
+  const blob=new Blob(['\ufeff'+txt],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='suc-khoe-lop-3-4-tuoi.txt'; a.click();
+  toast('📄 Đã xuất bảng tổng hợp sức khỏe!');
+}
+function fillCommentStudents(){
+  $('commentStudent').innerHTML=STUDENTS.map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join('');
+}
+function renderCommentBank(){
+  const dom=$('commentDomainFilter').value, lvl=$('commentLevelFilter').value;
+  const list=COMMENTS.filter(c=>(!dom||c.domain===dom)&&(!lvl||c.level===lvl));
+  $('commentBank').innerHTML=list.map((c,i)=>'<label><input type="checkbox" class="comment-check" data-idx="'+COMMENTS.indexOf(c)+'"> <span><b>['+esc(c.domain)+' — '+esc(c.level)+']</b> '+esc(c.text)+'</span></label>').join('')||'<p class="sub">Không có câu nhận xét nào phù hợp bộ lọc.</p>';
+}
+function composeComment(){
+  const st=STUDENTS.find(s=>s.id==$('commentStudent').value);
+  const name=st?st.name.replace(' (mẫu)',''):'Bé';
+  const picked=[...document.querySelectorAll('.comment-check:checked')].map(cb=>COMMENTS[parseInt(cb.dataset.idx)]);
+  if(!picked.length){ toast('Cô tick chọn các câu nhận xét rồi bấm Ghép nhé!'); return; }
+  const text=picked.map(c=>c.text.replace(/^Bé/, name)).join(' ');
+  $('commentOutput').value='Nhận xét bé '+name+' — Lớp 3–4 tuổi, Trường MN Lê Thế Hiếu:\n'+text;
+  toast('✍️ Đã ghép xong đoạn nhận xét cho '+name+'!');
+}
+
+/* ================= TỰ LƯU TRỌN BỘ (SELF-REPLICATION) ================= */
+function exportStandaloneHtml4D(){
+  try{
+    let html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    const replaceBlock=(str,startMark,endMark,inner)=>{
+      const re=new RegExp('(\\/\\*'+startMark+'\\*\\/)[\\s\\S]*?(\\/\\*'+endMark+'\\*\\/)');
+      return str.replace(re,'$1\n'+inner+'\n$2');
+    };
+    html=replaceBlock(html,'__DEFAULT_SLIDES_START__','__DEFAULT_SLIDES_END__','const DEFAULT_MASTER_SLIDES = '+JSON.stringify(SLIDES_DATA)+';');
+    html=replaceBlock(html,'__SLIDES_DATA_START__','__SLIDES_DATA_END__','const LESSONS = '+JSON.stringify(LESSONS)+';');
+    html=replaceBlock(html,'__CLASS_RECORDS_START__','__CLASS_RECORDS_END__','let STUDENTS = '+JSON.stringify(STUDENTS)+';\nlet FLOWERS = '+JSON.stringify(FLOWERS)+';\nlet WHO_RECORDS = '+JSON.stringify(WHO_RECORDS)+';\nlet OBS_LOG = '+JSON.stringify(OBS_LOG)+';\nlet CARE_LOG = '+JSON.stringify(CARE_LOG)+';\nlet ASSETS = '+JSON.stringify(ASSETS)+';');
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='bach-khoa-mam-non-4d-co-niem-'+new Date().toISOString().slice(0,10)+'.html'; a.click();
+    toast('💾 Đã lưu trọn bộ về máy! File mới chứa toàn bộ bài giảng, học sinh, Hoa Bé Ngoan và sức khỏe — mở trên TV/máy tính ở trường là chạy ngay.');
+  }catch(err){ toast('❌ Lỗi khi lưu file: '+err.message); }
+}
+
+/* ================= KHỞI TẠO ================= */
+function initApp(){
+  const today=new Date(); $('lpDate').value=today.toISOString().slice(0,10);
+  renderDeck(); renderThemeGrid(); renderPoemLibrary(); renderLessonDetail(LESSONS[0]);
+  renderAttendance(); renderFlowerBoard(); renderSchedule(); renderZaloList(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile();
+  fillCommentStudents(); renderCommentBank(); renderWhoList(); renderPlanPreview(); renderSlideEditor();
+  loadViVoices();
+  const dz=$('pdfDropZone');
+  dz.addEventListener('click',()=>$('pdfFileInput').click());
+  dz.addEventListener('dragover',e=>{ e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+  dz.addEventListener('drop',e=>{ e.preventDefault(); dz.classList.remove('over'); const f=e.dataTransfer.files[0]; if(f) processNotebookPdfFile(f); });
+  ['lpDate','lpTitle','lpDomain','lpMucDich','lpChuanBi','lpTienHanh','lpGhiChu'].forEach(id=>{ $(id).addEventListener('input',renderPlanPreview); });
+  document.addEventListener('keydown',e=>{
+    if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement&&document.activeElement.tagName||'')) return;
+    const k=e.key.toLowerCase();
+    if(k==='h') openHideModal();
+    else if(k==='r') flipAllCardsOnCurrentSlide();
+    else if(k==='w') toggleWide16x9Stage();
+    else if(e.key==='ArrowRight') nextSlide();
+    else if(e.key==='ArrowLeft') prevSlide();
+  });
+  window.addEventListener('resize',()=>{ if($('fxCanvas')) initCanvasFx(); });
+}
+document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
