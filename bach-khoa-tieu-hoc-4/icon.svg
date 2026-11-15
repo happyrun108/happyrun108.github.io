@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0a1f44"/>
+  <rect x="24" y="24" width="464" height="464" rx="80" fill="none" stroke="#f5c451" stroke-width="6" opacity="0.55"/>
+  <!-- open book -->
+  <g fill="#f5c451">
+    <path d="M256 150 C210 120 150 118 106 132 L106 356 C150 342 210 344 256 374 C302 344 362 342 406 356 L406 132 C362 118 302 120 256 150 Z"/>
+  </g>
+  <g fill="#0a1f44">
+    <path d="M256 168 L256 356 C222 336 176 334 128 344 L128 148 C176 138 222 140 256 168 Z"/>
+    <path d="M256 168 L256 356 C290 336 336 334 384 344 L384 148 C336 138 290 140 256 168 Z"/>
+  </g>
+  <g stroke="#f5c451" stroke-width="7" stroke-linecap="round">
+    <line x1="152" y1="196" x2="232" y2="188"/>
+    <line x1="152" y1="232" x2="232" y2="224"/>
+    <line x1="152" y1="268" x2="232" y2="260"/>
+    <line x1="280" y1="188" x2="360" y2="196"/>
+    <line x1="280" y1="224" x2="360" y2="232"/>
+    <line x1="280" y1="260" x2="360" y2="268"/>
+  </g>
+  <text x="256" y="448" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#f5c451" text-anchor="middle">4D</text>
+</svg>
