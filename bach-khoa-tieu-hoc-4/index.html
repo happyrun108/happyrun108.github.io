@@ -208,7 +208,7 @@ body.style-notebook .comment-bank label{background:#fef9c3}
 </style>
 </head>
 <body class="style-trithuc">
-<div class="help-banner" id="helpBanner"><button class="close-help" onclick="document.getElementById('helpBanner').style.display='none'">✕ Đóng</button>
+<div class="help-banner" id="helpBanner"><button class="close-help" onclick="hideHelpBanner()">✕ Đóng</button>
 <b>📱 Cách mở đúng để nút bấm hoạt động:</b> File đính kèm mở trong khung xem trước của tin nhắn sẽ <b>không bấm được nút</b> (iPhone không chạy nút bấm ở đó). Thầy Khanh dùng app qua <b>đường link</b> do anh Nhật gửi — mở link bằng Safari hoặc Chrome là mọi nút đều chạy. Mở link rồi bấm <b>Chia sẻ → Thêm vào Màn hình chính</b> để dùng như một app riêng trên điện thoại.
 </div>
 <header class="hud-topbar">
@@ -228,7 +228,7 @@ body.style-notebook .comment-bank label{background:#fef9c3}
     <option value="notebook">🖍️ Trang Vở Em Tập Tô</option>
   </select>
   <div class="pill-switcher">
-    <button class="pill-btn" id="btnVoiceFemale" onclick="setVoiceGender('female',true)">👩 Giọng Thầy</button>
+    <button class="pill-btn" id="btnVoiceFemale" onclick="setVoiceGender('female',true)">👩 Giọng Cô</button>
     <button class="pill-btn active" id="btnVoiceMale" onclick="setVoiceGender('male',true)">👨 Giọng Thầy</button>
   </div>
   <div class="speed-slider-pill" title="Tốc độ đọc">
@@ -320,7 +320,7 @@ body.style-notebook .comment-bank label{background:#fef9c3}
           <b>🎮 Trò chơi nhanh theo bài học</b>
           <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px">
             <button class="mini-game-btn" onclick="startMiniGame('color')">🎨 Đố Màu Sắc</button>
-            <button class="mini-game-btn" onclick="startMiniGame('count')">🔢 Đếm 1–3</button>
+            <button class="mini-game-btn" onclick="startMiniGame('count')">🔢 Tính Nhanh</button>
             <button class="mini-game-btn" onclick="startMiniGame('food')">🥦 Thực Phẩm Tốt</button>
           </div>
           <div id="miniGameBox" style="margin-top:10px">Chọn một trò chơi để chơi cùng cả lớp.</div>
@@ -524,7 +524,7 @@ body.style-notebook .comment-bank label{background:#fef9c3}
     <span class="tag">📦 SỔ THEO DÕI TÀI SẢN, THIẾT BỊ, ĐỒ DÙNG CỦA LỚP</span>
     <h2>Sổ Tài Sản Lớp 4</h2>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
-      <input id="assetName" placeholder="Tên đồ dùng / đồ chơi..." style="flex:2;min-width:160px">
+      <input id="assetName" placeholder="Tên đồ dùng / thiết bị..." style="flex:2;min-width:160px">
       <input type="number" id="assetQty" placeholder="Số lượng" value="1" style="width:100px">
       <select id="assetCond"><option>✅ Tốt</option><option>🔧 Cần sửa</option><option>❌ Hỏng</option></select>
       <button class="btn-hud-action green" onclick="addAsset()">➕ Thêm Vào Sổ</button>
@@ -608,7 +608,7 @@ const LESSONS = [{"id": "tv1", "theme": "Tiếng Việt", "icon": "📖", "title
 /*__POEMS_START__*/
 const POEMS = [
 { id:1, type:"tho", title:"Quê hương — Đỗ Trung Quân (trích)", content:"Quê hương là chùm khế ngọt\nCho con trèo hái mỗi ngày\nQuê hương là đường đi học\nCon về rợp bướm vàng bay" },
-{ id:2, type:"tho", title:"Chuyện cổ tích về loài người — Xuân Quỳnh (trích)", content:"Trời sinh ra trước nhất\nChỉ toàn là học sinh con\nTrên trái đất trụi trần\nKhông dáng cây ngọn cỏ" },
+{ id:2, type:"tho", title:"Chuyện cổ tích về loài người — Xuân Quỳnh (trích)", content:"Trời sinh ra trước nhất\nChỉ toàn là trẻ con\nTrên trái đất trụi trần\nKhông dáng cây ngọn cỏ" },
 { id:3, type:"tho", title:"Tiếng ru — Tố Hữu (trích)", content:"Con ong làm mật, yêu hoa\nCon cá bơi, yêu nước; con chim ca, yêu trời\nCon người muốn sống, con ơi\nPhải yêu đồng chí, yêu người anh em" },
 { id:4, type:"tho", title:"Trong lời mẹ hát — Trương Nam Hương (trích)", content:"Tuổi thơ chở đầy cổ tích\nDòng sông lời mẹ ngọt ngào\nĐưa con đi cùng đất nước\nChòng chành nhịp võng ca dao" },
 { id:5, type:"tho", title:"Nếu chúng mình có phép lạ — Định Hải (trích)", content:"Nếu chúng mình có phép lạ\nHái triệu vì sao xuống\nCùng tinh tú trên trời\nĐúc thành một trái tim" },
@@ -616,7 +616,7 @@ const POEMS = [
 { id:7, type:"dongdao", title:"Đồng dao: Chi chi chành chành", content:"Chi chi chành chành\nCái đanh thổi lửa\nCon ngựa đứt cương\nBa vương ngũ đế\nChấp chế đi tìm\nÙ à ù ập!" },
 { id:8, type:"dongdao", title:"Đồng dao: Nu na nu nống", content:"Nu na nu nống\nCái bống nằm trong\nCon ong nằm ngoài\nCủ khoai chấm mật\nPhật ngồi Phật khóc\nCon cóc nhảy ra\nCon gà ú ụ\nNhà mụ thổi xôi\nNhà tôi nấu chè\nTay xòe tay nắm!" },
 { id:9, type:"dongdao", title:"Đồng dao: Tập tầm vông", content:"Tập tầm vông\nTay không tay có\nTập tầm vó\nTay có tay không\nMời các bạn đoán sao cho đúng\nTay nào có, tay nào không?" },
-{ id:10, type:"dongdao", title:"Đồng dao: Dung dăng dung dẻ", content:"Dung dăng dung dẻ\nDắt học sinh đi chơi\nĐến ngõ nhà trời\nLạy cậu lạy mợ\nCho cháu về quê\nCho dê đi học\nCho cóc ở nhà\nCho gà bới bếp!" },
+{ id:10, type:"dongdao", title:"Đồng dao: Dung dăng dung dẻ", content:"Dung dăng dung dẻ\nDắt trẻ đi chơi\nĐến ngõ nhà trời\nLạy cậu lạy mợ\nCho cháu về quê\nCho dê đi học\nCho cóc ở nhà\nCho gà bới bếp!" },
 { id:11, type:"caudo", title:"Câu đố: Số chẵn lớn nhất có một chữ số?", content:"Số nào chẵn, chỉ có một chữ số,\nLớn nhất trong các số chẵn một chữ số?", answer:"Đáp án: Số 8" },
 { id:12, type:"caudo", title:"Câu đố: 1 yến bằng bao nhiêu ki-lô-gam?", content:"Một yến gạo nặng bao nhiêu?\nĐổi ra ki-lô-gam là mấy?", answer:"Đáp án: 10 kg" },
 { id:13, type:"caudo", title:"Câu đố: Con gì tám chân, giăng tơ bắt mồi?", content:"Con gì tám chân nhỏ xinh\nGiăng tơ trong góc nhà mình bắt mồi?", answer:"Đáp án: Con nhện" },
@@ -767,13 +767,13 @@ function importClassBackupFile(file){
     if(!confirm('Nhập file sao lưu này sẽ THAY TOÀN BỘ dữ liệu lớp hiện tại (điểm danh, quan sát, hỗ trợ, tài sản, hoa, điểm kiểm tra). Thầy chắc chắn chứ?')) return;
     applyClassBundle(b);
     persistClassData(true);
-    renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderWhoList();
+    renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderTestList();
     toast('✅ Đã nhập file sao lưu — dữ liệu lớp đã được khôi phục!');
   };
   r.readAsText(file);
 }
 function restoreSavedClassData(){
-  if(restoreClassDataFromStorage(false)){ renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderWhoList(); }
+  if(restoreClassDataFromStorage(false)){ renderAttendance(); renderFlowerBoard(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile(); renderTestList(); }
   else toast('Không có dữ liệu lớp nào đã lưu trên máy này.');
 }
 function clearSavedClassData(){
@@ -790,7 +790,7 @@ function updateBackupStatus(){
   const d=new Date(b.savedAt);
   el.textContent='✅ Đã tự lưu trên máy này lúc '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' ngày '+d.getDate()+'/'+(d.getMonth()+1)+'. Thầy nên xuất file .json mỗi tuần 1 lần để giữ an toàn.';
 }
-const GROUPS = ["🐰 Tổ Thỏ Trắng", "🐻 Tổ Gấu Bông", "🐿️ Tổ Sóc Nâu"];
+const GROUPS = ["1️⃣ Tổ 1", "2️⃣ Tổ 2", "3️⃣ Tổ 3"];
 const SCHEDULE = [
 ["Thứ 2 • Tiết 1 — Sáng", "HĐTN: Sinh hoạt dưới cờ"],
 ["Thứ 2 • Tiết 2 — Sáng", "Toán"],
@@ -1253,7 +1253,7 @@ function setVoiceGender(g, announce){
   $('btnVoiceMale').classList.toggle('active', g==='male');
   updateVoiceStatus();
   resumeMidSentenceOnVoiceOrSpeedChange();
-  if(announce) toast(g==='female'?'Đã đổi sang 👩 Giọng Thầy':'Đã đổi sang 👨 Giọng Thầy');
+  if(announce) toast(g==='female'?'Đã đổi sang 👩 Giọng Cô':'Đã đổi sang 👨 Giọng Thầy');
 }
 function onTopSpeedInput(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; }
 function onTopSpeedCommit(v){ speechRate=parseFloat(v); $('topSpeedVal').textContent=speechRate.toFixed(2)+'x'; resumeMidSentenceOnVoiceOrSpeedChange(); }
@@ -1453,8 +1453,9 @@ function startMiniGame(type){
     const ans=colors[Math.floor(Math.random()*colors.length)];
     box.innerHTML='<b>🎨 Em bấm vào màu <span style="color:'+ans[2]+'">'+ans[1]+'</span> nào!</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">'+colors.map(c=>'<button class="mini-game-btn" style="font-size:30px" onclick="checkMiniGame(this,\''+c[1]+'\',\''+ans[1]+'\')">'+c[0]+'</button>').join('')+'</div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
   } else if(type==='count'){
-    const n=1+Math.floor(Math.random()*3);
-    box.innerHTML='<b>🔢 Em đếm có bao nhiêu quả bóng? '+('⚽'.repeat(n))+'</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px">'+[1,2,3].map(v=>'<button class="mini-game-btn" style="font-size:24px" onclick="checkMiniGame(this,'+v+','+n+')">'+v+'</button>').join('')+'</div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
+    const a=12+Math.floor(Math.random()*38), b=11+Math.floor(Math.random()*39);
+    const ans=a+b, opts=[ans,ans+10,ans-10].sort(()=>Math.random()-0.5);
+    box.innerHTML='<b>🔢 Tính nhanh: '+a+' + '+b+' = ?</b><div style="display:flex;gap:10px;justify-content:center;margin-top:10px">'+opts.map(v=>'<button class="mini-game-btn" style="font-size:24px" onclick="checkMiniGame(this,'+v+','+ans+')">'+v+'</button>').join('')+'</div><div id="miniGameMsg" style="margin-top:8px;font-weight:800"></div>';
   } else {
     const foods=[['🥦','Bông cải xanh — TỐT',1],['🍭','Kẹo mút — KHÔNG TỐT',0],['🥛','Sữa — TỐT',1],['🍟','Khoai tây chiên — KHÔNG TỐT',0]];
     const f=foods[Math.floor(Math.random()*foods.length)];
@@ -1686,7 +1687,7 @@ function renderPlanPreview(){
   '<p><b>1. Yêu cầu cần đạt</b><br>'+esc($('lpMucDich').value||'').replace(/\n/g,'<br>')+'</p>'+
   '<p><b>2. Đồ dùng dạy học</b><br>'+esc($('lpChuanBi').value||'').replace(/\n/g,'<br>')+'</p>'+
   '<p><b>3. Các hoạt động dạy học chủ yếu</b></p>'+
-  '<table><tr><th style="width:50%">HOẠT ĐỘNG CỦA THẦY</th><th style="width:50%">HOẠT ĐỘNG CỦA TRẺ</th></tr>'+(rows||'<tr><td></td><td></td></tr>')+'</table>'+
+  '<table><tr><th style="width:50%">HOẠT ĐỘNG CỦA THẦY</th><th style="width:50%">HOẠT ĐỘNG CỦA HỌC SINH</th></tr>'+(rows||'<tr><td></td><td></td></tr>')+'</table>'+
   '<p><b>4. Điều chỉnh sau bài dạy:</b><br>'+esc($('lpGhiChu').value||'').replace(/\n/g,'<br>')+'</p>'+
   '<div style="text-align:right;margin-top:20px"><b>Người soạn</b><br><br><br><b>Nguyễn Hữu Khanh</b></div>';
 }
@@ -1704,7 +1705,7 @@ function syncPlanToSlide(){
     flipCards:[
     {frontTitle:'❓ Bài hôm nay nói về gì?',frontText:'Em đoán nội dung bài nào!',backTitle:'📖 '+title,backText:$('lpMucDich').value.slice(0,150)},
     {frontTitle:'❓ Thầy chuẩn bị gì cho bài?',frontText:'Em kể đồ dùng của thầy nào!',backTitle:'🎒 ĐỒ DÙNG CỦA THẦY',backText:$('lpChuanBi').value.slice(0,150)},
-    {frontTitle:'❓ Em làm gì trong bài?',frontText:'Em kể hoạt động của mình nào!',backTitle:'🙋 HOẠT ĐỘNG CỦA TRẺ',backText:'Em lắng nghe, trả lời câu hỏi và tham gia trò chơi.'},
+    {frontTitle:'❓ Em làm gì trong bài?',frontText:'Em kể hoạt động của mình nào!',backTitle:'🙋 HOẠT ĐỘNG CỦA HỌC SINH',backText:'Em lắng nghe, trả lời câu hỏi và tham gia trò chơi.'},
     {frontTitle:'❓ Em học được gì?',frontText:'Qua bài, em học được gì?',backTitle:'🌟 BÀI HỌC CỦA EM',backText:'Em nêu một điều hay học được từ bài.'}],
     bullets:['🔹 '+title,'🔹 Em tham gia tích cực và trả lời câu hỏi.'],
     stateOld:'🤔 Em chưa biết bài này', bridgeVerb:'KHÁM PHÁ', stateNew:'🌟 Em hiểu bài và nhớ lâu',
@@ -1784,7 +1785,7 @@ function deleteAsset(i){ ASSETS.splice(i,1); renderAssetList(); }
 function renderAssetList(){
   const el=$('assetList'); if(!el) return;
   if(!ASSETS.length){ el.innerHTML='<p class="sub">Sổ tài sản lớp còn trống. Thầy ghi đồ dùng, thiết bị, đồ chơi của lớp vào đây để theo dõi và bàn giao cuối năm.</p>'; return; }
-  el.innerHTML='<table class="student-table"><tr><th>Tên đồ dùng / đồ chơi</th><th>Số lượng</th><th>Tình trạng</th><th></th></tr>'+
+  el.innerHTML='<table class="student-table"><tr><th>Tên đồ dùng / thiết bị</th><th>Số lượng</th><th>Tình trạng</th><th></th></tr>'+
     ASSETS.map((a,i)=>'<tr><td>'+esc(a.name)+'</td><td>'+a.qty+'</td><td>'+esc(a.cond)+'</td><td><button class="att-btn" onclick="deleteAsset('+i+')">🗑</button></td></tr>').join('')+'</table>';
 }
 function fillProfileStudents(){ const el=$('profileStudent'); if(!el) return; el.innerHTML=STUDENTS.map(s=>'<option value="'+s.id+'">'+esc(s.name)+'</option>').join(''); }
@@ -1874,7 +1875,7 @@ function saveTT27(){
   const level=score>=9?'Hoàn thành tốt':(score>=5?'Hoàn thành':'Chưa hoàn thành');
   TEST_RECORDS.push({name,subject,term,score,level,date:new Date().toLocaleDateString('vi-VN')});
   $('ttResult').innerHTML='<div class="who-result who-ok">'+esc(name)+' — '+esc(subject)+' ('+esc(term)+'): <b>'+score+' điểm — '+level+'</b></div>';
-  renderTestList();
+  renderTestList(); renderProfile();
 }
 function renderTestList(){
   $('ttList').innerHTML = TEST_RECORDS.length?'<table class="student-table"><tr><th>Em</th><th>Môn</th><th>Kì</th><th>Điểm</th><th>Mức</th></tr>'+
@@ -1932,18 +1933,21 @@ function exportStandaloneHtml4D(){
     html=replaceBlock(html,'__CLASS_RECORDS_START__','__CLASS_RECORDS_END__','let STUDENTS = '+JSON.stringify(STUDENTS)+';\nlet FLOWERS = '+JSON.stringify(FLOWERS)+';\nlet TEST_RECORDS = '+JSON.stringify(TEST_RECORDS)+';\nlet OBS_LOG = '+JSON.stringify(OBS_LOG)+';\nlet CARE_LOG = '+JSON.stringify(CARE_LOG)+';\nlet ASSETS = '+JSON.stringify(ASSETS)+';');
     const blob=new Blob([html],{type:'text/html;charset=utf-8'});
     const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-    a.download='bach-khoa-mam-non-4d-co-niem-'+new Date().toISOString().slice(0,10)+'.html'; a.click();
+    a.download='bach-khoa-tieu-hoc-4d-thay-khanh-'+new Date().toISOString().slice(0,10)+'.html'; a.click();
     toast('💾 Đã lưu trọn bộ về máy! File mới chứa toàn bộ bài giảng, học sinh, Hoa Điểm Tốt và điểm kiểm tra — mở trên TV/máy tính ở trường là chạy ngay.');
   }catch(err){ toast('❌ Lỗi khi lưu file: '+err.message); }
 }
 
+function hideHelpBanner(){ try{ localStorage.setItem('bachkhoa-lop4-help-hidden','1'); }catch(e){} const b=$('helpBanner'); if(b) b.style.display='none'; }
+
 /* ================= KHỞI TẠO ================= */
 function initApp(){
   restoreClassDataFromStorage(true);
+  try{ if(localStorage.getItem('bachkhoa-lop4-help-hidden')){ const hb=$('helpBanner'); if(hb) hb.style.display='none'; } }catch(e){}
   const today=new Date(); $('lpDate').value=today.toISOString().slice(0,10);
   renderDeck(); renderThemeGrid(); renderPoemLibrary(); renderLessonDetail(LESSONS[0]);
   renderAttendance(); renderFlowerBoard(); renderSchedule(); renderZaloList(); fillObsStudents(); renderObsList(); fillCareStudents(); renderCareList(); renderAssetList(); fillProfileStudents(); renderProfile();
-  fillCommentStudents(); renderCommentBank(); renderWhoList(); renderPlanPreview(); renderSlideEditor();
+  fillCommentStudents(); renderCommentBank(); renderTestList(); renderPlanPreview(); renderSlideEditor();
   loadViVoices();
   updateBackupStatus();
   setInterval(()=>persistClassData(true), 8000);
